@@ -39,10 +39,16 @@ function handlerClickCategory(e) {
 }
 
 function handlerClickExercises(e) {
-  console.log(e.target);
-  const target = e.target;
 
-  getExercises(target, currentPage)
+  let exercise = e.target.closest('.card').dataset.bodyHome;
+  console.log(exercise);
+
+  const data = {
+    bodypart: exercise,
+    page: 1,
+  };
+
+  getExercises(data)
     .then(response => {
       const data = response.results;
       console.log(data);

@@ -1,6 +1,6 @@
-import { getBodyPartsList, getFilteredList, getExercises } from "./api/api";
-import { markupCategories } from "./markupCategories";
-import { markupExercises } from "./markupExercises";
+import { getBodyPartsList, getFilteredList, getExercises } from './api/api';
+import { markupCategories } from './markupCategories';
+import { markupExercises } from './markupExercises';
 
 let currentPage = 1;
 
@@ -39,7 +39,6 @@ function handlerClickCategory(e) {
 }
 
 function handlerClickExercises(e) {
-
   let exercise = e.target.closest('.card').dataset.bodyHome;
   console.log(exercise);
 

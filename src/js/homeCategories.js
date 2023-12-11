@@ -1,6 +1,6 @@
-import { getBodyPartsList, getFilteredList, getExercises } from './js/api';
-import { markupCategories } from './js/markupCategories';
-import { markupExercises } from './js/markupExercises';
+import { getBodyPartsList, getFilteredList, getExercises } from "./api/api";
+import { markupCategories } from "./markupCategories";
+import { markupExercises } from "./markupExercises";
 
 let currentPage = 1;
 

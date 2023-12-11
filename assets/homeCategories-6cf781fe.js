@@ -49,4 +49,4 @@ import{a as p}from"./vendor-a61d8330.js";(function(){const s=document.createElem
 			</ul>
 		</div>
 	</li>`).join("")}let u=1;const i=document.querySelector(".cards"),L=document.querySelector(".filter-list");L.addEventListener("click",b);i.addEventListener("click",v);y().then(e=>{const s=e.results;console.log(s),i.innerHTML=d(s)}).catch(e=>{console.error(e)});function b(e){if(e.target.nodeName!=="BUTTON")return;const s=e.target.dataset.name;console.log(s),f(s,u).then(r=>{const n=r.results;console.log(n),i.innerHTML=d(n)}).catch(r=>{console.error(r)})}function v(e){console.log(e.target);const s=e.target;x(s,u).then(r=>{const n=r.results;console.log(n),i.innerHTML=h(n)}).catch(r=>{console.error(r)})}
-//# sourceMappingURL=homeCategories-4a3f9938.js.map
+//# sourceMappingURL=homeCategories-6cf781fe.js.map

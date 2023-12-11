@@ -19,6 +19,8 @@ getBodyPartsList()
     console.error(err);
   });
 
+
+  
 function handlerClickCategory(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;

@@ -49,4 +49,4 @@ import{a as u}from"./vendor-a61d8330.js";(function(){const e=document.createElem
 			</ul>
 		</div>
 	</li>`).join("")}let b=1;const o=document.querySelector(".cards"),h=document.querySelector(".filter-list");h.addEventListener("click",L);o.addEventListener("click",v);f().then(t=>{const e=t.results;console.log(e),o.innerHTML=d(e)}).catch(t=>{console.error(t)});function L(t){if(t.target.nodeName!=="BUTTON")return;const e=t.target.dataset.name;console.log(e),g(e,b).then(c=>{const r=c.results;console.log(r),o.innerHTML=d(r)}).catch(c=>{console.error(c)})}function v(t){let e=t.target.closest(".card").dataset.bodyHome;console.log(e),y({bodypart:e,page:1}).then(r=>{const s=r.results;console.log(s),o.innerHTML=x(s)}).catch(r=>{console.error(r)})}
-//# sourceMappingURL=homeCategories-c290bdcb.js.map
+//# sourceMappingURL=homeCategories-a3e25bfb.js.map

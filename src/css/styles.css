@@ -1,5 +1,6 @@
 @import url('./base/modern-normalize.min.css');
 @import url('./base/reset.css');
+@import url('./base/fonts.css');
 @import url('./base/variables.css');
 @import url('./base/common.css');
 @import url('./utils/modal-exercise.css');

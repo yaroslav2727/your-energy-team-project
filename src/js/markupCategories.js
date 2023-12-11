@@ -1,7 +1,7 @@
 export function markupCategories(data) {
     return data
       .map(({ imgURL, filter, name }) => {
-        return `<li class="card">
+        return `<li class="card" data-body-home='${name}'>
                <button type="button" class="cat-img"
                  style=" background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%),
                  url('${imgURL}') ;

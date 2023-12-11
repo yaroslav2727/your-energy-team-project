@@ -6,7 +6,7 @@
 @import url('./utils/modal-rating.css');
 @import url('./utils/loader.css');
 @import url('./utils/scrollup.css');
-@import url('./header.css');
+@import url('./index/header.css');
 @import url('./index/hero.css');
 @import url('./index/primary-content.css');
 @import url('./index/filters.css');

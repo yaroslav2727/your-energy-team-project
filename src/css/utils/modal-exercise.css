@@ -38,13 +38,14 @@
     transform: translate(-50%, -50%) scale(1);
     width: 335px;
     min-height: 584px;
-    background-color: var(--dairy-modal-color);
+    background-color: var(--color-primary);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 1px 3px rgba(0, 0, 0, 0.12),
         0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     padding: 40px 20px 40px 20px;
+    color: var(--color-secondary)
 }
 .modal_image{
     display: flex;
@@ -113,4 +114,11 @@
 .modal_title{
     margin-bottom: 10px;
     margin-top: 20px;
+    
+}
+.excercise_title{
+    color: var(--color-secondary-medium);
+}
+.modal_text{
+    color: var(--color-secondary-heavy);
 }

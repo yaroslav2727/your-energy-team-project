@@ -1,0 +1,44 @@
+.cat-filter {
+    display: flex;
+    padding: 32px 0;
+  }
+  
+  .cat-title {
+    color: #242424;
+    font-family: DM Sans;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px; /* 109.091% */
+    letter-spacing: -0.88px;
+  }
+  
+  .filter {
+      margin-left: auto;
+  }
+  
+  .filter-list {
+    display: flex;
+    gap: 20px;
+  
+  }
+    
+  .filter-btn {
+    background: none;
+    border: none;
+    color: rgba(36, 36, 36, 0.6);
+    /* font-family: DM Sans; */
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+  }
+  
+  .filter-btn.active::after {
+    border-radius: 2px;
+    content: '';
+    display: block;
+    height: 4px;
+    flex-shrink: 0;
+    background-color: #242424;
+    position: static;
+    color: #242424;
+  }

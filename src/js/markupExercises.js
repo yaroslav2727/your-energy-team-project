@@ -6,11 +6,16 @@ export function markupExercises(data) {
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
 				<p class="exercises-rating">${rating}</p>
+				<span class="exercises-name-span">
+				<svg class="exercises-icon-star-rating" width="16" height="16">
+                  <use href="../img/icons.svg#icon-star-rating"></use>
+                </svg>
+			</span>
 			</div>
 			<div class="exercises-btn-wrapper">
 				<button type="button" class="exercises-btn">Start</button>
 				<span class="exercises-name-span">
-					<svg class="exercises-icon-arrow" width="24" height="24">
+					<svg class="exercises-icon-arrow" width="16" height="16">
 						<use href="../img/icons.svg#icon-arrow"></use>
 					</svg>
 				</span>
@@ -19,7 +24,7 @@ export function markupExercises(data) {
 
 		<div class="exercises-title">
 			<span class="exercises-name-span">
-				<svg class="exercises-icon" width="24" height="24">
+				<svg class="exercises-icon-runner" width="24" height="24">
                   <use href="../img/icons.svg#icon-runner"></use>
                 </svg>
 			</span>

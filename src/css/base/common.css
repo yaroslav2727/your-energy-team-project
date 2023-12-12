@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif; /* добавити потрібний шрифт */
+    font-family: 'DM Sans', sans-serif;
     background-color: var(--color-secondary);
     color: var(--color-primary);
 }

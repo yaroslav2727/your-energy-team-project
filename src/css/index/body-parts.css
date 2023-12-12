@@ -29,7 +29,7 @@
   /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 25px;
 }
 
 .exercises-text {
@@ -53,7 +53,8 @@
 .exercises-rating {
   display: flex;
   align-items: center;
-  color: #242424;
+  margin-right: 2px;
+  color: var(--color-primary);
 
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: DM Sans;
@@ -61,6 +62,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.5; /* 150% */
+}
+
+.exercises-icon-star-rating {
+  fill: var(--color-rating);
 }
 
 .exercises-btn {
@@ -84,9 +89,10 @@
   margin-bottom: 16px;
 }
 
-.exercises-icon {
-  fill: tomato;
-  background-color: var(--color-primary);
+.exercises-icon-runner {
+  /* fill: var(--color-secondary); */
+  /* fill: teal; */
+  /* background-color: tomato; */
   border-radius: 50%;
   margin-right: 16px;
 }
@@ -104,6 +110,7 @@
 
 .exercises-data-list {
   display: flex;
+  gap: 10px;
 }
 
 .exercises-data-item {
@@ -137,16 +144,35 @@
 .exercises-name-span {
   display: flex;
   align-self: center;
+  margin-left: 2px;
 }
 
 .exercises-icon-arrow {
-  background-color: tomato;
   stroke: var(--color-primary);
-  fill: var(--color-primary);
+  /* fill: var(--color-primary); */
 }
 
 @media screen and (min-width: 768px) {
   .exercises-item {
     width: 344px;
   }
+
+  .exercises-title {
+    margin-bottom: 8px;
+  }
+
+  .exercises-name {
+    font-size: 24px;
+  }
+
+  .exercises-btn {
+    font-size: 16px;
+  }
+
+  .exercises-data-list {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
 }

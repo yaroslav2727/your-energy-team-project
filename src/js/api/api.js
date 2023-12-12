@@ -110,3 +110,6 @@ export const createSubscription = async data => {
   const response = await api.post('/subscription', data);
   return response.data;
 };
+
+
+console.log(getExerciseById('64f389465ae26083f39b1817'))

@@ -1,7 +1,7 @@
 export function markupExercises(data) {
 	return data
 		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
-			return `<li class="exercises-item container" data-exercise-id="${_id}">
+			return `<li class="exercises-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>

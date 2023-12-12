@@ -32,7 +32,7 @@
     line-height: 24px; /* 150% */
   }
   
-  .filter-btn.active::after {
+  .active::after {
     border-radius: 2px;
     content: '';
     display: block;

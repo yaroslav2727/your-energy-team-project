@@ -1,8 +1,7 @@
 .cards {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -35,20 +34,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .cards {
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 32px 16px;
-  }
-}
 
-@media screen and (min-width: 1440px) {
   .cards {
-    width: 900px;
-  }
-
-  .card-exercises {
-    margin-bottom: 16px;
+    column-gap: 15px;
+    row-gap: 32px;
   }
 
   .card-exercises-img {
@@ -58,6 +47,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .cards {
+    width: 900px;
+  }
 
   .card-exercises-img {
     width: 290px;

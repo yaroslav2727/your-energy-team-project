@@ -1,4 +1,4 @@
-import"./assets/activePageHeader-353345dc.js";import{a as p}from"./assets/vendor-a61d8330.js";const g="https://your-energy.b.goit.study/api",d=12,m=10,o=p.create({baseURL:g,params:{}}),x=async(e,s=1)=>(await o.get("/filters",{params:{filter:e,page:s,limit:d}})).data,v=async(e=1)=>(await o.get("/filters",{params:{filter:"Body parts",page:e,limit:d}})).data,f=async({bodypart:e,muscles:s,equipment:a,search:t},r=1)=>{const n=t&&!e&&!s&&!a?"":t;return(await o.get("/exercises",{params:{bodypart:e||"",muscles:s||"",equipment:a||"",keyword:n||"",page:r,limit:m}})).data};function u(e){return e.map(({imgURL:s,filter:a,name:t})=>`<li class="card" data-body-exercise='${t}'>
+import"./assets/activePageHeader-0211d672.js";import{a as p}from"./assets/vendor-a61d8330.js";const g="https://your-energy.b.goit.study/api",d=12,m=10,o=p.create({baseURL:g,params:{}}),x=async(e,s=1)=>(await o.get("/filters",{params:{filter:e,page:s,limit:d}})).data,v=async(e=1)=>(await o.get("/filters",{params:{filter:"Body parts",page:e,limit:d}})).data,f=async({bodypart:e,muscles:s,equipment:a,search:t},r=1)=>{const n=t&&!e&&!s&&!a?"":t;return(await o.get("/exercises",{params:{bodypart:e||"",muscles:s||"",equipment:a||"",keyword:n||"",page:r,limit:m}})).data};function u(e){return e.map(({imgURL:s,filter:a,name:t})=>`<li class="card" data-body-exercise='${t}'>
                <button type="button" class="cat-img"
                  style=" background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%),
                  url('${s}') ;
@@ -11,7 +11,7 @@ import"./assets/activePageHeader-353345dc.js";import{a as p}from"./assets/vendor
    <p class="name-category">${t}</p>
       <p class="name-exercises">${a}</p>
   </div>
-    </li>`).join("")}function y(e){return e.map(({rating:s,name:a,burnedCalories:t,bodyPart:r,target:n,_id:l})=>`<li class="exercises-item container" data-exercise-id="${l}">
+    </li>`).join("")}function y(e){return e.map(({rating:s,name:a,burnedCalories:t,bodyPart:r,target:n,_id:l})=>`<li class="exercises-item" data-exercise-id="${l}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>

@@ -32,6 +32,13 @@
   .cards {
     flex-wrap: wrap;
     flex-direction: row;
+    gap: 16px 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .cards {
+    flex-wrap: wrap;
     width: 900px;
     gap: 15px;
   }

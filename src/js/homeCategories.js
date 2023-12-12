@@ -1,6 +1,6 @@
-import { getBodyPartsList, getFilteredList, getExercises } from "./api/api";
-import { markupCategories } from "./markupCategories";
-import { markupExercises } from "./markupExercises";
+import { getBodyPartsList, getFilteredList, getExercises } from './api/api';
+import { markupCategories } from './markupCategories';
+import { markupExercises } from './markupExercises';
 
 let currentPage = 1;
 let category = 'bodypart';
@@ -56,9 +56,11 @@ function handlerClickCategory(e) {
 // список вправ
 function handlerClickExercises(e) {
 
+
   const exercise = e.target.closest('.card').dataset.bodyExercise;
   console.log('exercise', exercise);
   console.log('category', category);
+
 
   const data = {
     [category]: exercise,

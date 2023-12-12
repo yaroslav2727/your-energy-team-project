@@ -1,0 +1,160 @@
+.sport-card {
+  font-family: Neue Montreal, 'sans-serif';
+  padding: 16px;
+
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.sport-card__header {
+  margin-bottom: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sport-card__tag-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 2px;
+}
+
+.sport-card__tag {
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #242424;
+  text-transform: uppercase;
+
+  border: 1px solid #242424;
+  border-radius: 16px;
+}
+
+.sport-card__remove-btn {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  transition: background-color 300ms ease-in-out;
+}
+
+.sport-card__remove-btn > .icon {
+  stroke: #242424;
+  transition: stroke 300ms ease-in-out;
+}
+
+.sport-card__remove-btn:hover {
+  background-color: #242424;
+}
+
+.sport-card__remove-btn:hover > .icon {
+  stroke: #ffffff;
+}
+
+.sport-card__start-btn {
+  padding: 1px 12px;
+
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  font-size: 14px;
+  line-height: 1.28;
+  font-weight: 400;
+
+  border-radius: 15px;
+
+  transition: all 300ms ease-in-out;
+}
+
+.sport-card__start-btn > .icon {
+  stroke: #242424;
+  transition: stroke 300ms ease-in-out;
+}
+
+.sport-card__start-btn:hover {
+  background-color: #242424;
+  color: #ffffff;
+}
+
+.sport-card__start-btn:hover .icon {
+  stroke: #ffffff;
+}
+
+.sport-card__meta {
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.sport-card__name {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.sport-card__footer {
+}
+
+.sport-card__param-list {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sport-card__param-item {
+  color: rgba(36, 36, 36, 0.4);
+}
+
+.sport-card__param__value {
+  margin-left: 2px;
+  color: #242424;
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/* ------------------------------MEDIA--------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------- */
+@media screen and (min-width: 375px) {
+  /*  */
+}
+
+@media screen and (min-width: 768px) {
+  /*  */
+
+  .sport-card__start-btn {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .sport-card__meta {
+    margin-bottom: 8px;
+  }
+
+  .sport-card__name {
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .sport-card__param-list {
+    column-gap: 16px;
+  }
+
+  .sport-card__param__value {
+    margin-left: 4px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  /*  */
+}

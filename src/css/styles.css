@@ -1,5 +1,6 @@
 @import url('./base/modern-normalize.min.css');
 @import url('./base/reset.css');
+@import url('./base/fonts.css');
 @import url('./base/variables.css');
 @import url('./base/common.css');
 @import url('./utils/modal-exercise.css');
@@ -8,13 +9,11 @@
 @import url('./utils/scrollup.css');
 @import url('./index/header.css');
 @import url('./index/hero.css');
-@import url('./index/markupCategories.css');
 @import url('./index/primary-content.css');
 @import url('./index/filters.css');
 @import url('./index/exercises.css');
 @import url('./index/quote.css');
 @import url('./index/footer.css');
-@import url('./favorites/favorites-content.css');
+@import url('./index/body-parts.css');
+@import url('./favorites/index.css');
 @import url('./favorites/favorites-quote.css');
-@import url('./favorites/favorites-exercises.css');
-

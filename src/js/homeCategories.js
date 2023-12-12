@@ -1,6 +1,6 @@
-import { getBodyPartsList, getFilteredList, getExercises } from "./api/api";
-import { markupCategories } from "./markupCategories";
-import { markupExercises } from "./markupExercises";
+import { getBodyPartsList, getFilteredList, getExercises } from './api/api';
+import { markupCategories } from './markupCategories';
+import { markupExercises } from './markupExercises';
 
 let currentPage = 1;
 
@@ -19,6 +19,8 @@ getBodyPartsList()
     console.error(err);
   });
 
+
+  
 function handlerClickCategory(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
@@ -39,7 +41,6 @@ function handlerClickCategory(e) {
 }
 
 function handlerClickExercises(e) {
-
   let exercise = e.target.closest('.card').dataset.bodyHome;
   console.log(exercise);
 

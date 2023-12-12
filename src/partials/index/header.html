@@ -8,20 +8,12 @@
       </a>
       <div class="change_theme">
         <div class="change_theme--btn"></div>
-        <img
-          class="icon_sun"
-          width="24"
-          height="24"
-          src="/img/icon-sun.svg"
-          alt="Day"
-        />
-        <img
-          class="icon_moon"
-          width="24"
-          height="24"
-          src="/img/icon-moon.svg"
-          alt="Night"
-        />
+        <svg class="icon_sun" width="24" height="24">
+          <use href="/img/icons.svg#icon-sun"></use>
+        </svg>
+        <svg class="icon_moon" width="24" height="24">
+          <use href="/img/icons.svg#icon-moon"></use>
+        </svg>
       </div>
     </div>
     <ul class="header-pages">
@@ -31,7 +23,9 @@
         >
       </li>
       <li class="header-pages-item pg-favorites">
-        <a class="header-pages-item-link pg-favorites" href="./favorites.html"
+        <a
+          class="header-pages-item-link header-pages-active2"
+          href="./favorites.html"
           >Favorites</a
         >
       </li>

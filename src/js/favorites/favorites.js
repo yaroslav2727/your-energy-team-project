@@ -25,7 +25,10 @@ mockFavoritesData.forEach(card => {
 //   target: 'Abs',
 // });
 
-console.log(favorites.getCards(4, 5));
+// console.log(favorites.getCards(4, 5));
+
+const response = favorites.getCards(1, 6);
+render(response.data);
 
 //TEMP----------------------
 
@@ -46,7 +49,7 @@ console.log(favorites.getCards(4, 5));
 //   };
 // }
 
-// function render(list) {
-//   const markup = list.map(createCardMarkup).join('');
-//   listRef.innerHTML = markup;
-// }
+function render(list) {
+  const markup = list.map(createCardMarkup).join('');
+  listRef.innerHTML = markup;
+}

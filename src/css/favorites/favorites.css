@@ -1,0 +1,105 @@
+.favorites {
+  font-family: Neue Montreal, 'sans-serif';
+  padding-top: 80px;
+
+  background-color: #f4f4f4;
+}
+
+.favorites__title {
+  margin-bottom: 20px;
+
+  font-family: Neue Montreal, 'sans-serif';
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.favorites__wrapper {
+}
+
+.favorites__sidebar {
+  margin-bottom: 40px;
+  width: 100%;
+
+  /* TEMP VALUE */
+  height: 500px;
+
+  outline: 1px solid tomato;
+}
+
+.favorites__list {
+  width: 100%;
+}
+
+.favorites__item {
+  flex-basis: 100%;
+
+  margin-bottom: 20px;
+}
+
+.favorites__item:last-child {
+  margin-bottom: 0;
+}
+
+.favorites__card {
+}
+/* -------------------------------------------------------------------------------------------- */
+/* ------------------------------MEDIA--------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------- */
+@media screen and (min-width: 375px) {
+  /*  */
+}
+
+@media screen and (min-width: 768px) {
+  /*  */
+  .favorites {
+    padding-top: 100px;
+  }
+
+  .favorites__title {
+    margin-bottom: 32px;
+
+    font-size: 44px;
+    line-height: 1.1;
+  }
+
+  .favorites__sidebar {
+    margin-bottom: 64px;
+
+    /* TEMP VALUE */
+    height: 400px;
+  }
+
+  .favorites__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+  }
+
+  .favorites__item {
+    flex-basis: calc((100% - 16px) / 2);
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  /*  */
+  .favorites {
+    padding-top: 90px;
+  }
+
+  .favorites__wrapper {
+    display: flex;
+    column-gap: 32px;
+  }
+
+  .favorites__sidebar {
+    margin-bottom: 0;
+    width: 494px;
+    flex-shrink: 0;
+  }
+
+  .favorites__list {
+  }
+}

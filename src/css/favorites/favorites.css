@@ -131,6 +131,21 @@
     outline: 1px solid slategrey;
   } */
 
+  .favorites__list-wrapper::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(36, 36, 36, 0.1);
+    border-radius: 8px;
+  }
+
+  /*.favorites__list-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  } */
+
+  .favorites__list-wrapper::-webkit-scrollbar-thumb {
+    background-color: #242424;
+    border-radius: 8px;
+  }
+
   .favorites__list {
   }
 }

@@ -1,3 +1,9 @@
+body {
+    font-family: sans-serif; /* добавити потрібний шрифт */
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
 .container {
     width: 100%;
     max-width: 375px;

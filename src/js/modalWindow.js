@@ -1,25 +1,32 @@
 import { getExerciseById } from "./api/api";
 
-console.log(getExerciseById('64f389465ae26083f39b1817'));
+// import { handlerClickCategory } from "./homeCategories"
+// console.log(getExerciseById('64f389465ae26083f39b1817'));
 
 
-const cardsList = document.querySelector(".js_cards");
+const cardsList = document.querySelector(".cards");
+const startButton = document.querySelector(".exercises-btn")
 const modalExcercise= document.querySelector(".modal_window_container")
 const closeModalButton = document.querySelector(".close_modal_button")
 
 const openModal = function (event) {
-    if (cardsList.closest(".exercises-btn")) {
-        console.log(event.target);
+    // if (!event.target.classList.contains('exercises-btn')) {
+    //     return
+    // }
+    //     console.log(event.target);
     modalExcercise.classList.remove("is_hidden");
-    }
-    else return
-    
-}
+       }
 
 const closeModal = function () {
     modalExcercise.classList.add("is_hidden")
-  }
-cardsList.addEventListener('click', openModal);
+}
+  
+// function createListener() {
+//     if (handlerClickCategory == true) {
+//       startButton.addEventListener('click', openModal);  
+//     } return
+// }
+// cardsList.addEventListener('click', createListener);
 closeModalButton.addEventListener('click', closeModal);
 
 

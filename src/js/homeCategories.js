@@ -26,7 +26,8 @@ getMusclesList()
   .catch(err => {
     console.error(err);
     iziToast.show({
-      position: 'topRight',
+      position: 'center',
+      color: 'red',
       message: 'Oops! Something wrong!',
     });
   })
@@ -61,7 +62,8 @@ function handlerClickCategory(e) {
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'topRight',
+        position: 'center',
+        color: 'red',
         message: 'Oops! Something wrong!',
       });
     })
@@ -89,7 +91,8 @@ function handlerClickExercises(e) {
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'topRight',
+        position: 'center',
+        color: 'red',
         message: 'Oops! Something wrong!',
       });
     })

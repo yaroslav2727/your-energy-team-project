@@ -1,7 +1,7 @@
 import { getExerciseById } from "./api/api";
 
 const cardsList = document.querySelector(".cards");
-const startButton = document.querySelector(".exercises-btn")
+const contentUpdate = document.querySelector(".modal_window_update")
 const modalExcercise= document.querySelector(".modal_window_container")
 const closeModalButton = document.querySelector(".close_modal_button")
 
@@ -11,7 +11,7 @@ closeModalButton.addEventListener('click', closeModal);
 function markupModal({gifUrl, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
     return `<div class="modal_window_content">
 <img class ="modal_image" src="${gifUrl}" alt="${name}">
-<button class="close_modal_button" type="button" data-modal-favorite-close><svg></svg></button>
+
 <h3 class="modal_title">${name}</h3>
 <p class = "excercise_rating">${rating}</p>
 <ul class="excercise_units">
@@ -25,8 +25,7 @@ function markupModal({gifUrl, name, bodyPart, equipment, target, description, ra
         <li class="excercise_item"><h4 class="excercise_title">Burned calories</h4>
         <p class="excercise_text">${burnedCalories}</p></li>
         <p class="modal_text">${description}</p>
-<div class="buttons_modal"><button class="add_favorite_button" type="button">Add to favorite</button>
-<button class="rate_button" type="button">Give a rating</button></div> 
+
 </ul>
 </div >`;
 };
@@ -45,7 +44,7 @@ function openModal(e) {
     getExerciseById(cardId).then(resp => {
         console.log(resp)
         const modalMarkup = markupModal(resp);
-        modalExcercise.innerHTML = modalMarkup
+        contentUpdate.innerHTML = modalMarkup
     }
     )
 

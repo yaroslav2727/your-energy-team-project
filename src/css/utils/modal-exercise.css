@@ -31,7 +31,7 @@
     padding: 0;
     cursor: pointer;
     transition: var(--transition-time) var(--transition-function);}
-.modal_window_content {
+.modal_window_default_content {
     position: absolute;
     top: 50%;
     left: 50%;

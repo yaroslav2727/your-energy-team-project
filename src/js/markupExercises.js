@@ -40,7 +40,7 @@ export function markupExercises(data) {
 			<ul class="exercises-data-list">
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Burned calories:</span>
-					${burnedCalories}/ ...
+					${burnedCalories}/...
 				</li>
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Body part:</span>

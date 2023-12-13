@@ -95,8 +95,8 @@ export const getExerciseById = async id => {
   const response = await api.get(`/exercises/${id}`);
   return response.data;
 };
-
-export const setExerciseRating = async (id, data) => {
+//------------------Raiting-----------------------------------------------------------
+export const patchRating = async (id, data) => {
   const response = await api.patch(`/exercises/${id}/rating`, data);
   return response.data;
 };
@@ -110,3 +110,5 @@ export const createSubscription = async data => {
   const response = await api.post('/subscription', data);
   return response.data;
 };
+
+

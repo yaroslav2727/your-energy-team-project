@@ -2,6 +2,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import { patchRating } from '../js/api/api'
 
+const raitingReff = document.querySelector('.raiting')
 const reatingTitleReff = document.querySelector('p[data-raiting]')
 const btnCloseReff = document.querySelector('.btn_close')
 const formReff = document.querySelector('.rating_form')
@@ -13,6 +14,7 @@ let id = '64f389465ae26083f39b17a2'
 
 btnCloseReff.addEventListener('click', (evt) => {
   evt.preventDefault()
+  raitingReff.classList.add('visually-hidden')
   console.log('close-rating-function')
 })
 

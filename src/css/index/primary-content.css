@@ -1,0 +1,24 @@
+@media (min-width: 1440px) {
+    .primary-content-flex {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 32px;
+    }
+
+@media (min-width: 1440px) {
+    .primary-content-container {
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 1440px;
+    }
+}
+}
+
+@media screen and (min-width: 1440px) {
+    .quote-temp {
+        width: 444px;
+        min-height: 600px;
+        background-color: rgb(213, 226, 250);
+    }
+}

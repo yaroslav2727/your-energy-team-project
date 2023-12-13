@@ -14,7 +14,6 @@
 @import url('./index/exercises.css');
 @import url('./index/quote.css');
 @import url('./index/footer.css');
-@import url('./favorites/favorites-content.css');
+@import url('./index/body-parts.css');
+@import url('./favorites/index.css');
 @import url('./favorites/favorites-quote.css');
-@import url('./favorites/favorites-exercises.css');
-

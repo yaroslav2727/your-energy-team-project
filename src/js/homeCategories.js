@@ -1,38 +1,44 @@
-import { getBodyPartsList, getFilteredList, getExercises } from './api/api';
+import { getMusclesList, getFilteredList, getExercises } from './api/api';
 import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
 
 let currentPage = 1;
+let category = 'muscles';
 
 const items = document.querySelector('.cards');
 const filter = document.querySelector('.filter-list');
+
 filter.addEventListener('click', handlerClickCategory);
 items.addEventListener('click', handlerClickExercises);
 
-getBodyPartsList()
+// стартовий список
+getMusclesList()
   .then(response => {
     const data = response.results;
-    console.log(data);
     items.innerHTML = markupCategories(data);
   })
   .catch(err => {
     console.error(err);
   });
 
-
-  
+// фільтр по категоріям
 function handlerClickCategory(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
   const categoryName = e.target.dataset.name;
-  console.log(categoryName);
+
+  const filterBtn = document.querySelectorAll('.filter-btn');
+  filterBtn.forEach(btn => btn.classList.remove('active'));
+  e.target.classList.add('active');
 
   getFilteredList(categoryName, currentPage)
     .then(response => {
       const data = response.results;
-      console.log(data);
+      const { filter } = data[0];
+      category = filter.toLowerCase();
+
       items.innerHTML = markupCategories(data);
     })
     .catch(err => {
@@ -40,22 +46,24 @@ function handlerClickCategory(e) {
     });
 }
 
+// вивід списка вибраних вправ
 function handlerClickExercises(e) {
-  let exercise = e.target.closest('.card').dataset.bodyHome;
-  console.log(exercise);
 
+  const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
+console.log('exercise', exercise)
+console.log('category', category)
   const data = {
-    bodypart: exercise,
+    [category]: exercise,
     page: 1,
   };
 
   getExercises(data)
     .then(response => {
       const data = response.results;
-      console.log(data);
       items.innerHTML = markupExercises(data);
     })
     .catch(err => {
       console.error(err);
     });
 }
+

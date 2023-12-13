@@ -1,0 +1,178 @@
+/* .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+} */
+
+.exercises-item {
+  /* display: flex;
+  flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+
+  min-width: 325px;
+  max-width: 375px;
+  height: 141px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+}
+
+.exercises-rating-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercises-item-header {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.exercises-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+  width: 75px;
+  height: 26px;
+  border: 1px solid var(--color-primary);
+  border-radius: 15px;
+
+  color: var(--color-primary);
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.exercises-rating {
+  display: flex;
+  align-items: center;
+  margin-right: 2px;
+  color: var(--color-primary);
+
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+.exercises-icon-star-rating {
+  fill: var(--color-rating);
+}
+
+.exercises-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-style: none;
+  margin-right: 8px;
+
+  color: var(--color-primary);
+
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+
+.exercises-title {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.exercises-icon-runner {
+  /* fill: var(--color-secondary); */
+  /* fill: teal; */
+  /* background-color: tomato; */
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.exercises-name {
+  color: var(--color-primary);
+
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1; /* 100% */
+}
+
+.exercises-data-list {
+  display: flex;
+  gap: 10px;
+}
+
+.exercises-data-item {
+  color: var(--color-primary);
+
+  font-feature-settings: 'clig' off, 'liga' off;
+  text-overflow: ellipsis;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+.exercises-data-info {
+  color: rgba(36, 36, 36, 0.4);
+
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+
+.exercises-btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.exercises-name-span {
+  display: flex;
+  align-self: center;
+  margin-left: 2px;
+}
+
+.exercises-icon-arrow {
+  stroke: var(--color-primary);
+  /* fill: var(--color-primary); */
+}
+
+@media screen and (min-width: 768px) {
+  .exercises-item {
+    width: 344px;
+  }
+
+  .exercises-title {
+    margin-bottom: 8px;
+  }
+
+  .exercises-name {
+    font-size: 24px;
+  }
+
+  .exercises-btn {
+    font-size: 16px;
+  }
+
+  .exercises-data-list {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+}

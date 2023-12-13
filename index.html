@@ -8,9 +8,9 @@
     <title>Your Energy</title>
     
     <script type="module" crossorigin src="/your-energy-team-project/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/activePageHeader-08605ca9.js">
+    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/activePageHeader-1a989ebf.js">
     <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/vendor-a61d8330.js">
-    <link rel="stylesheet" href="/your-energy-team-project/assets/activePageHeader-b5cc0e1e.css">
+    <link rel="stylesheet" href="/your-energy-team-project/assets/activePageHeader-51410c7e.css">
   </head>
   <body>
     <header class="header">
@@ -228,7 +228,90 @@
 
 </div>
 </div>
-    
+    <div class="raiting container">
+  <a class="btn_close" href="">
+    <svg class="btn_close_svg">
+      <use href="../../img/sprite.svg#icon-close" width="24" height="24"></use>
+    </svg>
+  </a>
+  <h4 class="title">Rating</h4>
+  <div class="wripper">
+    <p class="rating" data-raiting>0.0</p>
+    <ul class="list">
+      <li class="item">
+        <a class="btn_star">
+          <svg class="btn_star_svg">
+            <use
+              href="../../img/sprite.svg#icon-star"
+              width="24"
+              height="24"
+            ></use>
+          </svg>
+        </a>
+      </li>
+      <li class="item">
+        <a class="btn_star">
+          <svg class="btn_star_svg">
+            <use
+              href="../../img/sprite.svg#icon-star"
+              width="24"
+              height="24"
+            ></use>
+          </svg>
+        </a>
+      </li>
+      <li class="item">
+        <a class="btn_star">
+          <svg class="btn_star_svg">
+            <use
+              href="../../img/sprite.svg#icon-star"
+              width="24"
+              height="24"
+            ></use>
+          </svg>
+        </a>
+      </li>
+      <li class="item">
+        <a class="btn_star">
+          <svg class="btn_star_svg">
+            <use
+              href="../../img/sprite.svg#icon-star"
+              width="24"
+              height="24"
+            ></use>
+          </svg>
+        </a>
+      </li>
+      <li class="item">
+        <a class="btn_star" data-rating="5">
+          <svg class="btn_star_svg">
+            <use
+              href="../../img/sprite.svg#icon-star"
+              width="24"
+              height="24"
+            ></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <form class="rating_form">
+    <input
+      class="rating_input"
+      name="email"
+      type="email"
+      placeholder="Email"
+      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+    />
+    <textarea
+      class="rating_textarea"
+      name="review"
+      placeholder="Your comment"
+    ></textarea>
+    <button class="rating_btn" type="submit">Send</button>
+  </form>
+</div>
+
 
     
   </body>

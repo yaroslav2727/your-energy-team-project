@@ -29,7 +29,6 @@ getMusclesList()
 
 // фільтр по категоріям
 function handlerClickCategory(e) {
-  
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -80,4 +79,3 @@ function handlerClickExercises(e) {
     .finally(() => {
       loader.destroy();
     });
-}

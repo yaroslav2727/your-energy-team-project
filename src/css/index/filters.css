@@ -42,12 +42,11 @@
   color: #242424;
 }
 @media screen and (min-width: 768px) {
-  .cat-title {
-    /* margin-bottom: 0; */
-  }
-
   .cat-filter {
     margin-bottom: 0;
+  }
+  .cat-title {
+    margin-bottom: 32px;
   }
 }
 

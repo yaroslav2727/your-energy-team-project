@@ -79,3 +79,4 @@ function handlerClickExercises(e) {
     .finally(() => {
       loader.destroy();
     });
+}

@@ -1,21 +1,21 @@
-import"./assets/activePageHeader-78d48107.js";import{a as L,i as l}from"./assets/vendor-96017409.js";const w="https://your-energy.b.goit.study/api",h=12,E=10,d=L.create({baseURL:w,params:{}}),$=async(e,s=1)=>(await d.get("/filters",{params:{filter:e,page:s,limit:h}})).data,k=async(e=1)=>(await d.get("/filters",{params:{filter:"Muscles",page:e,limit:h}})).data,S=async({bodypart:e,muscles:s,equipment:n,search:t},c=1)=>{const r=t&&!e&&!s&&!n?"":t;return(await d.get("/exercises",{params:{bodypart:e||"",muscles:s||"",equipment:n||"",keyword:r||"",page:c,limit:E}})).data},M=async e=>(await d.get(`/exercises/${e}`)).data,T=async(e,s)=>(await d.patch(`/exercises/${e}/rating`,s)).data;function v(e){return e.map(({imgURL:s,filter:n,name:t})=>`<li class="card-exercises" data-body-exercise='${t}'>
+import"./assets/activePageHeader-78d48107.js";import{a as S,i as d}from"./assets/vendor-96017409.js";const $="https://your-energy.b.goit.study/api",y=12,q=10,i=S.create({baseURL:$,params:{}}),k=async(e,t=1)=>(await i.get("/filters",{params:{filter:e,page:t,limit:y}})).data,M=async(e=1)=>(await i.get("/filters",{params:{filter:"Muscles",page:e,limit:y}})).data,D=async()=>(await i.get("/quote")).data,T=async({bodypart:e,muscles:t,equipment:n,search:s},c=1)=>{const a=s&&!e&&!t&&!n?"":s;return(await i.get("/exercises",{params:{bodypart:e||"",muscles:t||"",equipment:n||"",keyword:a||"",page:c,limit:q}})).data},C=async e=>(await i.get(`/exercises/${e}`)).data,I=async(e,t)=>(await i.patch(`/exercises/${e}/rating`,t)).data;function v(e){return e.map(({imgURL:t,filter:n,name:s})=>`<li class="card-exercises" data-body-exercise='${s}'>
                <button type="button" class="card-exercises-img"
                  style=" background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%),
-                 url('${s}') ;
+                 url('${t}') ;
                  background-size: cover;
                  background-position:center;
                  background-repeat: no-repeat;
                 "
                 </button>
   <div class="card-description">
-   <p class="name-category">${t}</p>
+   <p class="name-category">${s}</p>
       <p class="name-exercises">${n}</p>
   </div>
-    </li>`).join("")}function C(e){return e.length>20?`${e.slice(0,20)}...`:e}function q(e){return`${Math.round(e)}.0`}function x(e){const s=e[0].toUpperCase()+e.slice(1);return s.length>3?`${s.slice(0,3)}...`:`${s.slice(0,3)}`}function B(e){return e.map(({rating:s,name:n,burnedCalories:t,bodyPart:c,target:r,_id:o})=>`<li class="exercises-item" data-exercise-id="${o}">
+    </li>`).join("")}function B(e){return e.length>20?`${e.slice(0,20)}...`:e}function O(e){return`${Math.round(e)}.0`}function f(e){const t=e[0].toUpperCase()+e.slice(1);return t.length>3?`${t.slice(0,3)}...`:`${t.slice(0,3)}`}function N(e){return e.map(({rating:t,name:n,burnedCalories:s,bodyPart:c,target:a,_id:l})=>`<li class="exercises-item" data-exercise-id="${l}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
-				<p class="exercises-rating">${q(s)}</p>
+				<p class="exercises-rating">${O(t)}</p>
 				<span class="exercises-name-span">
 				<svg class="exercises-icon-star-rating" width="16" height="16">
                   <use href="../img/icons.svg#icon-star-rating"></use>
@@ -38,42 +38,42 @@ import"./assets/activePageHeader-78d48107.js";import{a as L,i as l}from"./assets
                   <use href="../img/icons.svg#icon-runner"></use>
                 </svg>
 			</span>
-			<h3 class="exercises-name">${C(n)}</h3>
+			<h3 class="exercises-name">${B(n)}</h3>
 		</div>
 
 		<div class="exercises-footer">
 			<ul class="exercises-data-list">
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Burned calories:</span>
-					${t}/...
+					${s}/...
 				</li>
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Body part:</span>
-					${x(c)}
+					${f(c)}
 				</li>
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Target:</span>
-					${x(r)}
+					${f(a)}
 				</li>
 			</ul>
 		</div>
-	</li>`).join("")}const i={element:document.querySelector(".loader"),create(){this.element.classList.add("loader-active")},destroy(){this.element.classList.remove("loader-active")}};let I=1,y="muscles";const a=document.querySelector(".cards"),R=document.querySelector(".filter-list");R.addEventListener("click",D);a.addEventListener("click",m);i.create();k().then(e=>{const s=e.results;a.innerHTML=v(s),a.addEventListener("click",m)}).catch(e=>{console.error(e),l.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{i.destroy()});function D(e){if(e.target.nodeName!=="BUTTON")return;const s=e.target.dataset.name;document.querySelectorAll(".filter-btn").forEach(t=>t.classList.remove("active")),e.target.classList.add("active"),i.create(),$(s,I).then(t=>{const c=t.results,{filter:r}=c[0];y=r.toLowerCase(),a.innerHTML=v(c),a.addEventListener("click",m)}).catch(t=>{console.error(t),l.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{i.destroy()})}function m(e){const s=e.target.closest(".card-exercises").dataset.bodyExercise,n={[y]:s,page:1};i.create(),S(n).then(t=>{const c=t.results;a.innerHTML=B(c)}).catch(t=>{console.error(t),l.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{i.destroy(),a.removeEventListener("click",m)})}function N(){const e=document.querySelector(".js-menu-container"),s=document.querySelector(".js-open-menu"),n=document.querySelector(".js-close-menu"),t=document.body,c=()=>{const r=s.getAttribute("aria-expanded")==="true"||!1;s.setAttribute("aria-expanded",!r),e.classList.toggle("is-open"),e.classList.contains("is-open")?t.style.overflow="hidden":t.style.overflow="visible"};s.addEventListener("click",c),n.addEventListener("click",c),window.matchMedia("(min-width: 768px)").addEventListener("change",r=>{r.matches&&(e.classList.remove("is-open"),s.setAttribute("aria-expanded",!1))})}N();const U=document.querySelector("p[data-raiting]"),A=document.querySelector(".btn_close"),f=document.querySelector(".rating_form");let g=0,p={},O="64f389465ae26083f39b17a2";A.addEventListener("click",e=>{e.preventDefault(),console.log("close-rating-function")});f.addEventListener("submit",e=>{if(e.preventDefault(),new FormData(e.currentTarget).forEach((t,c)=>{p[c]=t.trim()}),p.rate=g,p.rate<1){l.show({title:"The rate must be at least 1",color:"red",position:"topCenter",message:""});return}T(O,p)&&(l.show({title:"The rating has been successfully added",color:"green",position:"topCenter",message:""}),f.reset(),console.log("Dont forgot close modal!!!"))});const j=[...document.getElementsByClassName("btn_star")];function F(e){const s="btn_star-active",n="btn_star",t=e.length;let c;e.map(r=>{r.onclick=()=>{if(c=e.indexOf(r),r.className===n)for(c;c>=0;--c)e[c].className=s;else for(c;c<t;++c)e[c].className=n;g=e.filter(u=>{if(u.className===s)return u}).length,U.textContent=`${g}.0`}})}F(j);const H=document.querySelector(".cards"),P=document.querySelector(".modal_window_update"),_=document.querySelector(".modal_window_container"),z=document.querySelector(".close_modal_button");H.addEventListener("click",W);z.addEventListener("click",X);function K({gifUrl:e,name:s,bodyPart:n,equipment:t,target:c,description:r,rating:o,burnedCalories:u,popularity:b}){return`<div class="modal_window_content">
-<img class ="modal_image" src="${e}" alt="${s}">
+	</li>`).join("")}const o={element:document.querySelector(".loader"),create(){this.element.classList.add("loader-active")},destroy(){this.element.classList.remove("loader-active")}};let R=1,L="muscles";const r=document.querySelector(".cards"),U=document.querySelector(".filter-list");U.addEventListener("click",A);r.addEventListener("click",m);o.create();M().then(e=>{const t=e.results;r.innerHTML=v(t),r.addEventListener("click",m)}).catch(e=>{console.error(e),d.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{o.destroy()});function A(e){if(e.target.nodeName!=="BUTTON")return;const t=e.target.dataset.name;document.querySelectorAll(".filter-btn").forEach(s=>s.classList.remove("active")),e.target.classList.add("active"),o.create(),k(t,R).then(s=>{const c=s.results,{filter:a}=c[0];L=a.toLowerCase(),r.innerHTML=v(c),r.addEventListener("click",m)}).catch(s=>{console.error(s),d.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{o.destroy()})}function m(e){const t=e.target.closest(".card-exercises").dataset.bodyExercise,n={[L]:t,page:1};o.create(),T(n).then(s=>{const c=s.results;r.innerHTML=N(c)}).catch(s=>{console.error(s),d.show({position:"center",color:"red",message:"Oops! Something wrong!"})}).finally(()=>{o.destroy(),r.removeEventListener("click",m)})}function j(){const e=document.querySelector(".js-menu-container"),t=document.querySelector(".js-open-menu"),n=document.querySelector(".js-close-menu"),s=document.body,c=()=>{const a=t.getAttribute("aria-expanded")==="true"||!1;t.setAttribute("aria-expanded",!a),e.classList.toggle("is-open"),e.classList.contains("is-open")?s.style.overflow="hidden":s.style.overflow="visible"};t.addEventListener("click",c),n.addEventListener("click",c),window.matchMedia("(min-width: 768px)").addEventListener("change",a=>{a.matches&&(e.classList.remove("is-open"),t.setAttribute("aria-expanded",!1))})}j();const F=document.querySelector("p[data-raiting]"),Q=document.querySelector(".btn_close"),x=document.querySelector(".rating_form");let g=0,p={},H="64f389465ae26083f39b17a2";Q.addEventListener("click",e=>{e.preventDefault(),console.log("close-rating-function")});x.addEventListener("submit",e=>{if(e.preventDefault(),new FormData(e.currentTarget).forEach((s,c)=>{p[c]=s.trim()}),p.rate=g,p.rate<1){d.show({title:"The rate must be at least 1",color:"red",position:"topCenter",message:""});return}I(H,p)&&(d.show({title:"The rating has been successfully added",color:"green",position:"topCenter",message:""}),x.reset(),console.log("Dont forgot close modal!!!"))});const P=[...document.getElementsByClassName("btn_star")];function z(e){const t="btn_star-active",n="btn_star",s=e.length;let c;e.map(a=>{a.onclick=()=>{if(c=e.indexOf(a),a.className===n)for(c;c>=0;--c)e[c].className=t;else for(c;c<s;++c)e[c].className=n;g=e.filter(u=>{if(u.className===t)return u}).length,F.textContent=`${g}.0`}})}z(P);const J=document.querySelector(".cards"),K=document.querySelector(".modal_window_update"),_=document.querySelector(".modal_window_container"),W=document.querySelector(".close_modal_button");J.addEventListener("click",Y);W.addEventListener("click",G);function X({gifUrl:e,name:t,bodyPart:n,equipment:s,target:c,description:a,rating:l,burnedCalories:u,popularity:E}){return`<div class="modal_window_content">
+<img class ="modal_image" src="${e}" alt="${t}">
 
-<h3 class="modal_title">${s}</h3>
-<p class = "excercise_rating">${o}</p>
+<h3 class="modal_title">${t}</h3>
+<p class = "excercise_rating">${l}</p>
 <ul class="excercise_units">
 <li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${c}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
         <p class="excercise_text">${n}</p></li>
  <li class="excercise_item"><h4 class="excercise_title">Equipment</h4>
-        <p class="excercise_text">${t}</p></li>
+        <p class="excercise_text">${s}</p></li>
         <li class="excercise_item"><h4 class="excercise_title">Popular</h4>
-        <p class="excercise_text">${b}</p></li>
+        <p class="excercise_text">${E}</p></li>
         <li class="excercise_item"><h4 class="excercise_title">Burned calories</h4>
         <p class="excercise_text">${u}</p></li>
-        <p class="modal_text">${r}</p>
+        <p class="modal_text">${a}</p>
 
 </ul>
-</div >`}function W(e){const s=e.target;if(!s.classList.contains("js-excercise-button"))return;const t=s.closest(".exercises-item").dataset.exerciseId;console.log(t),M(t).then(c=>{console.log(c);const r=K(c);P.innerHTML=r}),_.classList.remove("is_hidden")}function X(){_.classList.add("is_hidden"),console.log("close modal")}
+</div >`}function Y(e){const t=e.target;if(!t.classList.contains("js-excercise-button"))return;const s=t.closest(".exercises-item").dataset.exerciseId;console.log(s),C(s).then(c=>{console.log(c);const a=X(c);K.innerHTML=a}),_.classList.remove("is_hidden")}function G(){_.classList.add("is_hidden"),console.log("close modal")}const w="quote",V=document.querySelector(".quote-text"),Z=document.querySelector(".quote-author");async function ee(){try{const{author:e,quote:t}=await D(),n=new Date().toLocaleDateString();localStorage.setItem(w,JSON.stringify({author:e,quote:t,date:n}))}catch(e){console.error("Failed to fetch the quote:",e)}}function b(){const e=localStorage.getItem(w);return JSON.parse(e)}function h(){const e=b();V.textContent=e.quote,Z.textContent=e.author}async function te(){const e=new Date().toLocaleDateString(),t=b();if(t&&t.date===e){h();return}await ee(),h()}document.addEventListener("DOMContentLoaded",te);
 //# sourceMappingURL=commonHelpers2.js.map

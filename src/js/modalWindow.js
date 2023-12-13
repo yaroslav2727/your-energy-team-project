@@ -1,20 +1,17 @@
 import { getExerciseById } from "./api/api";
 
-// import { handlerClickCategory } from "./homeCategories"
-// console.log(getExerciseById('64f389465ae26083f39b1817'));
-
-
 const cardsList = document.querySelector(".cards");
 const startButton = document.querySelector(".exercises-btn")
 const modalExcercise= document.querySelector(".modal_window_container")
 const closeModalButton = document.querySelector(".close_modal_button")
 
+cardsList.addEventListener('click', openModal);
+closeModalButton.addEventListener('click', closeModal);
 
-function markupModal(data) {
-    return data
-        .map(({ gifUrl, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) => {
-            return `<div class="modal_window_content">
+function markupModal({gifUrl, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
+    return `<div class="modal_window_content">
 <img class ="modal_image" src="${gifUrl}" alt="${name}">
+<button class="close_modal_button" type="button" data-modal-favorite-close><svg></svg></button>
 <h3 class="modal_title">${name}</h3>
 <p class = "excercise_rating">${rating}</p>
 <ul class="excercise_units">
@@ -32,36 +29,30 @@ function markupModal(data) {
 <button class="rate_button" type="button">Give a rating</button></div> 
 </ul>
 </div >`;
-        })
-        .join('');
 };
- 
 
 
-const openModal = function () {
-    // if (!event.target.classList.contains('exercises-btn')) {
-    //     return
-    // }
-    //     console.log(event.target);
-    modalExcercise.classList.remove("is_hidden");
+function openModal(e) {
+
+    const btn = e.target
+    if (!btn.classList.contains('js-excercise-button')) return
+
+    const card = btn.closest('.exercises-item')
     
-    console.log(getExerciseById('64f389465ae26083f39b1817'))
-       }
+       const cardId = card.dataset.exerciseId
+    console.log(cardId)
 
-const closeModal = function () {
-    modalExcercise.classList.add("is_hidden")
+    getExerciseById(cardId).then(resp => {
+        console.log(resp)
+        const modalMarkup = markupModal(resp);
+        modalExcercise.innerHTML = modalMarkup
+    }
+    )
+
+modalExcercise.classList.remove("is_hidden");
 }
-cardsList.addEventListener('click', openModal);
-// function createListener() {
-//     if (handlerClickCategory == true) {
-//       startButton.addEventListener('click', openModal);  
-//     } return
-// }
-// cardsList.addEventListener('click', createListener);
-closeModalButton.addEventListener('click', closeModal);
 
-
-// function markupModal(data) {
-//     return data
-//     .map(({}))
-// }
+function closeModal () {
+    modalExcercise.classList.add("is_hidden")
+    console.log('close modal');
+}

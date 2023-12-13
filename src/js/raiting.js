@@ -2,11 +2,11 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import { patchRating } from '../js/api/api'
 
-const raitingReff = document.querySelector('.raiting')
+const modalReff = document.querySelector("[data-modal]")
 const reatingTitleReff = document.querySelector('p[data-raiting]')
 const btnCloseReff = document.querySelector('.btn_close')
 const formReff = document.querySelector('.rating_form')
-
+const ratingStarsReff = [...document.getElementsByClassName("btn_star")];
 
 let raiting = 0
 let formItems = {}
@@ -14,8 +14,7 @@ let id = '64f389465ae26083f39b17a2'
 
 btnCloseReff.addEventListener('click', (evt) => {
   evt.preventDefault()
-  raitingReff.classList.add('visually-hidden')
-  console.log('close-rating-function')
+  // modalReff.classList.add('is-hidden')
 })
 
 
@@ -53,11 +52,10 @@ formReff.addEventListener('submit', (evt) => {
     });
 
     formReff.reset()
-    console.log('Dont forgot close modal!!!')
+    raiting = 0
+    modalReff.classList.add('is-hidden')
   }
 })
-
-const ratingStars = [...document.getElementsByClassName("btn_star")];
 
 function executeRating(stars) {
   const starClassActive = "btn_star-active";
@@ -86,6 +84,42 @@ function executeRating(stars) {
   })
 }
 
-executeRating(ratingStars);
+executeRating(ratingStarsReff);
+
+(() => {
+  const refs = {
+    openModalBtn: document.querySelector("[data-modal-open]"),
+    closeModalBtn: document.querySelector("[data-modal-close]"),
+    modal: document.querySelector("[data-modal]"),
+  };
+
+  refs.openModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.modal.addEventListener("click", onBackdropClick);
+
+  function toggleModal() {
+    if (modalReff.classList.contains("is-hidden") === true) {
+      document.addEventListener("keydown", onEscapeKeyPress)
+    }
+
+    refs.modal.classList.toggle("is-hidden");
+  }
+
+  function onBackdropClick(evt) {
+    if (evt.target === evt.currentTarget) {
+      refs.modal.classList.add("is-hidden");
+    }
+  }
+
+  function onEscapeKeyPress(evt) {
+    if (evt.key === 'Escape') {
+      refs.modal.classList.add("is-hidden");
+      document.removeEventListener("keydown", onEscapeKeyPress)
+    }
+  }
+
+})();
+
+
 
 

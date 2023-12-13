@@ -41,8 +41,8 @@
   }
 
   .card-exercises-img {
-    width: 225px;
-    height: 225px;
+    width: 224px;
+    height: 224px;
   }
 }
 
@@ -62,5 +62,3 @@
   }
 }
 
-/* --transition-time: 250ms;
---transition-function: cubic-bezier(0.4, 0, 0.2, 1); */

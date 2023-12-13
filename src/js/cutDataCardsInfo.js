@@ -14,11 +14,13 @@ function roundingRating(data) {
 }
 
 function cutDataCardsInfo(data) {
-    console.log("cutDataCardsInfo >>>", data)
-    if (data.length > 3) {
-        return `${data.slice(0, 3)}...`
+    // console.log("cutDataCardsInfo >>>", data)
+    const dataUpperCase = data[0].toUpperCase() + data.slice(1)
+    // console.log("dataUpperCase >>>", dataUpperCase)
+    if (dataUpperCase.length > 3) {
+        return `${dataUpperCase.slice(0, 4)}...`
     }
-    return `${data.slice(0, 3)}...`
+    return `${dataUpperCase.slice(0, 3)}`
 }
 
 

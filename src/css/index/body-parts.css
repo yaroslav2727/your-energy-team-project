@@ -12,8 +12,8 @@
   align-items: center;
   padding: 16px;
 
-  min-width: 325px;
-  max-width: 375px;
+  /* min-width: 325px;
+  max-width: 375px; */
   height: 141px;
   background-color: var(--color-white);
   border-radius: 15px;
@@ -43,9 +43,9 @@
   border-radius: 15px;
 
   color: var(--color-primary);
-  font-family: DM Sans;
+  /* font-family: DM Sans; */
   font-size: 12px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 500;
   line-height: normal;
 }
@@ -57,10 +57,10 @@
   color: var(--color-primary);
 
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: DM Sans;
+  /* font-family: DM Sans; */
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
+  /* font-style: normal; */
+  /* font-weight: 400; */
   line-height: 1.5; /* 150% */
 }
 
@@ -77,10 +77,10 @@
 
   color: var(--color-primary);
 
-  font-family: DM Sans;
+  /* font-family: DM Sans; */
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  /* font-style: normal;
+  font-weight: 400; */
   line-height: 1.29; /* 128.571% */
 }
 
@@ -101,16 +101,16 @@
   color: var(--color-primary);
 
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: DM Sans;
+  /* font-family: DM Sans; */
   font-size: 20px;
-  font-style: normal;
+  /* font-style: normal; */
   font-weight: 400;
   line-height: 1; /* 100% */
 }
 
 .exercises-data-list {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .exercises-data-item {
@@ -118,22 +118,15 @@
 
   font-feature-settings: 'clig' off, 'liga' off;
   text-overflow: ellipsis;
-  font-family: DM Sans;
+  /* font-family: DM Sans; */
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
+  /* font-style: normal; */
+  /* font-weight: 400; */
   line-height: 1.5; /* 150% */
 }
 
 .exercises-data-info {
-  color: rgba(36, 36, 36, 0.4);
-
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: DM Sans;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5; /* 150% */
+  color: var(--color-primary-medium);
 }
 
 .exercises-btn-wrapper {
@@ -154,7 +147,8 @@
 
 @media screen and (min-width: 768px) {
   .exercises-item {
-    width: 344px;
+    /* width: 344px; */
+    width: calc((100% - 16px) / 2);
   }
 
   .exercises-title {
@@ -170,9 +164,12 @@
   }
 
   .exercises-data-list {
-    gap: 16px;
+    gap: 10px;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  .exercises-data-list {
+    gap: 16px;
+  }
 }

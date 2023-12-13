@@ -21,19 +21,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
   }
 
   .input-filter-exercises {
     margin-bottom: 0;
     width: 273px;
   }
+
+  .cat-filter {
+    margin-bottom: 32px;
+  }
 }
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1440px) {
   .filter-wrapper {
     display: flex;
     align-items: center;
     margin-bottom: 0;
+  }
+
+  .input-filter-exercises {
+    margin-right: 30px;
   }
 }

@@ -84,6 +84,16 @@
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.btn_star-active .btn_star_svg{
+  width: 24px;
+  height: 24px;
+  fill: #EEA10C;
+  stroke: #EEA10C;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .btn_star:hover .btn_star_svg{
  fill: #EEA10C;
   stroke: #EEA10C;

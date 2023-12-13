@@ -1,6 +1,8 @@
 import { getMusclesList, getFilteredList, getExercises } from './api/api';
 import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
+import { onSearchExercise } from "./searchExercise"
+
 
 let currentPage = 1;
 let category = 'muscles';
@@ -60,7 +62,10 @@ function handlerClickExercises(e) {
   getExercises(data)
     .then(response => {
       const data = response.results;
+      // console.log(filteredData)
       items.innerHTML = markupExercises(data);
+      onSearchExercise(data)
+
     })
     .catch(err => {
       console.error(err);

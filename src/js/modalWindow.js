@@ -38,8 +38,8 @@ function openModal(e) {
     if (!btn.classList.contains('js-excercise-button')) return
 
     const card = btn.closest('.exercises-item')
-    
-       const cardId = card.dataset.exerciseId
+       
+    const cardId = card.dataset.exerciseId
     console.log(cardId)
 
     getExerciseById(cardId).then(resp => {

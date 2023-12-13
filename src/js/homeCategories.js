@@ -6,12 +6,13 @@ import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
 
 let currentPage = 1;
-let category = 'muscles';
+let category = "muscles";
 
-const items = document.querySelector('.cards');
-const filter = document.querySelector('.filter-list');
+const items = document.querySelector(".cards");
+const filter = document.querySelector(".filter-list");
 
-filter.addEventListener('click', handlerClickCategory);
+filter.addEventListener("click", handlerClickCategory);
+items.addEventListener("click", handlerClickExercises);
 
 // початковий список вправ Muscles  ----
 loader.create();
@@ -35,15 +36,16 @@ getMusclesList()
 
 // фільтр по категоріям ----
 function handlerClickCategory(e) {
+
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
   const categoryName = e.target.dataset.name;
 
-  const filterBtn = document.querySelectorAll('.filter-btn');
-  filterBtn.forEach(btn => btn.classList.remove('active'));
-  e.target.classList.add('active');
+  const filterBtn = document.querySelectorAll(".filter-btn");
+  filterBtn.forEach(btn => btn.classList.remove("active"));
+  e.target.classList.add("active");
 
   loader.create();
 
@@ -70,7 +72,7 @@ function handlerClickCategory(e) {
 
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
-  const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
+  const exercise = e.target.closest(".card-exercises").dataset.bodyExercise;
 
   const data = {
     [category]: exercise,

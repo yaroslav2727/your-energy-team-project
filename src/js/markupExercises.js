@@ -18,7 +18,7 @@ export function markupExercises(data) {
 			</span>
 			</div>
 			<div class="exercises-btn-wrapper">
-				<button type="button" class="exercises-btn">Start</button>
+				<button type="button" class="exercises-btn js-excercise-button">Start</button>
 				<span class="exercises-name-span">
 					<svg class="exercises-icon-arrow" width="16" height="16">
 						<use href="../img/icons.svg#icon-arrow"></use>

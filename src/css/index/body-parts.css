@@ -111,6 +111,7 @@
 .exercises-data-list {
   display: flex;
   gap: 8px;
+  /* width: calc((100% - 10px) / 3); */
 }
 
 .exercises-data-item {

@@ -50,8 +50,8 @@ function handlerClickCategory(e) {
 function handlerClickExercises(e) {
 
   const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
-console.log('exercise', exercise)
-console.log('category', category)
+  // console.log('exercise', exercise)
+  // console.log('category', category)
   const data = {
     [category]: exercise,
     page: 1,

@@ -1,3 +1,5 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { getMusclesList, getFilteredList, getExercises } from './api/api';
 import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
@@ -10,26 +12,29 @@ const items = document.querySelector('.cards');
 const filter = document.querySelector('.filter-list');
 
 filter.addEventListener('click', handlerClickCategory);
-items.addEventListener('click', handlerClickExercises);
 
-// стартовий список
+// початковий список вправ Muscles  ----
 loader.create();
 
 getMusclesList()
   .then(response => {
     const data = response.results;
     items.innerHTML = markupCategories(data);
+    items.addEventListener('click', handlerClickExercises);
   })
   .catch(err => {
     console.error(err);
+    iziToast.show({
+      position: 'topRight',
+      message: 'Oops! Something wrong!',
+    });
   })
   .finally(() => {
     loader.destroy();
   });
 
-// фільтр по категоріям
+// фільтр по категоріям ----
 function handlerClickCategory(e) {
-  
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -49,16 +54,21 @@ function handlerClickCategory(e) {
       category = filter.toLowerCase();
 
       items.innerHTML = markupCategories(data);
+      items.addEventListener('click', handlerClickExercises);
     })
     .catch(err => {
       console.error(err);
+      iziToast.show({
+        position: 'topRight',
+        message: 'Oops! Something wrong!',
+      });
     })
     .finally(() => {
       loader.destroy();
     });
 }
 
-// вивід списка вибраних вправ
+// вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
   const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
 
@@ -76,8 +86,13 @@ function handlerClickExercises(e) {
     })
     .catch(err => {
       console.error(err);
+      iziToast.show({
+        position: 'topRight',
+        message: 'Oops! Something wrong!',
+      });
     })
     .finally(() => {
       loader.destroy();
+      items.removeEventListener('click', handlerClickExercises);
     });
 }

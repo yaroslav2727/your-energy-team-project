@@ -40,6 +40,11 @@
     row-gap: 32px;
   }
 
+  /* .card-exercises {
+    width: calc((100% - 30px) / 3);
+    height: 224px;
+  } */
+
   .card-exercises-img {
     width: 224px;
     height: 224px;

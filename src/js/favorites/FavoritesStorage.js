@@ -18,8 +18,12 @@ export class FavoritesStorage extends Storage {
   }
 
   removeCard(id) {
+    // this.#list[0]._id;
+    // console.log(this.#list);
     // const list = this.getFromStorage() || [];
-    const updatedList = this.#list.filter(({ _id }) => _id !== id);
+    const updatedList = this.#list.filter(
+      ({ _id }) => _id.toString() !== id.toString()
+    );
     this.#list = [...updatedList];
     this.setToStorage(this.#list);
   }
@@ -31,7 +35,7 @@ export class FavoritesStorage extends Storage {
       throw new Error('Out of list');
     }
 
-    if (this.#list.length === 0) return [];
+    if (this.#list.length === 0) return { data: [] };
 
     const data = this.#list.filter(
       (item, i) => i >= page * limit - limit && i < page * limit

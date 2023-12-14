@@ -4,109 +4,101 @@ import { FavoritesStorage } from './FavoritesStorage';
 import { mockFavoritesData } from './mockData';
 import { Storage } from './Storage';
 
-const FAVORITES_PER_PAGE = 10;
+const FAVORITES_PER_PAGE = 5;
 
 const listRef = document.querySelector('.js-favorites-list');
 // const removeBtnRef = document.querySelector('.js-favorites-remove');
 
-// const storage = createStorage('favorite_sport_cards');
-
-// const pageStorage = new Storage('favorites_page');
+//-------------------------------
 const favoritesStorage = new FavoritesStorage('favorite_sport_cards');
 
-// let page = 1;
-// const persistedPage = pageStorage.getFromStorage();
-// if (persistedPage) {
-//   page = persistedPage;
-// } else {
-//   pageStorage.setToStorage(page);
-// }
+const pageState = createPageState(1, updateData);
 
 //TEMP----------------------
-// mockFavoritesData.forEach(card => {
-//   favoritesStorage.addCard(card);
-// });
+mockFavoritesData.forEach(card => {
+  favoritesStorage.addCard(card);
+});
 
-// const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
-// const tempPageIncrease = document.querySelector('.js-temp-page-up');
-// const tempPageDecrease = document.querySelector('.js-temp-page-down');
+const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
+const tempPageIncrease = document.querySelector('.js-temp-page-up');
+const tempPageDecrease = document.querySelector('.js-temp-page-down');
 
-// tempAddBtnRef.addEventListener('click', e => {
-//   const cardId = e.target.dataset.cardId;
+tempAddBtnRef.addEventListener('click', e => {
+  // const cardId = e.target.dataset.cardId;
+  const card = {
+    _id: new Date(),
+    burnedCalories: '312',
+    time: '3',
+    name: 'Test card19-new',
+    bodyPart: 'Waist',
+    target: 'Abs',
+  };
 
-//   const card = {
-//     _id: cardId,
-//     burnedCalories: '312',
-//     time: '3',
-//     name: 'Test card',
-//     bodyPart: 'Waist',
-//     target: 'Abs',
-//   };
+  favoritesStorage.addCard(card);
+  updateData();
+});
 
-//   favoritesStorage.addCard(card);
-//   refresh();
-// });
+tempPageIncrease.addEventListener('click', () => {
+  pageState.increase();
+});
 
-// tempPageIncrease.addEventListener('click', () => {
-//   page++;
-//   pageStorage.setToStorage(page);
-// });
-
-// tempPageDecrease.addEventListener('click', () => {
-//   page--;
-//   pageStorage.setToStorage(page);
-// });
+tempPageDecrease.addEventListener('click', () => {
+  pageState.decrease();
+});
 //TEMP----------------------
 
-refresh();
+listRef.addEventListener('click', e => {
+  const delBtn = e.target.closest('.js-favorites-remove');
+  if (!delBtn) return;
 
-// const response = storage.getCards(1, FAVORITES_PER_PAGE);
-// render(response.data);
+  const cardId = delBtn.dataset.cardId;
+  favoritesStorage.removeCard(cardId);
+  updateData();
+});
 
-// const state = createFavoritesState(storage.get(), render);
+updateData();
 
-// function createFavoritesState(initialState, render) {
-//   let state = initialState || [];
+///////////////////////////////////////////////////////////////////////////
 
-//   return {
-//     get() {
-//       return state;
-//     },
-
-//     set(data) {
-//       state = [...data];
-//       render(state);
-//     },
-//   };
-// }
-
-function refresh() {
-  const response = favoritesStorage.getCards(1, FAVORITES_PER_PAGE);
+function updateData() {
+  const response = favoritesStorage.getCards(
+    pageState.getPage(),
+    FAVORITES_PER_PAGE
+  );
+  console.log(response);
   render(response.data);
 }
 
 function render(list) {
   if (list.length === 0) {
-    listRef.innerHTML = `It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.`;
+    listRef.innerHTML = `<li>It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</li>`;
+    return;
   }
 
   const markup = list.map(createCardMarkup).join('');
   listRef.innerHTML = markup;
 }
 
-// class FavoritesState {
-//   constructor(storage, { initialPage, perPage }) {
-//     if (!(storage instanceof FavoritesStorage)) {
-//       throw new Error(
-//         `Constructo must get instance of "FavoritesStorage" class`
-//       );
-//     }
+function createPageState(initialPage, handler) {
+  const storage = new Storage('favorites_page');
 
-//     this.page = initialPage;
-//     this.limit = perPage;
-//   }
+  let page = storage.getFromStorage() || initialPage;
 
-//   render() {
+  return {
+    increase() {
+      page++;
+      storage.setToStorage(page);
+      handler();
+    },
 
-//   }
-// }
+    decrease() {
+      page--;
+      storage.setToStorage(page);
+      handler();
+    },
+
+    getPage() {
+      return page;
+    },
+  };
+}

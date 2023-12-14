@@ -12,6 +12,7 @@ let getData = null;
 const items = document.querySelector(".cards");
 const filter = document.querySelector(".filter-list");
 const input = document.querySelector(".input-filter-exercises");
+const span = document.querySelector(".cat-title-span")
 
 filter.addEventListener("click", handlerClickCategory);
 items.addEventListener("click", handlerClickExercises);
@@ -59,6 +60,7 @@ function handlerClickCategory(e) {
       const { filter } = data[0];
       category = filter.toLowerCase();
 
+      span.innerHTML = '';
       items.innerHTML = markupCategories(data);
       items.addEventListener('click', handlerClickExercises);
     })
@@ -92,6 +94,7 @@ function handlerClickExercises(e) {
       getData = data;
       console.log(getData)
       items.innerHTML = markupExercises(data);
+      span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`;
     })
     .catch(err => {
       console.error(err);

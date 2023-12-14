@@ -15,7 +15,7 @@ rateButton.addEventListener('click', openRateModal);
 window.addEventListener('keydown', closeModal)
 window.addEventListener('click', closeModal)
 
-function markupModal({gifUrl,time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
+function markupModal({ gifUrl, time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) {
     return `<div class="modal_window_content">
 <div class="modal_image_container"><img class ="modal_image" src="${gifUrl}" alt="${name}">
 </div>
@@ -48,7 +48,7 @@ function openModal(e) {
     if (!btn.classList.contains('js-excercise-button')) return
 
     const card = btn.closest('.exercises-item');
-       
+
     const cardId = card.dataset.exerciseId;
 
 
@@ -58,26 +58,27 @@ function openModal(e) {
         contentUpdate.innerHTML = modalMarkup;
     }
     )
-    giveRatingButton.setAttribute('dataId', cardId);
+    giveRatingButton.setAttribute('data-id', cardId);
 
     modalExcercise.classList.remove("is-hidden");
 
     overflow.style.overflow = 'hidden'
 }
 
-   
+
 function closeModal(event) {
     if (event.key === 'Escape') {
         modalExcercise.classList.add("is-hidden");
         overflow.style.overflow = 'visible';
     }
-    else  if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
+    else if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
         modalExcercise.classList.add("is-hidden");
-    overflow.style.overflow = 'visible';
+        overflow.style.overflow = 'visible';
     }
 
 }
 function clickToClose() {
-   
+
     modalExcercise.classList.add("is-hidden");
-    overflow.style.overflow = 'visible';} 
+    overflow.style.overflow = 'visible';
+} 

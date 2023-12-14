@@ -1,0 +1,162 @@
+.quote-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote-container {
+  width: 444px;
+  min-height: 242px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.quote-content,
+.news-content {
+  width: 314px;
+}
+
+.quote-container--day,
+.quote-container--news {
+  padding: 40px;
+}
+
+.quote-container--day {
+  background-color: var(--color-primary);
+}
+
+.quote-container--news {
+  background-color: var(--color-white);
+}
+
+.quote-title,
+.news-title {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.quote-title,
+.quote-text,
+.quote-author {
+  color: var(--color-white);
+}
+
+.quote-text {
+  color: rgba(244, 244, 244, 0.6);
+}
+
+.news-subtitle {
+  color: rgba(36, 36, 36, 0.6);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.quote-text,
+.news-text {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.quote-author {
+  font-size: 16px;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.quote-icon,
+.news-icon,
+.quote-marks-icon {
+  width: 34px;
+  height: 32px;
+}
+
+.quote-marks-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.quote-main-img {
+  margin: 0 auto;
+  min-width: 100%;
+}
+
+@media screen and (max-width: 1440px) {
+
+  .quote-container--day,
+  .quote-container--news {
+    width: 400px;
+    min-height: 249px;
+  }
+
+  .quote-container--image {
+    width: 288px;
+    overflow: hidden;
+  }
+
+  .quote-content,
+  .news-content {
+    width: 270px;
+  }
+
+  .quote-main-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .quote-main-img {
+    background: center no-repeat;
+    height: 249px;
+    margin: 0 auto;
+    min-width: 100%;
+    object-fit: cover;
+  }
+
+  .quote-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: initial;
+    justify-content: space-between;
+    margin-top: 128px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quote-container--day,
+  .quote-container--news {
+    padding: 20px;
+    min-height: 2;
+  }
+
+  .quote-main-img {
+    background: center no-repeat;
+    height: 242px;
+    width: 335px;
+  }
+
+  .quote-container--image {
+    width: 335px;
+  }
+
+  .quote-content,
+  .news-content {
+    width: 243px;
+  }
+
+  .quote-title,
+  .news-title {
+    font-size: 20px;
+  }
+
+  .quote-author {
+    font-size: 14px;
+  }
+}

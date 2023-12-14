@@ -1,6 +1,6 @@
 .dark_mode {
   background-color: var(--color-black);
-  transition: background-color 1.5s;
+  transition: background-color 500ms var(--transition-function);
 }
 .mobile_menu {
   display: flex;

@@ -7,12 +7,12 @@ import { Storage } from './Storage';
 const FAVORITES_PER_PAGE = 10;
 
 const listRef = document.querySelector('.js-favorites-list');
-const removeBtnRef = document.querySelector('.js-favorites-remove');
+// const removeBtnRef = document.querySelector('.js-favorites-remove');
 
 // const storage = createStorage('favorite_sport_cards');
 
 // const pageStorage = new Storage('favorites_page');
-// const favoritesStorage = new FavoritesStorage('favorite_sport_cards');
+const favoritesStorage = new FavoritesStorage('favorite_sport_cards');
 
 // let page = 1;
 // const persistedPage = pageStorage.getFromStorage();
@@ -22,12 +22,10 @@ const removeBtnRef = document.querySelector('.js-favorites-remove');
 //   pageStorage.setToStorage(page);
 // }
 
-refresh();
-
 //TEMP----------------------
-mockFavoritesData.forEach(card => {
-  favoritesStorage.addCard(card);
-});
+// mockFavoritesData.forEach(card => {
+//   favoritesStorage.addCard(card);
+// });
 
 // const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
 // const tempPageIncrease = document.querySelector('.js-temp-page-up');
@@ -60,6 +58,8 @@ mockFavoritesData.forEach(card => {
 // });
 //TEMP----------------------
 
+refresh();
+
 // const response = storage.getCards(1, FAVORITES_PER_PAGE);
 // render(response.data);
 
@@ -81,7 +81,7 @@ mockFavoritesData.forEach(card => {
 // }
 
 function refresh() {
-  const response = favoritesStorage.getCards(page, FAVORITES_PER_PAGE);
+  const response = favoritesStorage.getCards(1, FAVORITES_PER_PAGE);
   render(response.data);
 }
 

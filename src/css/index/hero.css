@@ -1,61 +1,76 @@
 .hero {
-  padding-top: 96px;
-  padding-bottom: 64px;
-  @media (max-width: 768px) {
-    padding-top: 80px;
-    padding-bottom: 40px;
-    @media (max-width: 1440px) {
-      padding-top: 100px;
-    }
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 96px;
+    padding-bottom: 64px;
   }
 }
 
-.hero-container {
-  padding-left: 32px;
-  padding-right: 32px;
+@media (min-width: 1440px) {
+  .hero {
+    padding-top: 100px;
+  }
 }
 
 .hero-content-wrap {
   display: grid;
   grid-template-areas:
-    'head hashtag'
-    'image image';
-  @media (max-width: 1280px) {
+    'head'
+    'image'
+    'hashtag';
+}
+@media (min-width: 1440px) {
+  .hero-content-wrap {
     grid-template-areas:
-      'head'
-      'image'
-      'hashtag';
+      'head hashtag'
+      'image image';
   }
 }
 
-.hero-hashtag-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 197px;
-  align-items: flex-start;
-  justify-content: flex-end;
-  gap: 8px 8px;
-  position: relative;
+.hero-hashtag {
+  grid-area: hashtag;
+  justify-self: center;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .hero-hashtag {
+    justify-self: end;
+    margin-top: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-hashtag {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
+    width: 200px;
+  }
 }
 
 .hero-hashtag-list {
   position: inline-block;
-  right: 0;
   display: flex;
-  width: 197px;
   justify-content: flex-end;
-  align-items: flex-start;
   align-content: flex-start;
   gap: 8px;
-  flex-wrap: wrap;
-  @media (max-width: 1280px) {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+}
+
+@media (min-width: 1440px) {
+  .hero-hashtag-list {
+    flex-wrap: wrap;
   }
 }
 
 .hero-hashtag-item {
+  font-size: 14px;
   display: flex;
   padding: 4px 12px;
   justify-content: center;
@@ -66,15 +81,23 @@
   line-height: 1.28;
 }
 
+@media (min-width: 768px) {
+  .hero-hashtag-item {
+    font-size: 16px;
+    padding: 4px 16px;
+  }
+}
+
 .hero-hashtag-img {
-  position: absolute;
   display: inline-flex;
-  top: 12px;
-  right: 0;
+  margin-bottom: 0px;
   width: 168px;
   height: 100px;
   border-radius: 20px;
-  @media (max-width: 1280px) {
+}
+
+@media (max-width: 1440px) {
+  .hero-hashtag-img {
     display: none;
   }
 }
@@ -84,48 +107,52 @@
   position: relative;
 }
 
-.hero-hashtag {
-  display: block;
-  grid-area: hashtag;
-}
-
-.hero-head {
-  grid-area: head;
-}
-
 .hero-img-wrap {
   grid-area: image;
 }
 
 .hero-header {
-  font-size: 74px;
+  font-size: 38px;
   font-style: normal;
   font-weight: 400;
-  line-height: 74px;
-  letter-spacing: -1.48px;
+  line-height: 44px;
+  letter-spacing: -0.76px;
   padding-bottom: 20px;
-  @media (max-width: 768px) {
-    font-size: 38px;
+}
+@media (min-width: 768px) {
+  .hero-header {
+    font-size: 74px;
     font-style: normal;
     font-weight: 400;
-    line-height: 44px;
-    letter-spacing: -0.76px;
+    line-height: 74px;
+    letter-spacing: -1.48px;
   }
 }
 
 .hero-head {
+  grid-area: head;
   position: relative;
   padding-bottom: 32px;
-  @media (max-width: 768px) {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .hero-head {
+    padding-bottom: 0;
   }
 }
 
 .hero-icon {
   display: inline-block;
-  flex-shrink: 0;
-  width: 59px;
-  height: 59px;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .hero-icon {
+    width: 59px;
+    height: 59px;
+    vertical-align: initial;
+  }
 }
 
 .hero-body {
@@ -133,21 +160,21 @@
 }
 
 .hero-text {
-  font-size: 18px;
+  font-size: 14px;
+  font-style: normal;
   font-weight: 400;
+  line-height: 1.285;
+  letter-spacing: -0.28px;
+}
 
-  line-height: 1.28;
-  letter-spacing: -0.36px;
-  padding-bottom: 20px;
-  width: 528px;
+@media (min-width: 768px) {
+  .hero-text {
+    font-size: 18px;
 
-  @media (max-width 768px) {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -0.28px;
-    width: 335px;
+    line-height: 1.28;
+    letter-spacing: -0.36px;
+    padding-bottom: 20px;
+    width: 528px;
   }
 }
 

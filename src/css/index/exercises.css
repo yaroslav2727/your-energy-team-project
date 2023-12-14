@@ -13,15 +13,22 @@
   scale: 1.04;
 }
 
+.card-exercises {
+  width: 100%;
+  height: 225px;
+  border-radius: 12px;
+  border: none;
+}
+
 .card-exercises-img {
-  width: 335px;
+  width: 100%;
   height: 225px;
   border-radius: 12px;
   border: none;
 }
 
 .name-category {
-  color: #f4f4f4;
+  color: var(--color-secondary);
   text-align: center;
   font-size: 20px;
   line-height: 20px;
@@ -40,9 +47,14 @@
     row-gap: 32px;
   }
 
+  .card-exercises {
+    width: calc((100% - 30px) / 3);
+    height: 224px;
+  }
+
   .card-exercises-img {
-    width: 225px;
-    height: 225px;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -62,5 +74,3 @@
   }
 }
 
-/* --transition-time: 250ms;
---transition-function: cubic-bezier(0.4, 0, 0.2, 1); */

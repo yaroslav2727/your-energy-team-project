@@ -16,7 +16,6 @@ giveRatingButton.addEventListener('click', openRateModal);
 
 
 function markupModal({ gifUrl, time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) {
-
     return `<div class="modal_window_content">
 <div class="modal_image_container"><img class ="modal_image" src="${gifUrl}" alt="${name}">
 </div>
@@ -56,7 +55,7 @@ function openModal(e) {
     if (!btn.classList.contains('js-excercise-button')) return
 
     const card = btn.closest('.exercises-item');
-       
+
     const cardId = card.dataset.exerciseId;
 
     loader.create()
@@ -64,22 +63,10 @@ function openModal(e) {
     getExerciseById(cardId)
         .then(resp => {
         const modalMarkup = markupModal(resp);
-            contentUpdate.innerHTML = modalMarkup;
-           
-        })
-        .finally(() => {
-            loader.destroy()
-            // if (resp.rating >= 1.0) {
-            //     let stars = document.querySelector(".rating_item")
-            //     stars.classList.add("rating_star_filled")
-            //     console.log(starsList)
-            //     console.log(resp.rating)
-            // }
-        })
-    
-
-    
-    giveRatingButton.setAttribute("data-Id", cardId);
+        contentUpdate.innerHTML = modalMarkup;
+    }
+    )
+    giveRatingButton.setAttribute('data-Id', cardId);
 
     modalExcercise.classList.remove("is-hidden");
 
@@ -89,13 +76,13 @@ function openModal(e) {
     window.addEventListener('click', closeModal)
 }
 
-   
+
 function closeModal(event) {
     if (event.key === 'Escape') {
         modalExcercise.classList.add("is-hidden");
         overflow.style.overflow = 'visible';
     }
-    else  if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
+    else if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
         modalExcercise.classList.add("is-hidden");
         overflow.style.overflow = 'visible';
     }
@@ -105,8 +92,7 @@ function closeModal(event) {
 }
 
 function clickToClose() {
-   
+
     modalExcercise.classList.add("is-hidden");
     overflow.style.overflow = 'visible';
 } 
-    

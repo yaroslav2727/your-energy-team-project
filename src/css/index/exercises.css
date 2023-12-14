@@ -37,11 +37,10 @@
 .name-exercises {
   color: rgba(244, 244, 244, 0.4);
   font-size: 12px;
-  line-height: 18px; 
+  line-height: 18px;
 }
 
 @media screen and (min-width: 768px) {
-
   .cards {
     column-gap: 15px;
     row-gap: 32px;
@@ -70,7 +69,6 @@
 
   .name-category {
     font-size: 24px;
-    line-height: 24px; 
+    line-height: 24px;
   }
 }
-

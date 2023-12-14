@@ -18,7 +18,7 @@ import"./assets/themeBackground-1ed25e12.js";import{a as C,i as m}from"./assets/
 				<p class="exercises-rating">${F(t)}</p>
 				<span class="exercises-name-span">
 				<svg class="exercises-icon-star-rating" width="16" height="16">
-                  <use href="/img/icons.svg#icon-star-rating"></use>
+                  <use href="./../img/icons.svg#icon-star-rating"></use>
                 </svg>
 			</span>
 			</div>
@@ -26,7 +26,7 @@ import"./assets/themeBackground-1ed25e12.js";import{a as C,i as m}from"./assets/
 				<button type="button" class="exercises-btn js-excercise-button">Start</button>
 				<span class="exercises-name-span">
 					<svg class="exercises-icon-arrow" width="16" height="16">
-						<use href="/img/icons.svg#icon-arrow"></use>
+						<use href="./../img/icons.svg#icon-arrow"></use>
 					</svg>
 				</span>
 			</div>
@@ -35,7 +35,7 @@ import"./assets/themeBackground-1ed25e12.js";import{a as C,i as m}from"./assets/
 		<div class="exercises-title">
 			<span class="exercises-name-span">
 				<svg class="exercises-icon-runner" width="24" height="24">
-                  <use href="/img/icons.svg#icon-runner"></use>
+                  <use href="./../img/icons.svg#icon-runner"></use>
                 </svg>
 			</span>
 			<h3 class="exercises-name">${H(c)}</h3>

@@ -19,6 +19,7 @@ export class FavoritesStorage extends Storage {
     const updatedList = this.#list.filter(
       ({ _id }) => _id.toString() !== id.toString()
     );
+
     this.#list = [...updatedList];
     this.setToStorage(this.#list);
   }

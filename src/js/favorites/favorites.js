@@ -8,6 +8,7 @@ import { FAVORITES_STORAGE_KEY } from './favoritesConfig';
 const FAVORITES_PER_PAGE = 5;
 
 const listRef = document.querySelector('.js-favorites-list');
+const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
 
 //-------------------------------
 const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
@@ -23,10 +24,11 @@ const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
 const tempPageIncrease = document.querySelector('.js-temp-page-up');
 const tempPageDecrease = document.querySelector('.js-temp-page-down');
 
+let tempCount = 1111;
 tempAddBtnRef.addEventListener('click', e => {
   // const cardId = e.target.dataset.cardId;
   const card = {
-    _id: new Date(),
+    _id: tempCount++,
     burnedCalories: '312',
     time: '3',
     name: 'Test card19-new',
@@ -60,14 +62,17 @@ function updateData() {
     pageState.getPage(),
     FAVORITES_PER_PAGE
   );
-  // console.log(response);
+  console.log(response);
   render(response.data);
 }
 
 function render(list) {
   if (list.length === 0) {
-    listRef.innerHTML = `<li>It appears that you haven't added any exercises to your favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the future.</li>`;
+    noCardsMessageRef.classList.add('is-visible');
+    listRef.innerHTML = '';
     return;
+  } else {
+    noCardsMessageRef.classList.remove('is-visible');
   }
 
   const markup = list.map(createCardMarkup).join('');

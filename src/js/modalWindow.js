@@ -1,4 +1,6 @@
 import { getExerciseById } from "./api/api";
+import { roundingRating } from "./cutDataCardsInfo";
+import { loader } from "./utils/loader";
 
 const cardsList = document.querySelector(".cards");
 const contentUpdate = document.querySelector(".modal_window_update");
@@ -6,21 +8,27 @@ const modalExcercise = document.querySelector(".modal_window_container");
 const closeModalButton = document.querySelector(".close_modal_button");
 const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
-const rateButton = document.querySelector(".rate_button");
 const rateModal = document.querySelector("[data-modal]")
 
 cardsList.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', clickToClose);
-rateButton.addEventListener('click', openRateModal);
-window.addEventListener('keydown', closeModal)
-window.addEventListener('click', closeModal)
+giveRatingButton.addEventListener('click', openRateModal);
 
-function markupModal({gifUrl,time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
+
+function markupModal({ gifUrl, time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) {
+
     return `<div class="modal_window_content">
 <div class="modal_image_container"><img class ="modal_image" src="${gifUrl}" alt="${name}">
 </div>
 <div class="modal_text_content"><h3 class="modal_title">${name}</h3>
-<p class = "excercise_rating">${rating}</p>
+<div class="rating_modal_wrapper"><p class = "excercise_rating">${roundingRating(rating)}</p>
+<ul class="list stars_list">
+    <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
+     <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
+      <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
+       <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
+        <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
+    </ul></div>
 <ul class="excercise_units">
 <li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
@@ -51,18 +59,34 @@ function openModal(e) {
        
     const cardId = card.dataset.exerciseId;
 
+    loader.create()
 
-    getExerciseById(cardId).then(resp => {
-
+    getExerciseById(cardId)
+        .then(resp => {
         const modalMarkup = markupModal(resp);
-        contentUpdate.innerHTML = modalMarkup;
-    }
-    )
-    giveRatingButton.setAttribute('dataId', cardId);
+            contentUpdate.innerHTML = modalMarkup;
+           
+        })
+        .finally(() => {
+            loader.destroy()
+            // if (resp.rating >= 1.0) {
+            //     let stars = document.querySelector(".rating_item")
+            //     stars.classList.add("rating_star_filled")
+            //     console.log(starsList)
+            //     console.log(resp.rating)
+            // }
+        })
+    
+
+    
+    giveRatingButton.setAttribute("data-Id", cardId);
 
     modalExcercise.classList.remove("is-hidden");
 
     overflow.style.overflow = 'hidden'
+
+    window.addEventListener('keydown', closeModal)
+    window.addEventListener('click', closeModal)
 }
 
    
@@ -73,11 +97,16 @@ function closeModal(event) {
     }
     else  if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
         modalExcercise.classList.add("is-hidden");
-    overflow.style.overflow = 'visible';
+        overflow.style.overflow = 'visible';
     }
 
+    window.removeEventListener('keydown', closeModal);
+    window.removeEventListener('click', closeModal);
 }
+
 function clickToClose() {
    
     modalExcercise.classList.add("is-hidden");
-    overflow.style.overflow = 'visible';} 
+    overflow.style.overflow = 'visible';
+} 
+    

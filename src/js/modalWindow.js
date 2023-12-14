@@ -6,9 +6,14 @@ const modalExcercise = document.querySelector(".modal_window_container");
 const closeModalButton = document.querySelector(".close_modal_button");
 const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
+const rateButton = document.querySelector(".rate_button");
+const rateModal = document.querySelector("[data-modal]")
 
 cardsList.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', clickToClose);
+rateButton.addEventListener('click', openRateModal);
+window.addEventListener('keydown', closeModal)
+window.addEventListener('click', closeModal)
 
 function markupModal({gifUrl,time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
     return `<div class="modal_window_content">
@@ -32,6 +37,10 @@ function markupModal({gifUrl,time, name, bodyPart, equipment, target, descriptio
 </div >`;
 };
 
+function openRateModal() {
+    rateModal.classList.remove("is-hidden");
+    modalExcercise.classList.add("is-hidden");
+}
 
 function openModal(e) {
 
@@ -51,25 +60,24 @@ function openModal(e) {
     )
     giveRatingButton.setAttribute('dataId', cardId);
 
-    modalExcercise.classList.remove("is_hidden");
+    modalExcercise.classList.remove("is-hidden");
 
     overflow.style.overflow = 'hidden'
 }
-window.addEventListener('keydown', closeModal)
-window.addEventListener('click', closeModal)
+
    
 function closeModal(event) {
     if (event.key === 'Escape') {
-        modalExcercise.classList.add("is_hidden");
+        modalExcercise.classList.add("is-hidden");
         overflow.style.overflow = 'visible';
     }
     else  if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
-        modalExcercise.classList.add("is_hidden");
+        modalExcercise.classList.add("is-hidden");
     overflow.style.overflow = 'visible';
     }
 
 }
 function clickToClose() {
    
-    modalExcercise.classList.add("is_hidden");
+    modalExcercise.classList.add("is-hidden");
     overflow.style.overflow = 'visible';} 

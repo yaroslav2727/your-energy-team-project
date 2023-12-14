@@ -63,6 +63,7 @@ function handlerClickCategory(e) {
       span.innerHTML = '';
       items.innerHTML = markupCategories(data);
       items.addEventListener('click', handlerClickExercises);
+      input.classList.add("isHidden")
     })
     .catch(err => {
       console.error(err);
@@ -92,9 +93,13 @@ function handlerClickExercises(e) {
     .then(response => {
       const data = response.results;
       getData = data;
-      console.log(getData)
+      // console.log(getData)
       items.innerHTML = markupExercises(data);
-      span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`;
+
+      input.classList.remove("isHidden")
+
+      span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; // МАЄ ТУТ БУТИ?
+
     })
     .catch(err => {
       console.error(err);

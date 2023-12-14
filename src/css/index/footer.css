@@ -176,12 +176,12 @@
   }
 }
 @media (min-width: 1440px) {
-  .container {
+  /* .container {
     display: flex;
     align-content: center;
     justify-content: space-between;
     flex-wrap: wrap;
-  }
+  } */
 
   .subscribe-form {
     margin: unset;

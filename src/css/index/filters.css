@@ -1,5 +1,38 @@
+.isHidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cat-filter {
   margin-bottom: 20px;
+}
+
+
+.cat-title {
+  color: #242424;
+  font-family: DM Sans;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px; /* 109.091% */
+  letter-spacing: -0.88px;
+  margin-bottom: 40px;
+}
+
+.filter-input-wrapper {
+  display: block;
+  position: relative;
+}
+
+.filter-icon-search {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  fill: transparent;
+  stroke: var(--color-primary);
 }
 
 .filter {
@@ -93,5 +126,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;
+  }
+  .cat-title {
+    margin-bottom: 0;
+  }
+
+  .filter-icon-search {
+    right: 44px;
   }
 }

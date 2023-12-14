@@ -14,14 +14,14 @@
 }
 
 .card-exercises {
-  width: 335px;
+  width: 100%;
   height: 225px;
   border-radius: 12px;
   border: none;
 }
 
 .card-exercises-img {
-  width: 335px;
+  width: 100%;
   height: 225px;
   border-radius: 12px;
   border: none;

@@ -1,5 +1,12 @@
-export function createCardMarkup({ _id, burnedCalories, time, bodyPart, target, name }) {
-    return `    <li class="favorites__item">
+export function createCardMarkup({
+  _id,
+  burnedCalories,
+  time,
+  bodyPart,
+  target,
+  name,
+}) {
+  return `    <li class="favorites__item">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">
@@ -11,7 +18,7 @@ export function createCardMarkup({ _id, burnedCalories, time, bodyPart, target, 
   
                         <!-- Temporary icon -->
                         <button
-                          class="button sport-card__remove-btn"
+                          class="button sport-card__remove-btn js-favorites-remove"
                           type="button"
                           aria-label="Remove card button"
                           data-card-id="${_id}"
@@ -97,4 +104,4 @@ export function createCardMarkup({ _id, burnedCalories, time, bodyPart, target, 
                   </div>
                 </div>
               </li>`;
-  }
+}

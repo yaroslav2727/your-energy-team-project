@@ -4,23 +4,18 @@ import { patchRating } from "../js/api/api";
 
 const modalReff = document.querySelector("[data-modal]");
 const reatingTitleReff = document.querySelector("p[data-raiting]");
-const btnCloseReff = document.querySelector(".btn_close");
 const formReff = document.querySelector(".rating_form");
 const ratingStarsReff = [...document.getElementsByClassName("btn_star")];
 const modalContainerReff = document.querySelector('.modal_window_container')
 
-
 let raiting = 0;
 let formItems = {};
-
-btnCloseReff.addEventListener("click", evt => {
-  evt.preventDefault();
-  modalContainerReff.classList.remove('is-hidden')
-});
 
 formReff.addEventListener("submit", evt => {
   evt.preventDefault();
   const dataIdReff = document.querySelector("[dataid]")
+  console.log(dataIdReff.dataset)
+  console.log(dataIdReff)
   // const { email, review } = evt.currentTarget.elements
   // formItems = {
   //   email: email.value,
@@ -95,16 +90,19 @@ executeRating(ratingStarsReff);
     modal: document.querySelector("[data-modal]"),
   };
 
-  refs.openModalBtn.addEventListener("click", toggleModal);
-  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.openModalBtn.addEventListener("click", openModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
   refs.modal.addEventListener("click", onBackdropClick);
 
-  function toggleModal() {
-    if (modalReff.classList.contains("is-hidden") === true) {
-      document.addEventListener("keydown", onEscapeKeyPress);
-    }
-
-    refs.modal.classList.toggle("is-hidden");
+  function openModal() {
+    modalReff.classList.remove("is-hidden")
+    document.addEventListener("keydown", onEscapeKeyPress)
+  }
+  function closeModal() {
+    raiting = 0
+    modalReff.classList.add("is-hidden")
+    modalContainerReff.classList.remove('is-hidden')
+    document.removeEventListener("keydown", onEscapeKeyPress);
   }
 
   function onBackdropClick(evt) {

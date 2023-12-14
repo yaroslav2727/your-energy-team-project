@@ -38,13 +38,8 @@ tempAddBtnRef.addEventListener('click', e => {
   updateData();
 });
 
-tempPageIncrease.addEventListener('click', () => {
-  pageState.increase();
-});
-
-tempPageDecrease.addEventListener('click', () => {
-  pageState.decrease();
-});
+tempPageIncrease.addEventListener('click', pageState.increase);
+tempPageDecrease.addEventListener('click', pageState.decrease);
 //TEMP----------------------
 
 listRef.addEventListener('click', e => {
@@ -65,7 +60,7 @@ function updateData() {
     pageState.getPage(),
     FAVORITES_PER_PAGE
   );
-  console.log(response);
+  // console.log(response);
   render(response.data);
 }
 

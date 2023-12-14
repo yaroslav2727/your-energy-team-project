@@ -3,7 +3,7 @@ export const mockFavoritesData = [
     _id: 1,
     burnedCalories: '312',
     time: '3',
-    name: 'Air bike1',
+    name: 'air bike1',
     bodyPart: 'Waist',
     target: 'Abs',
   },

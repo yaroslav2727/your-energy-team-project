@@ -42,6 +42,7 @@
 }
 
 .sport-card__remove-btn > .icon {
+  fill: none;
   stroke: #242424;
   transition: stroke 300ms ease-in-out;
 }
@@ -95,6 +96,10 @@
 .sport-card__name {
   font-size: 20px;
   line-height: 1;
+}
+
+.sport-card__name::first-letter {
+  text-transform: uppercase;
 }
 
 .sport-card__footer {

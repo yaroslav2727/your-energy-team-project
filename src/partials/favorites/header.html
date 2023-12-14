@@ -18,9 +18,7 @@
     </div>
     <ul class="header-pages">
       <li class="header-pages-item pg-home">
-        <a class="header-item-link header-pages-active" href="./index.html"
-          >Home</a
-        >
+        <a class="header-item-link" href="./index.html">Home</a>
       </li>
       <li class="header-pages-item pg-favorites">
         <a
@@ -76,16 +74,20 @@
   </div>
 </header>
 <div class="header-menu js-menu-container" id="mobile-menu">
-  <button
-    type="button"
-    class="menu-closed-btn menu-toggle js-close-menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-  >
-    <svg width="32" height="32">
-      <use href="/img/icons.svg#icon-x"></use>
-    </svg>
-  </button>
+  <div class="mobile_menu">
+    <div class="mobile_menu--btn"></div>
+    <button
+      type="button"
+      class="menu-closed-btn menu-toggle js-close-menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="32" height="32">
+        <use href="/img/icons.svg#icon-x"></use>
+      </svg>
+    </button>
+  </div>
+
   <div class="header-mob-wrap">
     <ul class="header-mob-wrap-pages">
       <li class="mob-wrap-item">

@@ -1,9 +1,52 @@
+.dark_mode {
+  background-color: var(--color-black);
+}
+.mobile_menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+}
+
+.mobile_menu--btn {
+  height: 24px;
+  width: 48px;
+  border: 1px solid var(--color-secondary);
+  border-radius: 35px;
+  position: relative;
+  background: var(--color-secondary);
+  cursor: pointer;
+}
+body.dark_mode .mobile_menu--btn {
+  border: 1px solid var(--color-secondary);
+}
+
+.mobile_menu--btn::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  border: 1px solid var(--color-primary);
+  border-radius: 35px;
+  background: var(--color-primary);
+  top: 2px;
+  left: 4px;
+}
+
+.mobile_menu--btn.show::before {
+  left: calc(100% - 22px);
+}
+
 .header-container {
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.decor-theme {
+  height: 24px;
+  display: flex;
 }
 
 .header-logo-img {
@@ -12,6 +55,10 @@
 }
 body.dark_mode .header-logo-img {
   fill: var(--color-secondary);
+}
+
+.change_theme {
+  display: none;
 }
 
 .header-pages {
@@ -32,11 +79,12 @@ body.dark_mode .header-logo-img {
 body.dark_mode .header-burger-img {
   stroke: var(--color-secondary);
 }
+
 .header-menu {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 2;
+  z-index: 9999;
   height: 100%;
   background-color: var(--color-primary);
   padding: 20px;
@@ -156,6 +204,66 @@ body.dark_mode .header-burger-img {
   .header-burger {
     display: none;
   }
+
+  /*============ Background Theme ================ */
+  .dark_mode {
+    background-color: var(--color-black);
+  }
+
+  .change_theme--btn {
+    margin: 0 10px;
+    width: 54px;
+    border: 1px solid var(--color-primary);
+    border-radius: 35px;
+    position: relative;
+    background: var(--color-primary);
+    cursor: pointer;
+  }
+  body.dark_mode .change_theme--btn {
+    border: 1px solid var(--color-secondary);
+  }
+
+  .change_theme--btn::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border: 1px solid var(--color-primary);
+    border-radius: 35px;
+    background: var(--color-secondary);
+    top: 2px;
+    left: 4px;
+  }
+  .icon_sun {
+    display: block;
+    stroke: var(--color-secondary);
+  }
+  .icon_moon {
+    display: none;
+    fill: var(--color-secondary);
+  }
+  body.dark_mode .icon_moon .icon_sun {
+    fill: var(--color-secondary);
+  }
+  body.dark_mode .icon_sun {
+    fill: var(--color-secondary);
+  }
+  .change_theme--btn.change_theme--btn-on::before {
+    left: calc(100% - 22px);
+  }
+
+  .change_theme {
+    display: flex;
+  }
+
+  .decor-theme {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  a.header-logo {
+    height: 24px;
+  }
 }
 @media (min-width: 1440px) {
   .header-container {
@@ -173,64 +281,4 @@ body.dark_mode .header-burger-img {
   .header-pages-active2 {
     padding: 6px 12px;
   }
-}
-
-/*============ Background Theme ================ */
-.dark_mode {
-  background-color: var(--color-black);
-}
-
-.change_theme--btn {
-  margin: 0 10px;
-  width: 54px;
-  border: 1px solid var(--color-primary);
-  border-radius: 35px;
-  position: relative;
-  background: var(--color-primary);
-  cursor: pointer;
-}
-body.dark_mode .change_theme--btn {
-  border: 1px solid var(--color-secondary);
-}
-
-.change_theme--btn::before {
-  content: '';
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  border: 1px solid var(--color-primary);
-  border-radius: 35px;
-  background: var(--color-secondary);
-  top: 2px;
-  left: 4px;
-}
-.icon_sun {
-  display: block;
-  stroke: var(--color-secondary);
-}
-.icon_moon {
-  display: none;
-  fill: var(--color-secondary);
-}
-body.dark_mode .icon_moon .icon_sun {
-  fill: var(--color-secondary);
-}
-body.dark_mode .icon_sun {
-  fill: var(--color-secondary);
-}
-.change_theme--btn.change_theme--btn-on::before {
-  left: calc(100% - 22px);
-}
-
-.change_theme {
-  display: flex;
-}
-
-.decor-theme {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-a.header-logo {
-  height: 24px;
 }

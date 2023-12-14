@@ -1,22 +1,21 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-import { patchRating } from "./api/api";
+import { patchRating } from "../js/api/api";
 
+const modalReff = document.querySelector("[data-modal]");
 const reatingTitleReff = document.querySelector("p[data-raiting]");
-const btnCloseReff = document.querySelector(".btn_close");
 const formReff = document.querySelector(".rating_form");
+const ratingStarsReff = [...document.getElementsByClassName("btn_star")];
+const modalContainerReff = document.querySelector('.modal_window_container')
 
 let raiting = 0;
 let formItems = {};
-let id = "64f389465ae26083f39b17a2";
-
-btnCloseReff.addEventListener("click", evt => {
-  evt.preventDefault();
-  console.log("close-rating-function");
-});
 
 formReff.addEventListener("submit", evt => {
   evt.preventDefault();
+  const dataIdReff = document.querySelector("[data-id]")
+  const id = dataIdReff.dataset.id
+
   // const { email, review } = evt.currentTarget.elements
   // formItems = {
   //   email: email.value,
@@ -31,7 +30,7 @@ formReff.addEventListener("submit", evt => {
 
   if (formItems.rate < 1) {
     iziToast.show({
-      title: "The rate must be at least 1",
+      title: "The rate must be selected",
       color: "red",
       position: "topCenter",
       message: ``,
@@ -49,11 +48,15 @@ formReff.addEventListener("submit", evt => {
     });
 
     formReff.reset();
-    console.log("Dont forgot close modal!!!");
+    raiting = 0;
+    reatingTitleReff.textContent = `0.0`;
+    ratingStarsReff.forEach((item) => {
+      item.classList.remove('btn_star-active')
+    })
+    modalReff.classList.add("is-hidden");
+    modalContainerReff.classList.remove('is-hidden')
   }
 });
-
-const ratingStars = [...document.getElementsByClassName("btn_star")];
 
 function executeRating(stars) {
   const starClassActive = "btn_star-active";
@@ -82,4 +85,54 @@ function executeRating(stars) {
   });
 }
 
-executeRating(ratingStars);
+executeRating(ratingStarsReff);
+
+(() => {
+  const refs = {
+    openModalBtn: document.querySelector("[data-modal-open]"),
+    closeModalBtn: document.querySelector("[data-modal-close]"),
+    modal: document.querySelector("[data-modal]"),
+  };
+
+  refs.openModalBtn.addEventListener("click", openModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
+  refs.modal.addEventListener("click", onBackdropClick);
+
+  function openModal() {
+    modalReff.classList.remove("is-hidden")
+    document.addEventListener("keydown", onEscapeKeyPress)
+  }
+  function closeModal() {
+    raiting = 0
+    ratingStarsReff.forEach((item) => {
+      item.classList.remove('btn_star-active')
+    })
+    reatingTitleReff.textContent = `0.0`;
+    modalReff.classList.add("is-hidden")
+    modalContainerReff.classList.remove('is-hidden')
+    document.removeEventListener("keydown", onEscapeKeyPress);
+  }
+
+  function onBackdropClick(evt) {
+    if (evt.target === evt.currentTarget) {
+      raiting = 0
+      ratingStarsReff.forEach((item) => {
+        item.classList.remove('btn_star-active')
+      })
+      reatingTitleReff.textContent = `0.0`;
+      refs.modal.classList.add("is-hidden");
+    }
+  }
+
+  function onEscapeKeyPress(evt) {
+    if (evt.key === "Escape") {
+      raiting = 0
+      ratingStarsReff.forEach((item) => {
+        item.classList.remove('btn_star-active')
+      })
+      reatingTitleReff.textContent = `0.0`;
+      refs.modal.classList.add("is-hidden");
+      document.removeEventListener("keydown", onEscapeKeyPress);
+    }
+  }
+})();

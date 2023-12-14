@@ -1,3 +1,2 @@
-import './favorites.js';
-import '../themeBackground';
-import '../activePageHeader';
+import "./favorites.js";
+import "../themeBackground";

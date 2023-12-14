@@ -3,14 +3,14 @@ import { createCardMarkup } from './createCardMarkup';
 import { FavoritesStorage } from './FavoritesStorage';
 import { mockFavoritesData } from './mockData';
 import { Storage } from './Storage';
+import { FAVORITES_STORAGE_KEY } from './favoritesConfig';
 
 const FAVORITES_PER_PAGE = 5;
 
 const listRef = document.querySelector('.js-favorites-list');
-// const removeBtnRef = document.querySelector('.js-favorites-remove');
 
 //-------------------------------
-const favoritesStorage = new FavoritesStorage('favorite_sport_cards');
+const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
 const pageState = createPageState(1, updateData);
 

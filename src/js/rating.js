@@ -13,9 +13,9 @@ let formItems = {};
 
 formReff.addEventListener("submit", evt => {
   evt.preventDefault();
-  const dataIdReff = document.querySelector("[dataid]")
-  console.log(dataIdReff.dataset)
-  console.log(dataIdReff)
+  const dataIdReff = document.querySelector("[data-id]")
+  const id = dataIdReff.dataset.id
+
   // const { email, review } = evt.currentTarget.elements
   // formItems = {
   //   email: email.value,
@@ -38,7 +38,7 @@ formReff.addEventListener("submit", evt => {
     return;
   }
 
-  const response = patchRating(dataIdReff, formItems);
+  const response = patchRating(id, formItems);
   if (response) {
     iziToast.show({
       title: "The rating has been successfully added",
@@ -49,6 +49,10 @@ formReff.addEventListener("submit", evt => {
 
     formReff.reset();
     raiting = 0;
+    reatingTitleReff.textContent = `0.0`;
+    ratingStarsReff.forEach((item) => {
+      item.classList.remove('btn_star-active')
+    })
     modalReff.classList.add("is-hidden");
     modalContainerReff.classList.remove('is-hidden')
   }
@@ -100,6 +104,10 @@ executeRating(ratingStarsReff);
   }
   function closeModal() {
     raiting = 0
+    ratingStarsReff.forEach((item) => {
+      item.classList.remove('btn_star-active')
+    })
+    reatingTitleReff.textContent = `0.0`;
     modalReff.classList.add("is-hidden")
     modalContainerReff.classList.remove('is-hidden')
     document.removeEventListener("keydown", onEscapeKeyPress);

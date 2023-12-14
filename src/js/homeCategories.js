@@ -7,12 +7,15 @@ import { loader } from './utils/loader';
 
 let currentPage = 1;
 let category = "muscles";
+let getData = null;
 
 const items = document.querySelector(".cards");
 const filter = document.querySelector(".filter-list");
+const input = document.querySelector(".input-filter-exercises");
 
 filter.addEventListener("click", handlerClickCategory);
 items.addEventListener("click", handlerClickExercises);
+input.addEventListener("input", onSearchExercise);
 
 // початковий список вправ Muscles  ----
 loader.create();
@@ -26,7 +29,8 @@ getMusclesList()
   .catch(err => {
     console.error(err);
     iziToast.show({
-      position: 'topRight',
+      position: 'center',
+      color: 'red',
       message: 'Oops! Something wrong!',
     });
   })
@@ -61,7 +65,8 @@ function handlerClickCategory(e) {
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'topRight',
+        position: 'center',
+        color: 'red',
         message: 'Oops! Something wrong!',
       });
     })
@@ -84,12 +89,15 @@ function handlerClickExercises(e) {
   getExercises(data)
     .then(response => {
       const data = response.results;
+      getData = data;
+      console.log(getData)
       items.innerHTML = markupExercises(data);
     })
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'topRight',
+        position: 'center',
+        color: 'red',
         message: 'Oops! Something wrong!',
       });
     })
@@ -97,4 +105,14 @@ function handlerClickExercises(e) {
       loader.destroy();
       items.removeEventListener('click', handlerClickExercises);
     });
+}
+
+
+// пошук вправи по назві ----
+
+function onSearchExercise(evt) {
+  const searchData = evt.target.value.trim().toLowerCase();
+  const filteredData = getData.filter((item) => item.name.includes(searchData))
+
+  items.innerHTML = markupExercises(filteredData);
 }

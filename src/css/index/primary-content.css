@@ -14,11 +14,3 @@
     }
 }
 }
-
-@media screen and (min-width: 1440px) {
-    .quote-temp {
-        width: 444px;
-        min-height: 600px;
-        background-color: rgb(213, 226, 250);
-    }
-}

@@ -1,5 +1,37 @@
+.isHidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cat-filter {
   margin-bottom: 20px;
+}
+
+.cat-title {
+  color: #242424;
+  font-family: DM Sans;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px; /* 109.091% */
+  letter-spacing: -0.88px;
+  margin-bottom: 40px;
+}
+
+.filter-input-wrapper {
+  display: block;
+  position: relative;
+}
+
+.filter-icon-search {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  fill: transparent;
+  stroke: var(--color-primary);
 }
 
 .filter {
@@ -8,6 +40,7 @@
 
 .filter-list {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -37,7 +70,7 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; 
+  line-height: 38px;
   letter-spacing: -0.56px;
 }
 
@@ -47,7 +80,7 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; 
+  line-height: 20px;
   letter-spacing: -0.4px;
 }
 
@@ -58,11 +91,15 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; 
+  line-height: 38px;
   letter-spacing: -0.56px;
 }
 
 @media screen and (min-width: 768px) {
+  .filter-input-wrapper {
+    margin-bottom: 0;
+  }
+
   .cat-filter {
     margin-bottom: 0;
   }
@@ -76,13 +113,13 @@
 
   .cat-title-span {
     font-size: 24px;
-    line-height: 32px; 
+    line-height: 32px;
     letter-spacing: -0.48px;
   }
 
   .cat-title-text {
-    font-size: 44px; 
-    line-height: 48px; 
+    font-size: 44px;
+    line-height: 48px;
     letter-spacing: -0.88px;
   }
 }
@@ -93,5 +130,12 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;
+  }
+  .cat-title {
+    margin-bottom: 0;
+  }
+
+  .filter-icon-search {
+    right: 44px;
   }
 }

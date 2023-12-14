@@ -3,12 +3,13 @@
   padding-top: 80px;
   padding-bottom: 80px;
 
-  background-color: #f4f4f4;
+  background-color: var(--favorites-background-color);
 }
 
 .favorites__title {
   margin-bottom: 20px;
 
+  color: var(--favorites-title);
   font-family: Neue Montreal, 'sans-serif';
   font-weight: 400;
   font-size: 28px;

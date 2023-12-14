@@ -2,7 +2,7 @@
   font-family: Neue Montreal, 'sans-serif';
   padding: 16px;
 
-  background-color: #ffffff;
+  background-color: var(--favorites-card-background);
   border-radius: 15px;
 }
 

@@ -9,7 +9,6 @@
   margin-bottom: 20px;
 }
 
-
 .cat-title {
   color: #242424;
   font-family: DM Sans;
@@ -41,6 +40,7 @@
 
 .filter-list {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -70,7 +70,7 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; 
+  line-height: 38px;
   letter-spacing: -0.56px;
 }
 
@@ -80,7 +80,7 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; 
+  line-height: 20px;
   letter-spacing: -0.4px;
 }
 
@@ -91,11 +91,15 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 400;
-  line-height: 38px; 
+  line-height: 38px;
   letter-spacing: -0.56px;
 }
 
 @media screen and (min-width: 768px) {
+  .filter-input-wrapper {
+    margin-bottom: 0;
+  }
+
   .cat-filter {
     margin-bottom: 0;
   }
@@ -109,13 +113,13 @@
 
   .cat-title-span {
     font-size: 24px;
-    line-height: 32px; 
+    line-height: 32px;
     letter-spacing: -0.48px;
   }
 
   .cat-title-text {
-    font-size: 44px; 
-    line-height: 48px; 
+    font-size: 44px;
+    line-height: 48px;
     letter-spacing: -0.88px;
   }
 }

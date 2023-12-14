@@ -8,6 +8,9 @@ const QUOTE_KEY = 'quote';
 const quoteDescription = document.querySelector('.quote-text');
 const quoteAuthor = document.querySelector('.quote-author');
 
+const favoritesQuoteDescription = document.querySelector('.favorites-quote-text');
+const favoritesQuoteAuthor = document.querySelector('.favorites-quote-author');
+
 async function fetchQuote() {
   try {
     const { author, quote } = await getQuoteOfTheDay();
@@ -29,8 +32,13 @@ function getQuoteLocalStorage() {
 
 function displayQuote() {
   const storedData = getQuoteLocalStorage();
-  quoteDescription.textContent = storedData.quote;
-  quoteAuthor.textContent = storedData.author;
+  if(quoteAuthor) {
+    quoteDescription.textContent = storedData.quote;
+    quoteAuthor.textContent = storedData.author;
+  } else {
+    favoritesQuoteDescription.textContent = storedData.quote;
+    favoritesQuoteAuthor.textContent = storedData.author;
+  }
 }
 
 async function renderStoredQuote() {

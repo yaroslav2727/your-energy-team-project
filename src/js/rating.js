@@ -115,12 +115,22 @@ executeRating(ratingStarsReff);
 
   function onBackdropClick(evt) {
     if (evt.target === evt.currentTarget) {
+      raiting = 0
+      ratingStarsReff.forEach((item) => {
+        item.classList.remove('btn_star-active')
+      })
+      reatingTitleReff.textContent = `0.0`;
       refs.modal.classList.add("is-hidden");
     }
   }
 
   function onEscapeKeyPress(evt) {
     if (evt.key === "Escape") {
+      raiting = 0
+      ratingStarsReff.forEach((item) => {
+        item.classList.remove('btn_star-active')
+      })
+      reatingTitleReff.textContent = `0.0`;
       refs.modal.classList.add("is-hidden");
       document.removeEventListener("keydown", onEscapeKeyPress);
     }

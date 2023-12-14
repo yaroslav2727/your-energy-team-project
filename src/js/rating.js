@@ -11,17 +11,22 @@ const modalContainerReff = document.querySelector('.modal_window_container')
 let raiting = 0;
 let formItems = {};
 
+const resetHandler = () => {
+  formReff.reset();
+  raiting = 0;
+  reatingTitleReff.textContent = `0.0`;
+  ratingStarsReff.forEach((item) => {
+    item.classList.remove('btn_star-active')
+  })
+  modalReff.classList.add("is-hidden");
+  modalContainerReff.classList.remove('is-hidden')
+}
+
 formReff.addEventListener("submit", evt => {
   evt.preventDefault();
   const dataIdReff = document.querySelector("[data-id]")
   const id = dataIdReff.dataset.id
 
-  // const { email, review } = evt.currentTarget.elements
-  // formItems = {
-  //   email: email.value,
-  //   review: review.value,
-  //   rait: raiting
-  // }
   const formData = new FormData(evt.currentTarget);
   formData.forEach((value, key) => {
     formItems[key] = value.trim();
@@ -46,15 +51,7 @@ formReff.addEventListener("submit", evt => {
       position: "topCenter",
       message: ``,
     });
-
-    formReff.reset();
-    raiting = 0;
-    reatingTitleReff.textContent = `0.0`;
-    ratingStarsReff.forEach((item) => {
-      item.classList.remove('btn_star-active')
-    })
-    modalReff.classList.add("is-hidden");
-    modalContainerReff.classList.remove('is-hidden')
+    resetHandler()
   }
 });
 
@@ -115,24 +112,13 @@ executeRating(ratingStarsReff);
 
   function onBackdropClick(evt) {
     if (evt.target === evt.currentTarget) {
-      raiting = 0
-      ratingStarsReff.forEach((item) => {
-        item.classList.remove('btn_star-active')
-      })
-      reatingTitleReff.textContent = `0.0`;
-      refs.modal.classList.add("is-hidden");
+      closeModal()
     }
   }
 
   function onEscapeKeyPress(evt) {
     if (evt.key === "Escape") {
-      raiting = 0
-      ratingStarsReff.forEach((item) => {
-        item.classList.remove('btn_star-active')
-      })
-      reatingTitleReff.textContent = `0.0`;
-      refs.modal.classList.add("is-hidden");
-      document.removeEventListener("keydown", onEscapeKeyPress);
+      closeModal()
     }
   }
 })();

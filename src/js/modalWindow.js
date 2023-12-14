@@ -1,18 +1,25 @@
 import { getExerciseById } from "./api/api";
 
 const cardsList = document.querySelector(".cards");
-const contentUpdate = document.querySelector(".modal_window_update")
-const modalExcercise= document.querySelector(".modal_window_container")
-const closeModalButton = document.querySelector(".close_modal_button")
+const contentUpdate = document.querySelector(".modal_window_update");
+const modalExcercise = document.querySelector(".modal_window_container");
+const closeModalButton = document.querySelector(".close_modal_button");
+const giveRatingButton = document.querySelector(".rate_button");
+const overflow = document.body;
+const rateButton = document.querySelector(".rate_button");
+const rateModal = document.querySelector("[data-modal]")
 
 cardsList.addEventListener('click', openModal);
-closeModalButton.addEventListener('click', closeModal);
+closeModalButton.addEventListener('click', clickToClose);
+rateButton.addEventListener('click', openRateModal);
+window.addEventListener('keydown', closeModal)
+window.addEventListener('click', closeModal)
 
-function markupModal({gifUrl, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity}) {
+function markupModal({ gifUrl, time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) {
     return `<div class="modal_window_content">
-<img class ="modal_image" src="${gifUrl}" alt="${name}">
-
-<h3 class="modal_title">${name}</h3>
+<div class="modal_image_container"><img class ="modal_image" src="${gifUrl}" alt="${name}">
+</div>
+<div class="modal_text_content"><h3 class="modal_title">${name}</h3>
 <p class = "excercise_rating">${rating}</p>
 <ul class="excercise_units">
 <li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
@@ -23,35 +30,55 @@ function markupModal({gifUrl, name, bodyPart, equipment, target, description, ra
         <li class="excercise_item"><h4 class="excercise_title">Popular</h4>
         <p class="excercise_text">${popularity}</p></li>
         <li class="excercise_item"><h4 class="excercise_title">Burned calories</h4>
-        <p class="excercise_text">${burnedCalories}</p></li>
+        <p class="excercise_text">${burnedCalories}/${time} min</p></li>
         <p class="modal_text">${description}</p>
 
-</ul>
+</ul></div>
 </div >`;
 };
 
+function openRateModal() {
+    rateModal.classList.remove("is-hidden");
+    modalExcercise.classList.add("is-hidden");
+}
 
 function openModal(e) {
 
     const btn = e.target
     if (!btn.classList.contains('js-excercise-button')) return
 
-    const card = btn.closest('.exercises-item')
-       
-    const cardId = card.dataset.exerciseId
-    console.log(cardId)
+    const card = btn.closest('.exercises-item');
+
+    const cardId = card.dataset.exerciseId;
+
 
     getExerciseById(cardId).then(resp => {
-        console.log(resp)
+
         const modalMarkup = markupModal(resp);
-        contentUpdate.innerHTML = modalMarkup
+        contentUpdate.innerHTML = modalMarkup;
     }
     )
+    giveRatingButton.setAttribute('data-id', cardId);
 
-modalExcercise.classList.remove("is_hidden");
+    modalExcercise.classList.remove("is-hidden");
+
+    overflow.style.overflow = 'hidden'
 }
 
-function closeModal () {
-    modalExcercise.classList.add("is_hidden")
-    console.log('close modal');
+
+function closeModal(event) {
+    if (event.key === 'Escape') {
+        modalExcercise.classList.add("is-hidden");
+        overflow.style.overflow = 'visible';
+    }
+    else if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
+        modalExcercise.classList.add("is-hidden");
+        overflow.style.overflow = 'visible';
+    }
+
 }
+function clickToClose() {
+
+    modalExcercise.classList.add("is-hidden");
+    overflow.style.overflow = 'visible';
+} 

@@ -1,19 +1,20 @@
-import { cutExerciseName, roundingRating, cutDataCardsInfo } from "./cutDataCardsInfo"
-
-
+import {
+  cutExerciseName,
+  roundingRating,
+  cutDataCardsInfo,
+} from './cutDataCardsInfo';
 
 export function markupExercises(data) {
-
-	return data
-		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
-			return `<li class="exercises-item" data-exercise-id="${_id}">
+  return data
+    .map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
+      return `<li class="exercises-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
 				<p class="exercises-rating">${roundingRating(rating)}</p>
 				<span class="exercises-name-span">
 				<svg class="exercises-icon-star-rating" width="16" height="16">
-                  <use href="./img/icons.svg#icon-star-rating"></use>
+                  <use href="././img/icons.svg#icon-star-rating"></use>
                 </svg>
 			</span>
 			</div>
@@ -21,7 +22,7 @@ export function markupExercises(data) {
 				<button type="button" class="exercises-btn js-excercise-button">Start</button>
 				<span class="exercises-name-span">
 					<svg class="exercises-icon-arrow" width="16" height="16">
-						<use href="../img/icons.svg#icon-arrow"></use>
+						<use href="././img/icons.svg#icon-arrow"></use>
 					</svg>
 				</span>
 			</div>
@@ -30,7 +31,7 @@ export function markupExercises(data) {
 		<div class="exercises-title">
 			<span class="exercises-name-span">
 				<svg class="exercises-icon-runner" width="24" height="24">
-                  <use href="./img/icons.svg#icon-runner"></use>
+                  <use href="././img/icons.svg#icon-runner"></use>
                 </svg>
 			</span>
 			<h3 class="exercises-name">${cutExerciseName(name)}</h3>
@@ -53,7 +54,6 @@ export function markupExercises(data) {
 			</ul>
 		</div>
 	</li>`;
-		})
-		.join('');
+    })
+    .join('');
 }
-

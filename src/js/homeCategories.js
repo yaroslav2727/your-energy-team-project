@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce"
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getMusclesList, getFilteredList, getExercises } from './api/api';
@@ -5,18 +6,20 @@ import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
 
+
+console.log(debounce)
 let currentPage = 1;
 let category = "muscles";
 let getData = null;
 
 const items = document.querySelector(".cards");
 const filter = document.querySelector(".filter-list");
-const input = document.querySelector(".input-filter-exercises");
+const inputWrapper = document.querySelector(".filter-input-wrapper");
 const span = document.querySelector(".cat-title-span")
 
 filter.addEventListener("click", handlerClickCategory);
 items.addEventListener("click", handlerClickExercises);
-input.addEventListener("input", onSearchExercise);
+inputWrapper.addEventListener("input", debounce(onSearchExercise, 500));
 
 // початковий список вправ Muscles  ----
 loader.create();
@@ -63,7 +66,7 @@ function handlerClickCategory(e) {
       span.innerHTML = '';
       items.innerHTML = markupCategories(data);
       items.addEventListener('click', handlerClickExercises);
-      input.classList.add("isHidden")
+      inputWrapper.classList.add("isHidden")
     })
     .catch(err => {
       console.error(err);
@@ -96,7 +99,7 @@ function handlerClickExercises(e) {
       // console.log(getData)
       items.innerHTML = markupExercises(data);
 
-      input.classList.remove("isHidden")
+      inputWrapper.classList.remove("isHidden")
 
       span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; // МАЄ ТУТ БУТИ?
 
@@ -120,7 +123,19 @@ function handlerClickExercises(e) {
 
 function onSearchExercise(evt) {
   const searchData = evt.target.value.trim().toLowerCase();
+
+
+
   const filteredData = getData.filter((item) => item.name.includes(searchData))
+  console.log(filteredData)
+
+  if (filteredData.length === 0) {
+    iziToast.show({
+      position: 'center',
+      color: 'red',
+      message: 'Oops! We have found nothing. Try again!',
+    });
+  }
 
   items.innerHTML = markupExercises(filteredData);
 }

@@ -6,8 +6,6 @@ import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
 
-
-console.log(debounce)
 let currentPage = 1;
 let category = "muscles";
 let getData = null;
@@ -123,16 +121,13 @@ function handlerClickExercises(e) {
 
 function onSearchExercise(evt) {
   const searchData = evt.target.value.trim().toLowerCase();
-
-
-
   const filteredData = getData.filter((item) => item.name.includes(searchData))
-  console.log(filteredData)
 
   if (filteredData.length === 0) {
     iziToast.show({
-      position: 'center',
+      position: 'topCenter',
       color: 'red',
+      timeout: 3000,
       message: 'Oops! We have found nothing. Try again!',
     });
   }

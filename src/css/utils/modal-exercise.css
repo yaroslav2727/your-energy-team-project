@@ -164,8 +164,11 @@
 .favorite_btn_icon{
     stroke: var(--color-primary);
     fill: var(--color-secondary);
-        background-color: transparent;
-        border: none;
+    background-color: transparent;
+    border: none;
+    transition: stroke var(--transition-time) var(--transition-function),
+                fill var(--transition-time) var(--transition-function);
+
 }
 .add_favorite_button:hover .favorite_btn_icon,
 .add_favorite_button:hover .favorite_btn_icon{
@@ -194,33 +197,41 @@
 .rating_star_filled{
     fill: var(--color-rating);
 }
-
+.modal_window_default_content{
+    display: flex;
+    flex-direction: column;
+}
+.hidden-icon{
+    display: none;
+}
 @media screen and (min-width: 768px) {
     .modal_window_default_content{
         width: 704px;
         min-height: auto;
         padding: 32px;
+        flex-direction: row;
         
     }
     .modal_window_content {
         width: 704px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         /* justify-content: space-evenly; */
         /* align-items: center; */
-        align-content: center;
+        /* align-content: center; */
         flex-wrap: wrap;
+        padding-left: 32px;
         }
-        .modal_text_content{
-            padding-left: 32px;
-        }
+        /* .modal_text_content{
+            
+        } */
         .modal_title{
             padding-top: 0;
             
         }
         .buttons_modal{
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             padding-top: 64px;
         }
         .modal_image_container{

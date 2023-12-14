@@ -61,6 +61,7 @@ function handlerClickCategory(e) {
 
       items.innerHTML = markupCategories(data);
       items.addEventListener('click', handlerClickExercises);
+      input.classList.add("isHidden")
     })
     .catch(err => {
       console.error(err);
@@ -90,8 +91,9 @@ function handlerClickExercises(e) {
     .then(response => {
       const data = response.results;
       getData = data;
-      console.log(getData)
+      // console.log(getData)
       items.innerHTML = markupExercises(data);
+      input.classList.remove("isHidden")
     })
     .catch(err => {
       console.error(err);

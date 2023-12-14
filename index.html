@@ -8,9 +8,9 @@
     <title>Your Energy</title>
     
     <script type="module" crossorigin src="/your-energy-team-project/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/activePageHeader-04e0478e.js">
+    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/themeBackground-5adaeb1c.js">
     <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/vendor-96017409.js">
-    <link rel="stylesheet" href="/your-energy-team-project/assets/activePageHeader-f1eae9a8.css">
+    <link rel="stylesheet" href="/your-energy-team-project/assets/themeBackground-d0c5380f.css">
     <link rel="stylesheet" href="/your-energy-team-project/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -39,11 +39,7 @@
         >
       </li>
       <li class="header-pages-item pg-favorites">
-        <a
-          class="header-pages-item-link header-pages-active2"
-          href="./favorites.html"
-          >Favorites</a
-        >
+        <a class="header-pages-item-link" href="./favorites.html">Favorites</a>
       </li>
     </ul>
     <ul class="header-social">
@@ -91,17 +87,20 @@
     </button>
   </div>
 </header>
-<div class="header-menu js-menu-container" id="mobile-menu">
-  <button
-    type="button"
-    class="menu-closed-btn menu-toggle js-close-menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-  >
-    <svg width="32" height="32">
-      <use href="/your-energy-team-project/assets/icons-d92c2285.svg#icon-x"></use>
-    </svg>
-  </button>
+<div class="header-menu js-menu-container">
+  <div class="mobile_menu">
+    <div class="mobile_menu--btn"></div>
+    <button
+      type="button"
+      class="menu-closed-btn menu-toggle js-close-menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="32" height="32">
+        <use href="/your-energy-team-project/assets/icons-d92c2285.svg#icon-x"></use>
+      </svg>
+    </button>
+  </div>
   <div class="header-mob-wrap">
     <ul class="header-mob-wrap-pages">
       <li class="mob-wrap-item">
@@ -153,7 +152,79 @@
 </div>
 
     <main>
-      
+      <section class="hero">
+  <div class="hero-container">
+    <div class="hero-content-wrap">
+      <div class="hero-head">
+        <h1 class="hero-header">
+          <img
+            src="../img/hero/hero-sun.svg"
+            alt="sun-icon"
+            width="60"
+            height="60"
+            class="hero-icon"
+          />
+          <span class="hero-header-span"
+            >Get <span class="hero-body">Body</span> in</span
+          ><br />
+          shape, Stay healthy
+        </h1>
+
+        <p class="hero-text">
+          Transform your physique and embrace a healthier lifestyle with our
+          comprehensive fitness and nutrition support.
+        </p>
+      </div>
+      <img
+        src="../img/hero/legs.jpg"
+        srcset="../img/hero/legs.jpg 1x, ../img/hero/legs.jpg 2x"
+        alt="women legs"
+        class="hero-hashtag-img"
+      />
+      <div class="hero-hashtag hero-hashtag-container">
+        <ul class="hero-hashtag-list">
+          <li class="hero-hashtag-item">
+            <div class="hero-hashtag-wrap">#Sport</div>
+          </li>
+          <li class="hero-hashtag-item">
+            <div class="hero-hashtag-wrap">#Healthy</div>
+          </li>
+          <li class="hero-hashtag-item hero__hash-item_pd">
+            <div class="hero-hashtag-wrap">#Workout</div>
+          </li>
+          <li class="hero-hashtag-item">
+            <div class="hero-hashtag-wrap">#Diet</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero-img-wrap">
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcset="../img/hero/hero.jpg 1x, ../img/hero/hero-2x.jpg 2x"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="../img/hero/hero.jpg 1x, ../img/hero/hero-2x.jpg 2x"
+          />
+          <source
+            media="(max-width: 767px)"
+            srcset="../img/hero/hero.jpg 1x, ../img/hero/hero-2x.jpg 2x"
+          />
+
+          <img
+            src="../img/hero/hero.jpg "
+            srcset="../img/hero/hero.jpg 1x, ../img/hero/hero-2x.jpg 2x"
+            alt="women stretch together"
+            class="hero-main-img"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
       <section class="filters">
   <div class="container">
     <div class="cat-filter">
@@ -342,90 +413,99 @@
 
 </div>
 </section>
+    <div class="backdrop is-hidden" data-modal>
+  <div class="modal">
     <div class="raiting container">
-  <a class="btn_close" href="">
-    <svg class="btn_close_svg">
-      <use href="../../img/sprite.svg#icon-close" width="24" height="24"></use>
-    </svg>
-  </a>
-  <h4 class="title">Rating</h4>
-  <div class="wripper">
-    <p class="rating" data-raiting>0.0</p>
-    <ul class="list">
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star" data-rating="5">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-    </ul>
+      <a class="btn_close" data-modal-close>
+        <svg class="btn_close_svg">
+          <use
+            href="../../img/sprite.svg#icon-close"
+            width="24"
+            height="24"
+          ></use>
+        </svg>
+      </a>
+      <h4 class="title">Rating</h4>
+      <div class="wripper">
+        <p class="rating" data-raiting>0.0</p>
+        <ul class="list">
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star" data-rating="5">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <form class="rating_form">
+        <input
+          class="rating_input"
+          name="email"
+          type="email"
+          placeholder="Email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+        />
+        <textarea
+          class="rating_textarea"
+          name="review"
+          placeholder="Your comment"
+        ></textarea>
+        <button class="rating_btn" type="submit">Send</button>
+      </form>
+    </div>
   </div>
-  <form class="rating_form">
-    <input
-      class="rating_input"
-      name="email"
-      type="email"
-      placeholder="Email"
-      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-    />
-    <textarea
-      class="rating_textarea"
-      name="review"
-      placeholder="Your comment"
-    ></textarea>
-    <button class="rating_btn" type="submit">Send</button>
-  </form>
 </div>
 
+    <button type="button" data-modal-open>Open modal</button>
 
     
   </body>

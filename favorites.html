@@ -8,8 +8,8 @@
     <title>Favorites</title>
     
     <script type="module" crossorigin src="/your-energy-team-project/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/activePageHeader-04e0478e.js">
-    <link rel="stylesheet" href="/your-energy-team-project/assets/activePageHeader-f1eae9a8.css">
+    <link rel="modulepreload" crossorigin href="/your-energy-team-project/assets/themeBackground-5adaeb1c.js">
+    <link rel="stylesheet" href="/your-energy-team-project/assets/themeBackground-d0c5380f.css">
   </head>
   <body>
     <header class="header">
@@ -32,9 +32,7 @@
     </div>
     <ul class="header-pages">
       <li class="header-pages-item pg-home">
-        <a class="header-item-link header-pages-active" href="./index.html"
-          >Home</a
-        >
+        <a class="header-item-link" href="./index.html">Home</a>
       </li>
       <li class="header-pages-item pg-favorites">
         <a
@@ -90,16 +88,20 @@
   </div>
 </header>
 <div class="header-menu js-menu-container" id="mobile-menu">
-  <button
-    type="button"
-    class="menu-closed-btn menu-toggle js-close-menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-  >
-    <svg width="32" height="32">
-      <use href="/your-energy-team-project/assets/icons-d92c2285.svg#icon-x"></use>
-    </svg>
-  </button>
+  <div class="mobile_menu">
+    <div class="mobile_menu--btn"></div>
+    <button
+      type="button"
+      class="menu-closed-btn menu-toggle js-close-menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="32" height="32">
+        <use href="/your-energy-team-project/assets/icons-d92c2285.svg#icon-x"></use>
+      </svg>
+    </button>
+  </div>
+
   <div class="header-mob-wrap">
     <ul class="header-mob-wrap-pages">
       <li class="mob-wrap-item">
@@ -187,88 +189,96 @@
 
 </div>
 </section> -->
-    <!-- <div class="raiting container">
-  <a class="btn_close" href="">
-    <svg class="btn_close_svg">
-      <use href="../../img/sprite.svg#icon-close" width="24" height="24"></use>
-    </svg>
-  </a>
-  <h4 class="title">Rating</h4>
-  <div class="wripper">
-    <p class="rating" data-raiting>0.0</p>
-    <ul class="list">
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-      <li class="item">
-        <a class="btn_star" data-rating="5">
-          <svg class="btn_star_svg">
-            <use
-              href="../../img/sprite.svg#icon-star"
-              width="24"
-              height="24"
-            ></use>
-          </svg>
-        </a>
-      </li>
-    </ul>
+    <!-- <div class="backdrop is-hidden" data-modal>
+  <div class="modal">
+    <div class="raiting container">
+      <a class="btn_close" data-modal-close>
+        <svg class="btn_close_svg">
+          <use
+            href="../../img/sprite.svg#icon-close"
+            width="24"
+            height="24"
+          ></use>
+        </svg>
+      </a>
+      <h4 class="title">Rating</h4>
+      <div class="wripper">
+        <p class="rating" data-raiting>0.0</p>
+        <ul class="list">
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <li class="item">
+            <a class="btn_star" data-rating="5">
+              <svg class="btn_star_svg">
+                <use
+                  href="../../img/sprite.svg#icon-star"
+                  width="24"
+                  height="24"
+                ></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <form class="rating_form">
+        <input
+          class="rating_input"
+          name="email"
+          type="email"
+          placeholder="Email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+        />
+        <textarea
+          class="rating_textarea"
+          name="review"
+          placeholder="Your comment"
+        ></textarea>
+        <button class="rating_btn" type="submit">Send</button>
+      </form>
+    </div>
   </div>
-  <form class="rating_form">
-    <input
-      class="rating_input"
-      name="email"
-      type="email"
-      placeholder="Email"
-      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-    />
-    <textarea
-      class="rating_textarea"
-      name="review"
-      placeholder="Your comment"
-    ></textarea>
-    <button class="rating_btn" type="submit">Send</button>
-  </form>
 </div>
  -->
 

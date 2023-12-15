@@ -5,7 +5,7 @@ import { mockFavoritesData } from './mockData';
 import { Storage } from './Storage';
 import { FAVORITES_STORAGE_KEY } from './favoritesConfig';
 
-const FAVORITES_PER_PAGE = 5;
+const FAVORITES_PER_PAGE = 6;
 
 const listRef = document.querySelector('.js-favorites-list');
 const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');

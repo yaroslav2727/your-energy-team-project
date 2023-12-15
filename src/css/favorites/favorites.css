@@ -134,10 +134,9 @@
   }
 
   .favorites__list-wrapper {
-    padding-right: 16px;
+    /* padding-right: 16px;
     max-height: 487px;
-
-    overflow-y: auto;
+    overflow-y: auto; */
   }
 
   .favorites__list-wrapper::-webkit-scrollbar {

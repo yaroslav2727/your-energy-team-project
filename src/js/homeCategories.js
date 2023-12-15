@@ -168,5 +168,4 @@ function onDeleteSearchData() {
 function switchIcons() {
   iconSearch.classList.toggle("isHidden")
   iconClose.classList.toggle("isHidden")
-
 }

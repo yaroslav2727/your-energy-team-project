@@ -57,3 +57,24 @@
     margin-right: 30px;
   }
 }
+
+/* =============== DARK MODE THEME =============== */
+
+body.dark_mode .input-filter-exercises {
+  border-color: var(--darkmode-secondary-heavy);
+  color: var(--darkmode-secondary-heavy);
+  outline: var(--color-rating);
+}
+body.dark_mode .input-filter-exercises:focus {
+  border-color: var(--color-rating);
+  /* background-color: var(--darkmode-secondary-light); */
+}
+
+body.dark_mode .input-filter-exercises::placeholder {
+  color: var(--darkmode-secondary-heavy);
+}
+
+body.dark_mode .filter-icon-search,
+body.dark_mode .filter-icon-close {
+  stroke: var(--darkmode-secondary-heavy);
+}

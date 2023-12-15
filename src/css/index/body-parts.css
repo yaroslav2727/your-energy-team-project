@@ -1,19 +1,7 @@
-/* .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-} */
-
 .exercises-item {
-  /* display: flex;
-  flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   padding: 16px;
-
-  /* min-width: 325px;
-  max-width: 375px; */
   height: 141px;
   background-color: var(--color-white);
   border-radius: 15px;
@@ -26,7 +14,6 @@
 
 .exercises-item-header {
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
@@ -41,11 +28,8 @@
   height: 26px;
   border: 1px solid var(--color-primary);
   border-radius: 15px;
-
   color: var(--color-primary);
-  /* font-family: DM Sans; */
   font-size: 12px;
-  /* font-style: normal; */
   font-weight: 500;
   line-height: normal;
 }
@@ -140,7 +124,7 @@
 
 .exercises-icon-arrow {
   stroke: var(--color-primary);
-  /* fill: var(--color-primary); */
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -170,4 +154,34 @@
   .exercises-data-list {
     gap: 16px;
   }
+}
+
+/* =============== DARK MODE THEME =============== */
+
+body.dark_mode .exercises-item {
+  background-color: var(--darkmode-secondary-light);
+}
+
+body.dark_mode .exercises-text,
+body.dark_mode .exercises-name,
+body.dark_mode .exercises-btn,
+body.dark_mode .exercises-rating,
+body.dark_mode .exercises-data-info,
+body.dark_mode .exercises-data-item {
+  color: var(--darkmode-secondary-heavy);
+}
+
+body.dark_mode .exercises-icon-runner {
+  fill: var(--darkmode-background);
+}
+
+body.dark_mode .exercises-icon-arrow {
+  stroke: var(--darkmode-secondary-heavy);
+}
+
+body.dark_mode .exercises-data-info {
+  color: var(--darkmode-secondary-shade);
+}
+body.dark_mode .exercises-text {
+  border-color: var(--darkmode-secondary-heavy);
 }

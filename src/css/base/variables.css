@@ -17,6 +17,10 @@
   --color-subtle: #c6cdd1;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-modal-backdrop: #04040466; /* 40% */
+
+  --color-background-darkmode: #0F0F0F;
+  --color-modal-backdrop-darkmode: #04040466; /* 60% */
 
   /* BORDER RADIUS */
   --radius-circle: 50%;

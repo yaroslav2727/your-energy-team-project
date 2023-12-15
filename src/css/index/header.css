@@ -1,6 +1,5 @@
 .dark_mode {
   background-color: var(--color-black);
-  transition: background-color 500ms var(--transition-function);
 }
 .mobile_menu {
   display: flex;
@@ -209,7 +208,7 @@ body.dark_mode .header-burger-img {
 
   /*============ Background Theme ================ */
   .dark_mode {
-    background-color: var(--color-black);
+    background-color: var(--color-background-darkmode);
   }
 
   .change_theme--btn {

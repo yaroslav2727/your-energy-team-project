@@ -23,7 +23,7 @@
 }
 
 body.dark_mode .filter-icon-search {
-  stroke: var(--color-secondary);
+  stroke: var(--darkmode-secondary);
 }
 
 .filter-icon-close {
@@ -37,7 +37,7 @@ body.dark_mode .filter-icon-search {
 }
 
 body.dark_mode .filter-icon-close {
-  stroke: var(--color-secondary);
+  stroke: var(--darkmode-secondary);
 }
 
 .filter {
@@ -59,7 +59,7 @@ body.dark_mode .filter-icon-close {
 }
 
 body.dark_mode .filter-btn {
-  color: var(--color-secondary);
+  color: var(--darkmode-secondary);
 }
 
 .active::after {
@@ -74,8 +74,8 @@ body.dark_mode .filter-btn {
 }
 
 body.dark_mode .active::after {
-  color: var(--color-secondary);
-  background-color: var(--color-secondary);
+  color: var(--darkmode-secondary);
+  background-color: var(--darkmode-secondary);
 }
 
 .cat-title {
@@ -90,7 +90,7 @@ body.dark_mode .active::after {
 }
 
 body.dark_mode .cat-title {
-  color: var(--color-secondary);
+  color: var(--darkmode-secondary);
 }
 
 .cat-title-span {
@@ -101,7 +101,7 @@ body.dark_mode .cat-title {
 }
 
 body.dark_mode .cat-title-span {
-  color: var(--color-secondary-medium);
+  color: var(--darkmode-secondary-medium);
 }
 
 .cat-title-text {
@@ -113,7 +113,7 @@ body.dark_mode .cat-title-span {
 }
 
 body.dark_mode .cat-title-text {
-  color: var(--color-secondary);
+  color: var(--darkmode-secondary);
 }
 
 @media screen and (min-width: 768px) {

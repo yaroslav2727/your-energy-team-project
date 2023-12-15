@@ -26,28 +26,28 @@ mockFavoritesData.forEach(card => {
   favoritesStorage.addCard(card);
 });
 
-const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
-const tempPageIncrease = document.querySelector('.js-temp-page-up');
-const tempPageDecrease = document.querySelector('.js-temp-page-down');
+// const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
+// const tempPageIncrease = document.querySelector('.js-temp-page-up');
+// const tempPageDecrease = document.querySelector('.js-temp-page-down');
 
-let tempCount = 1111;
-tempAddBtnRef.addEventListener('click', e => {
-  // const cardId = e.target.dataset.cardId;
-  const card = {
-    _id: tempCount++,
-    burnedCalories: '312',
-    time: '3',
-    name: 'Test card19-new',
-    bodyPart: 'Waist',
-    target: 'Abs',
-  };
+// let tempCount = 1111;
+// tempAddBtnRef.addEventListener('click', e => {
+//   // const cardId = e.target.dataset.cardId;
+//   const card = {
+//     _id: tempCount++,
+//     burnedCalories: '312',
+//     time: '3',
+//     name: 'Test card19-new',
+//     bodyPart: 'Waist',
+//     target: 'Abs',
+//   };
 
-  favoritesStorage.addCard(card);
-  updateData();
-});
+//   favoritesStorage.addCard(card);
+//   updateData();
+// });
 
-tempPageIncrease.addEventListener('click', pageState.increase);
-tempPageDecrease.addEventListener('click', pageState.decrease);
+// tempPageIncrease.addEventListener('click', pageState.increase);
+// tempPageDecrease.addEventListener('click', pageState.decrease);
 //TEMP----------------------
 
 listRef.addEventListener('click', e => {

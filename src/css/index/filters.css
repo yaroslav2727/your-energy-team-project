@@ -59,6 +59,10 @@ body.dark_mode .filter-icon-close {
 }
 
 body.dark_mode .filter-btn {
+  color: var(--darkmode-secondary-medium);
+}
+
+body.dark_mode .filter-btn:hover  {
   color: var(--darkmode-secondary);
 }
 
@@ -71,6 +75,10 @@ body.dark_mode .filter-btn {
   background-color: var(--color-primary);
   position: static;
   color: var(--color-primary);
+}
+
+body.dark_mode .active {
+  color: var(--darkmode-secondary);
 }
 
 body.dark_mode .active::after {

@@ -86,7 +86,6 @@
         color var(--transition-time) var(--transition-function),
         border var(--transition-time) var(--transition-function);
     font-size: 14px;
-    font-weight: 400;
     line-height: 18px;
     border: 1px solid var(--color-secondary);
 
@@ -112,7 +111,6 @@
             color var(--transition-time) var(--transition-function),
             border var(--transition-time) var(--transition-function);
     font-size: 14px;
-    font-weight: 400;
     line-height: 18px;
 }
 .rate_button:hover,
@@ -190,7 +188,6 @@
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 12px;
     font-style: normal;
-    font-weight: 400;
     line-height: 18px;
 }
 .rating_modal_wrapper {

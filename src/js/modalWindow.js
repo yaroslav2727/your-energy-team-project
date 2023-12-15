@@ -1,6 +1,8 @@
 import iziToast from "izitoast";
 import { getExerciseById } from "./api/api";
 import { loader } from "./utils/loader";
+import { FavoritesStorage } from "./favorites/FavoritesStorage";
+import { FAVORITES_STORAGE_KEY } from "./favorites/favoritesConfig";
 
 const cardsList = document.querySelector(".cards");
 const contentUpdate = document.querySelector(".excercise_units");
@@ -13,22 +15,35 @@ const excerciseName = document.querySelector(".modal_title");
 const excerciseRating = document.querySelector(".excercise_rating");
 const star = document.querySelectorAll(".star_item");
 const image = document.querySelector(".modal_image");
+let cardState = null
+const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY)
 
 cardsList.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', clickToClose);
 giveRatingButton.addEventListener('click', openRateModal);
-addFavoriteBtn.addEventListener('click', showIcon);
+addFavoriteBtn.addEventListener('click', addFavoriteAction);
 
-function showIcon() {
-    let trashIcon = document.querySelector(".trash")
-    let heartIcon = document.querySelector(".heart")
-    trashIcon.classList.toggle("hidden-icon")
-    heartIcon.classList.toggle("hidden-icon")
+function addFavoriteAction() {
+    if (!cardState) return
+    if (storage.isCardExisted(cardState._id)) {
+        storage.removeCard(cardState._id)
+    }
+    else {
+        storage.addCard(cardState);        
+    }
+
+}
+
+// function showIcon() {
+//         let trashIcon = document.querySelector(".trash")
+    // let heartIcon = document.querySelector(".heart")
+    // trashIcon.classList.toggle("hidden-icon")
+    // heartIcon.classList.toggle("hidden-icon")
     // addFavoriteBtn.classList.toggle("button-text")
     // if (addFavoriteBtn.classList.contains("button-text"))
     // {   
     //             } else {addFavoriteBtn.textContent = `Remove from Favorite `}
-}
+// }
 
 function editName(elem) {
     if (elem === null || undefined) {
@@ -135,6 +150,8 @@ function openModal(e) {
             editRating(resp.rating);
             colorizeStars(resp.rating);
             updateImage(resp.gifUrl, resp.name);
+            cardState = resp
+            console.log(resp)
     }
     )
         .catch(err => {

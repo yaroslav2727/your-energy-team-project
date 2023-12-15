@@ -59,7 +59,7 @@
   border-style: none;
   margin-right: 8px;
 
-  color: var(--color-primary);
+  color: inherit;
 
   /* font-family: DM Sans; */
   font-size: 14px;
@@ -114,6 +114,18 @@
 .exercises-btn-wrapper {
   display: flex;
   align-items: center;
+  padding: 3px 6px;
+  border-radius: var(--radius-medium);
+  transition: all var(--transition-time) var(--transition-function);
+}
+
+.exercises-btn-wrapper:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.exercises-btn-wrapper:hover .exercises-icon-arrow {
+  stroke: var(--color-secondary);
 }
 
 .exercises-name-span {
@@ -159,7 +171,8 @@
 /* =============== DARK MODE THEME =============== */
 
 body.dark_mode .exercises-item {
-  background-color: var(--darkmode-secondary-light);
+  background-color: var(--darkmode-background);
+  border: 1px solid var(--darkmode-secondary);
 }
 
 body.dark_mode .exercises-text,
@@ -168,7 +181,7 @@ body.dark_mode .exercises-btn,
 body.dark_mode .exercises-rating,
 body.dark_mode .exercises-data-info,
 body.dark_mode .exercises-data-item {
-  color: var(--darkmode-secondary-heavy);
+  color: var(--darkmode-secondary);
 }
 
 body.dark_mode .exercises-icon-runner {
@@ -176,11 +189,11 @@ body.dark_mode .exercises-icon-runner {
 }
 
 body.dark_mode .exercises-icon-arrow {
-  stroke: var(--darkmode-secondary-heavy);
+  stroke: var(--darkmode-secondary);
 }
 
 body.dark_mode .exercises-data-info {
-  color: var(--darkmode-secondary-shade);
+  color: var(--darkmode-secondary-heavy);
 }
 body.dark_mode .exercises-text {
   border-color: var(--darkmode-secondary-heavy);

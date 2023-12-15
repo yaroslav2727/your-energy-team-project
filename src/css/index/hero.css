@@ -81,6 +81,11 @@
   line-height: 1.28;
 }
 
+body.dark_mode .hero-hashtag-item {
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
 @media (min-width: 768px) {
   .hero-hashtag-item {
     font-size: 16px;
@@ -119,6 +124,11 @@
   letter-spacing: -0.76px;
   padding-bottom: 20px;
 }
+
+body.dark_mode .hero-header {
+  color: var(--color-secondary);
+}
+
 @media (min-width: 768px) {
   .hero-header {
     font-size: 74px;
@@ -147,6 +157,10 @@
   vertical-align: middle;
 }
 
+body.dark_mode .hero-icon {
+  fill: var(--color-secondary);
+}
+
 @media (min-width: 768px) {
   .hero-icon {
     width: 59px;
@@ -165,6 +179,10 @@
   font-weight: 400;
   line-height: 1.285;
   letter-spacing: -0.28px;
+}
+
+body.dark_mode .hero-text {
+  color: var(--color-secondary);
 }
 
 @media (min-width: 768px) {

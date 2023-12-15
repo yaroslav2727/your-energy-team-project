@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.2",
+    "debounce": "^2.0.0",
     "izitoast": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "vite-plugin-full-reload": "^1.0.5",

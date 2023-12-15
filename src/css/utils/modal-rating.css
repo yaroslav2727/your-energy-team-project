@@ -101,9 +101,14 @@
 }
 .btn_star{
   background-color:  #242424;
+ 
 }
 .btn_star:hover{
   cursor: pointer;
+}
+.btn_star:hover .btn_star_svg{
+  /* fill: #EEA10C;
+  stroke: #EEA10C; */
 }
 
 .btn_star_svg{
@@ -115,7 +120,9 @@
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.btn_star-active:hover{
+  cursor: pointer;
+}
 .btn_star-active .btn_star_svg{
   width: 24px;
   height: 24px;
@@ -124,11 +131,6 @@
 
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn_star:hover .btn_star_svg{
- fill: #EEA10C;
-  stroke: #EEA10C;
 }
 
 .rating_form{

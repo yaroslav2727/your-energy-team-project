@@ -9,7 +9,7 @@ export class FavoritesStorage extends Storage {
   }
 
   addCard(card) {
-    if (this.#isCardExisted(card._id)) return;
+    if (this.isCardExisted(card._id)) return;
 
     this.#list.push(card);
     this.setToStorage(this.#list);
@@ -37,7 +37,7 @@ export class FavoritesStorage extends Storage {
     return { data, totalCount: this.#list.length, page };
   }
 
-  #isCardExisted(id) {
+  isCardExisted(id) {
     return this.#list.some(({ _id }) => _id === id);
   }
 

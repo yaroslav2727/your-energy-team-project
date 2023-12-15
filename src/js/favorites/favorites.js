@@ -16,9 +16,9 @@ const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 const pageState = createPageState(1, updateData);
 
 //TEMP----------------------
-mockFavoritesData.forEach(card => {
-  favoritesStorage.addCard(card);
-});
+// mockFavoritesData.forEach(card => {
+//   favoritesStorage.addCard(card);
+// });
 
 const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
 const tempPageIncrease = document.querySelector('.js-temp-page-up');

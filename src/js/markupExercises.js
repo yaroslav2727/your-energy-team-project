@@ -1,4 +1,4 @@
-import { cutExerciseName, roundingRating, cutDataCardsInfo } from "./cutDataCardsInfo"
+import { cutExerciseName, correctRating, cutDataCardsInfo } from "./cutDataCardsInfo"
 
 
 
@@ -10,7 +10,7 @@ export function markupExercises(data) {
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
-				<p class="exercises-rating">${roundingRating(rating)}</p>
+				<p class="exercises-rating">${correctRating(rating)}</p>
 				<span class="exercises-name-span">
 					<svg class="exercises-icon-star-rating" width="16" height="16">
 					<use href="././img/icons.svg#icon-star-rating"></use>

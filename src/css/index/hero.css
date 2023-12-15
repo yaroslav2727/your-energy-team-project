@@ -88,6 +88,10 @@
   }
 }
 
+body.dark_mode .hero-hashtag-item {
+  border: 1px solid var(--darkmode-secondary);
+}
+
 .hero-hashtag-img {
   display: inline-flex;
   margin-bottom: 0px;
@@ -122,8 +126,6 @@
 @media (min-width: 768px) {
   .hero-header {
     font-size: 74px;
-    font-style: normal;
-    font-weight: 400;
     line-height: 74px;
     letter-spacing: -1.48px;
   }
@@ -147,6 +149,10 @@
   vertical-align: middle;
 }
 
+body.dark_mode .hero-icon {
+  fill: var(--darkmode-secondary);
+}
+
 @media (min-width: 768px) {
   .hero-icon {
     width: 59px;
@@ -161,8 +167,6 @@
 
 .hero-text {
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 1.285;
   letter-spacing: -0.28px;
 }

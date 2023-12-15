@@ -2,55 +2,100 @@ import { getExerciseById } from "./api/api";
 import { loader } from "./utils/loader";
 
 const cardsList = document.querySelector(".cards");
-const contentUpdate = document.querySelector(".modal_window_update");
+const contentUpdate = document.querySelector(".excercise_units");
 const modalExcercise = document.querySelector(".modal_window_container");
 const closeModalButton = document.querySelector(".close_modal_button");
 const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
 const addFavoriteBtn = document.querySelector(".add_favorite_button")
+const excerciseName = document.querySelector(".modal_title")
+const excerciseRating = document.querySelector(".excercise_rating")
+const star = document.querySelectorAll(".star_item")
+const image = document.querySelector(".modal_image")
 
 cardsList.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', clickToClose);
 giveRatingButton.addEventListener('click', openRateModal);
 addFavoriteBtn.addEventListener('click', showIcon)
 
-function showIcon() {
-    let trashIcon = document.querySelector(".trash")
-    let heartIcon = document.querySelector(".heart")
-    trashIcon.classList.toggle("hidden-icon")
-    heartIcon.classList.toggle("hidden-icon")
-    addFavoriteBtn.classList.toggle("button-text")
-    if (addFavoriteBtn.classList.contains("button-text"))
-    {   
-                } else {addFavoriteBtn.textContent = `Remove from Favorite `}
+// function showIcon() {
+//     let trashIcon = document.querySelector(".trash")
+//     let heartIcon = document.querySelector(".heart")
+//     trashIcon.classList.toggle("hidden-icon")
+//     heartIcon.classList.toggle("hidden-icon")
+//     addFavoriteBtn.classList.toggle("button-text")
+    // if (addFavoriteBtn.classList.contains("button-text"))
+    // {   
+    //             } else {addFavoriteBtn.textContent = `Remove from Favorite `}
+// }
 
+function editName(elem) {
+    if (elem === null || undefined) {
+        return
+    }
+    else {
+        excerciseName.textContent = elem
+    }
+}
+
+function editRating(rating) {
+    if (rating === null || undefined) {
+        return
+    }
+    else {
+        let newRating = rating.toFixed(1)
+        excerciseRating.textContent = newRating
+    }
+}
+
+function colorizeStars(rating) {
+    let firstStar = document.querySelector(".first_star");
+    let secondStar = document.querySelector(".second_star");
+    let thirdStar = document.querySelector(".third_star");
+    let fourthStar = document.querySelector(".fourth_star");
+    let fifthStar = document.querySelector(".fifth_star");
+    if (rating === 5) {
+        firstStar.classList.add('rating_star_filled');
+        secondStar.classList.add('rating_star_filled');
+        thirdStar.classList.add('rating_star_filled');
+        fourthStar.classList.add('rating_star_filled');
+        fifthStar.classList.add('rating_star_filled');
+    }
+    else if (rating >= 4) {
+        firstStar.classList.add('rating_star_filled');
+        secondStar.classList.add('rating_star_filled');
+        thirdStar.classList.add('rating_star_filled');
+        fourthStar.classList.add('rating_star_filled');
+    }
+    else if (rating >= 3) {
+        firstStar.classList.add('rating_star_filled');
+        secondStar.classList.add('rating_star_filled');
+        thirdStar.classList.add('rating_star_filled');
+    }
+    else if (rating >= 2) {
+        firstStar.classList.add('rating_star_filled');
+        secondStar.classList.add('rating_star_filled');
+    }
+    else if (rating >= 1) {
+        firstStar.classList.add('rating_star_filled');
+    }
+    else{return}
 }
 
 
-
-
-
-function showDecimal(data) {
-       
-    return `${data.toFixed(1)}`
+function updateImage(imgUrl,alt) {
+    if (imgUrl === null || undefined) {
+        return
     }
+    else {
+        image.src = imgUrl;
+        image.alt = alt;
+    }
+}
 
-function markupModal({ gifUrl, time, name, bodyPart, equipment, target, description, rating, burnedCalories, popularity }) {
+function markupModal({ time, bodyPart, equipment, target, description, burnedCalories, popularity }) {
 
-    return `<div class="modal_window_content">
-<div class="modal_image_container"><img class ="modal_image" src="${gifUrl}" alt="${name}">
-</div>
-<div class="modal_text_content"><h3 class="modal_title">${name}</h3>
-<div class="rating_modal_wrapper"><p class = "excercise_rating">${showDecimal(rating)}</p>
-<ul class="list stars_list">
-    <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
-     <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
-      <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
-       <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
-        <li class="rating_item"><a class="star_item"><svg height="24" width="24" class="rating_star_modal"><use href="./img/icons.svg#icon-star-rating"></use></svg></a></li>
-    </ul></div>
-<ul class="excercise_units">
-<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
+    return `<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
         <p class="excercise_text">${bodyPart}</p></li>
  <li class="excercise_item"><h4 class="excercise_title">Equipment</h4>
@@ -60,9 +105,7 @@ function markupModal({ gifUrl, time, name, bodyPart, equipment, target, descript
         <li class="excercise_item"><h4 class="excercise_title">Burned calories</h4>
         <p class="excercise_text">${burnedCalories}/${time} min</p></li>
         <p class="modal_text">${description}</p>
-
-</ul></div>
-</div >`;
+`;
 };
 
 function openRateModal() {
@@ -81,17 +124,21 @@ function openModal(e) {
 
     const cardId = card.dataset.exerciseId;
 
-    // loader.create()
+    loader.create()
 
-    // getExerciseById(cardId)
-    //     .then(resp => {
-    //     const modalMarkup = markupModal(resp);
-    //     contentUpdate.innerHTML = modalMarkup;
-    // }
-    // )
-    //     .finally(() => {
-    //         loader.destroy();
-    // })
+    getExerciseById(cardId)
+        .then(resp => {
+        const modalMarkup = markupModal(resp);
+            contentUpdate.innerHTML = modalMarkup;
+            editName(resp.name)
+            editRating(resp.rating)
+            colorizeStars(resp.rating)
+            updateImage(resp.gifUrl,resp.name)
+    }
+    )
+        .finally(() => {
+            loader.destroy();
+    })
     giveRatingButton.setAttribute('data-Id', cardId);
 
     modalExcercise.classList.remove("is-hidden");

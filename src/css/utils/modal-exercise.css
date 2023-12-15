@@ -175,6 +175,18 @@
     stroke: var(--color-secondary);
     fill: var(--color-primary);
 }
+
+.add_favorite_button::after{
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+}
+
+.add_favorite_button::after .favorite_btn_icon,
+.add_favorite_button::after .favorite_btn_icon {
+    stroke: var(--color-primary);
+    fill: var(--color-secondary);
+    }
 .excercise_rating {
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 12px;
@@ -235,7 +247,8 @@
             padding-top: 64px;
         }
         .modal_image_container{
-            height:inherit
+            min-width: 270px;
+            height:inherit;
         }
         
         }

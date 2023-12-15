@@ -160,7 +160,7 @@
 }
 .favorite_btn_icon{
     stroke: var(--color-primary);
-    fill: var(--color-secondary);
+    fill: currentColor;
     background-color: transparent;
     border: none;
     transition: stroke var(--transition-time) var(--transition-function),

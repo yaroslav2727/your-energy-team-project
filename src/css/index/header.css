@@ -254,6 +254,15 @@ body.dark_mode .header-burger-img {
     display: flex;
   }
 
+  body.dark_mode .social-link {
+    border: 1px solid var(--darkmode-secondary-shade);
+    transition: border-color var(--transition-time) var(--transition-function);
+  }
+
+  body.dark_mode .social-link:hover {
+    border-color: var(--darkmode-secondary);
+  }
+
   .decor-theme {
     display: flex;
     gap: 8px;

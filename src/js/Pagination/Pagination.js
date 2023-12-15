@@ -4,13 +4,14 @@ export default class Pagination {
   #page;
   #totalItems;
   #perPage;
-  constructor(container) {
+  constructor(container, { perPage }) {
     this.refs = {
       container: container,
     };
 
     this.#totalItems = 1;
-    this.#perPage = 20;
+    // this.#perPage = 20;
+    this.#perPage = perPage || 10;
     this.#page = 1;
 
     this.refs.container.addEventListener('click', this.#onPageClick.bind(this));
@@ -84,7 +85,7 @@ export default class Pagination {
 
     const windowInnerWidth = window.innerWidth;
     // console.log();
-    let nearbyQtyPages = 2;
+    let nearbyQtyPages = 1;
     if (windowInnerWidth < 480) {
       nearbyQtyPages = 1;
     }
@@ -95,18 +96,23 @@ export default class Pagination {
                 </svg>`;
     //SVG
 
+    //--------------------------------------------------------------------------------------------------
+    //PREV
     if (currentPage > 4) {
       string += `<a class="pag__page pag__btn pag__btn--prev" href="#" data-value="${
         currentPage - 1
       }"></a>`;
     }
+
     for (let i = 1; i <= end; i++) {
+      //CURRENT PAGE
       if (i === currentPage) {
         string += `<a class="pag__page pag__page--current-number" href="#" data-value="${currentPage}">${currentPage}</a>`;
         continue;
       }
 
-      if (i > 1 && i < currentPage - nearbyQtyPages) {
+      //LEFT DOTS
+      if (i > 1 && i < currentPage - nearbyQtyPages - 1) {
         string += `<a class="pag__page pag__page--dots pag__btn--dots-prev hovered" href="#" data-value="${
           currentPage - 4
         }">
@@ -117,7 +123,8 @@ export default class Pagination {
         continue;
       }
 
-      if (i > currentPage + nearbyQtyPages && i <= end - 1) {
+      //RIGHT DOTS
+      if (i > currentPage + nearbyQtyPages && i < end - 1) {
         string += `<a class="pag__page pag__page--dots pag__btn--dots-next hovered" href="#" data-value="${
           currentPage + 4
         }">
@@ -128,13 +135,17 @@ export default class Pagination {
         continue;
       }
 
+      //LAST PAGE MORE THAN 4 digits
       if (i === end && end > 9999) {
         string += `<a class="pag__page hovered" href="#" data-value="${i}">Last page</a>`;
         continue;
       }
 
+      //OTHER PAGES
       string += `<a class="pag__page hovered" href="#" data-value="${i}">${i}</a>`;
     }
+
+    //NEXT
     if (currentPage <= end - 4) {
       string += `<a class="pag__page pag__btn pag__btn--next" href="#" data-value="${
         currentPage + 1
@@ -164,10 +175,10 @@ export default class Pagination {
   }
 
   getLastPageNumber() {
-    // return Math.ceil(Number(this.#totalItems) / Number(this.#perPage));
-    const lastPageNumber = Math.ceil(
-      Number(this.#totalItems) / Number(this.#perPage)
-    );
-    return lastPageNumber <= 500 ? lastPageNumber : 500;
+    return Math.ceil(Number(this.#totalItems) / Number(this.#perPage));
+    // const lastPageNumber = Math.ceil(
+    //   Number(this.#totalItems) / Number(this.#perPage)
+    // );
+    // return lastPageNumber <= 500 ? lastPageNumber : 500;
   }
 }

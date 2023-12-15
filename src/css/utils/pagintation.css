@@ -1,6 +1,6 @@
 .pagination {
   padding-bottom: 40px;
-  background-color: var(--main-background-color);
+  background-color: #ffffff;
 }
 
 .pag {
@@ -17,7 +17,7 @@
 
 /* ------------------------------------------------------ */
 .pag__btn {
-  background-color: var(--arrow-pagination-color);
+  background-color: #f7f7f7;
   background-position: center;
   background-repeat: no-repeat;
 
@@ -69,7 +69,10 @@
 /* ------------------------------------------------------ */
 
 .pag__page {
-  @extend %flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -112,16 +115,16 @@
 }
 
 .pag__page.hovered:hover {
-  border: 1px solid var(--accent);
+  border: 1px solid #ff6b08;
 }
 
 .pag__icon {
   fill: none;
-  stroke: var(--main-text);
+  stroke: #333333;
 }
 
 @media screen and (min-width: 768px) {
   .pag {
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
   }
 }

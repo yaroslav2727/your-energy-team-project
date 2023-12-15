@@ -3,22 +3,28 @@ import { createCardMarkup } from './createCardMarkup';
 import { FavoritesStorage } from './FavoritesStorage';
 import { mockFavoritesData } from './mockData';
 import { Storage } from './Storage';
-import { FAVORITES_STORAGE_KEY } from './favoritesConfig';
-
-const FAVORITES_PER_PAGE = 6;
+import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from './favoritesConfig';
+import Pagination from '../Pagination/Pagination';
 
 const listRef = document.querySelector('.js-favorites-list');
 const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
+const paginationContainer = document.querySelector('.pag');
 
 //-------------------------------
 const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
-
+const pagination = new Pagination(paginationContainer, {
+  perPage: FAVORITES_PER_PAGE,
+});
 const pageState = createPageState(1, updateData);
 
+pagination.on('aftermove', event => {
+  pageState.setPage(event.page);
+});
+
 //TEMP----------------------
-// mockFavoritesData.forEach(card => {
-//   favoritesStorage.addCard(card);
-// });
+mockFavoritesData.forEach(card => {
+  favoritesStorage.addCard(card);
+});
 
 const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
 const tempPageIncrease = document.querySelector('.js-temp-page-up');
@@ -64,6 +70,10 @@ function updateData() {
   );
   console.log(response);
   render(response.data);
+
+  pagination.updateTotalItems(response.totalCount);
+  pagination.goToPage(response.page);
+  pagination.render();
 }
 
 function render(list) {
@@ -93,6 +103,12 @@ function createPageState(initialPage, handler) {
 
     decrease() {
       page--;
+      storage.setToStorage(page);
+      handler();
+    },
+
+    setPage(newPage) {
+      page = newPage;
       storage.setToStorage(page);
       handler();
     },

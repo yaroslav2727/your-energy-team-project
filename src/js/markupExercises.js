@@ -12,19 +12,17 @@ export function markupExercises(data) {
 				<p class="exercises-text">WORKOUT</p>
 				<p class="exercises-rating">${roundingRating(rating)}</p>
 				<span class="exercises-name-span">
-				<svg class="exercises-icon-star-rating" width="16" height="16">
-                  <use href="././img/icons.svg#icon-star-rating"></use>
-                </svg>
-			</span>
-			</div>
-			<div class="exercises-btn-wrapper">
-				<button type="button" class="exercises-btn js-excercise-button">Start</button>
-				<span class="exercises-name-span">
-					<svg class="exercises-icon-arrow" width="16" height="16">
-						<use href="././img/icons.svg#icon-arrow"></use>
+					<svg class="exercises-icon-star-rating" width="16" height="16">
+					<use href="././img/icons.svg#icon-star-rating"></use>
 					</svg>
 				</span>
 			</div>
+			
+			<button type="button" class="exercises-btn js-excercise-button">Start					
+				<svg class="exercises-icon-arrow" width="16" height="16">
+					<use href="././img/icons.svg#icon-arrow"></use>
+				</svg>
+			</button>
 		</div>
 
 		<div class="exercises-title">
@@ -57,3 +55,5 @@ export function markupExercises(data) {
 		.join('');
 }
 
+{/* <div class="exercises-btn-wrapper"></div> */ }
+{/* <span class="exercises-name-span"></span> */ }

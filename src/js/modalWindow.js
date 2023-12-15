@@ -1,3 +1,4 @@
+import iziToast from "izitoast";
 import { getExerciseById } from "./api/api";
 import { loader } from "./utils/loader";
 
@@ -7,34 +8,34 @@ const modalExcercise = document.querySelector(".modal_window_container");
 const closeModalButton = document.querySelector(".close_modal_button");
 const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
-const addFavoriteBtn = document.querySelector(".add_favorite_button")
-const excerciseName = document.querySelector(".modal_title")
-const excerciseRating = document.querySelector(".excercise_rating")
-const star = document.querySelectorAll(".star_item")
-const image = document.querySelector(".modal_image")
+const addFavoriteBtn = document.querySelector(".add_favorite_button");
+const excerciseName = document.querySelector(".modal_title");
+const excerciseRating = document.querySelector(".excercise_rating");
+const star = document.querySelectorAll(".star_item");
+const image = document.querySelector(".modal_image");
 
 cardsList.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', clickToClose);
 giveRatingButton.addEventListener('click', openRateModal);
-addFavoriteBtn.addEventListener('click', showIcon)
+addFavoriteBtn.addEventListener('click', showIcon);
 
-// function showIcon() {
-//     let trashIcon = document.querySelector(".trash")
-//     let heartIcon = document.querySelector(".heart")
-//     trashIcon.classList.toggle("hidden-icon")
-//     heartIcon.classList.toggle("hidden-icon")
-//     addFavoriteBtn.classList.toggle("button-text")
+function showIcon() {
+    let trashIcon = document.querySelector(".trash")
+    let heartIcon = document.querySelector(".heart")
+    trashIcon.classList.toggle("hidden-icon")
+    heartIcon.classList.toggle("hidden-icon")
+    // addFavoriteBtn.classList.toggle("button-text")
     // if (addFavoriteBtn.classList.contains("button-text"))
     // {   
     //             } else {addFavoriteBtn.textContent = `Remove from Favorite `}
-// }
+}
 
 function editName(elem) {
     if (elem === null || undefined) {
         return
     }
     else {
-        excerciseName.textContent = elem
+        excerciseName.textContent = elem;
     }
 }
 
@@ -43,8 +44,8 @@ function editRating(rating) {
         return
     }
     else {
-        let newRating = rating.toFixed(1)
-        excerciseRating.textContent = newRating
+        let newRating = rating.toFixed(1);
+        excerciseRating.textContent = newRating;
     }
 }
 
@@ -111,8 +112,8 @@ function markupModal({ time, bodyPart, equipment, target, description, burnedCal
 function openRateModal() {
     giveRatingButton.classList.remove("is-hidden");
     modalExcercise.classList.add("is-hidden");
-    window.removeEventListener('keydown', closeModal)
-    window.removeEventListener('click', closeModal)
+    window.removeEventListener('keydown', closeModal);
+    window.removeEventListener('click', closeModal);
 }
 
 function openModal(e) {
@@ -130,22 +131,29 @@ function openModal(e) {
         .then(resp => {
         const modalMarkup = markupModal(resp);
             contentUpdate.innerHTML = modalMarkup;
-            editName(resp.name)
-            editRating(resp.rating)
-            colorizeStars(resp.rating)
-            updateImage(resp.gifUrl,resp.name)
+            editName(resp.name);
+            editRating(resp.rating);
+            colorizeStars(resp.rating);
+            updateImage(resp.gifUrl, resp.name);
     }
     )
+        .catch(err => {
+            console.error(err);
+            iziToast.show({
+                position: 'center',
+                color: 'red',
+                message: 'An error has ocurred. Please try again later'
+            })
+        })
         .finally(() => {
             loader.destroy();
     })
     giveRatingButton.setAttribute('data-Id', cardId);
 
     modalExcercise.classList.remove("is-hidden");
-
-    overflow.style.overflow = 'hidden'
-    window.addEventListener('keydown', closeModal)
-    window.addEventListener('click', closeModal)
+    overflow.style.overflow = 'hidden';
+    window.addEventListener('keydown', closeModal);
+    window.addEventListener('click', closeModal);
 
 }
 

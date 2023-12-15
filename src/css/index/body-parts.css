@@ -116,16 +116,20 @@
   align-items: center;
   padding: 3px 6px;
   border-radius: var(--radius-medium);
-  transition: all var(--transition-time) var(--transition-function);
 }
 
 .exercises-btn-wrapper:hover {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
+  background-color: var(--color-secondary);
+  color: var(--color-rating);
+}
+
+.exercises-btn-wrapper:hover .exercises-btn {
+  background-color: transparent;
+  color: var(--color-rating);
 }
 
 .exercises-btn-wrapper:hover .exercises-icon-arrow {
-  stroke: var(--color-secondary);
+  stroke: var(--color-rating);
 }
 
 .exercises-name-span {
@@ -197,4 +201,21 @@ body.dark_mode .exercises-data-info {
 }
 body.dark_mode .exercises-text {
   border-color: var(--darkmode-secondary-heavy);
+}
+
+body.dark_mode .exercises-btn-wrapper:hover {
+  background-color: var(--darkmode-secondary-light);
+  /* color: var(--color-rating); */
+  /* transition: all var(--transition-time) var(--transition-function); */
+}
+
+body.dark_mode .exercises-btn-wrapper:hover .exercises-btn {
+  background-color: transparent;
+  /* color: var(--color-rating); */
+  /* transition: all var(--transition-time) var(--transition-function); */
+}
+
+body.dark_mode .exercises-btn-wrapper:hover ~ .exercises-icon-arrow {
+  stroke: var(--color-rating);
+  /* transition: all var(--transition-time) var(--transition-function); */
 }

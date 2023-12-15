@@ -53,9 +53,13 @@ body.dark_mode .filter-icon-close {
 .filter-btn {
   background: none;
   border: none;
-  color: var(--color-primary);
+  color: var(--color-primary-medium);
   font-size: 16px;
   line-height: 24px;
+}
+
+.filter-btn:hover {
+  color: var(--color-primary);
 }
 
 body.dark_mode .filter-btn {
@@ -64,6 +68,10 @@ body.dark_mode .filter-btn {
 
 body.dark_mode .filter-btn:hover  {
   color: var(--darkmode-secondary);
+}
+
+.active {
+  color: var(--color-primary);
 }
 
 .active::after {

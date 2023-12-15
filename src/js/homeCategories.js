@@ -86,6 +86,7 @@ function handlerClickCategory(e) {
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
   const exercise = e.target.closest(".card-exercises").dataset.bodyExercise;
+  span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; // МАЄ ТУТ БУТИ?
 
   const data = {
     [category]: exercise,
@@ -98,13 +99,8 @@ function handlerClickExercises(e) {
     .then(response => {
       const data = response.results;
       getData = data;
-      // console.log(getData)
       items.innerHTML = markupExercises(data);
-
-      inputWrapper.classList.remove("isHidden")
-
-      span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; // МАЄ ТУТ БУТИ?
-
+      inputWrapper.classList.remove("isHidden");
     })
     .catch(err => {
       console.error(err);
@@ -162,10 +158,10 @@ function onSearchExercise(evt) {
 function onDeleteSearchData() {
   input.value = "";
   items.innerHTML = markupExercises(getData);
-  switchIcons()
+  switchIcons();
 }
 
 function switchIcons() {
-  iconSearch.classList.toggle("isHidden")
-  iconClose.classList.toggle("isHidden")
+  iconSearch.classList.toggle("isHidden");
+  iconClose.classList.toggle("isHidden");
 }

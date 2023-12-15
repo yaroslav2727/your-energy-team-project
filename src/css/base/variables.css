@@ -19,8 +19,18 @@
   --color-black: #000000;
   --color-modal-backdrop: #04040466; /* 40% */
 
-  --color-background-darkmode: #0F0F0F;
-  --color-modal-backdrop-darkmode: #04040466; /* 60% */
+  --darkmode-background: #0F0F0F;
+  --darkmode-modal-backdrop: #04040466; /* 60% */
+  --darkmode-primary: #242424;
+  --darkmode-primary-light: #2424241a; /* 10% */
+  --darkmode-primary-medium: #24242466; /* 40% */
+  --darkmode-primary-heavy: #24242499; /* 60% */
+  --darkmode-primary-tint: #242424cc; /* 80% */
+  --darkmode-secondary: #f4f4f4;
+  --darkmode-secondary-light: #f4f4f41a; /* 10% */
+  --darkmode-secondary-shade: #f4f4f433; /* 20% */
+  --darkmode-secondary-medium: #f4f4f466; /* 40% */
+  --darkmode-secondary-heavy: #f4f4f499; /* 60% */
 
   /* BORDER RADIUS */
   --radius-circle: 50%;

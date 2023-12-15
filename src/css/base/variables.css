@@ -32,4 +32,16 @@
   /* TRANSITION */
   --transition-time: 250ms;
   --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Favorites dark mode */
+  --favorites-background-color: #f4f4f4;
+  --favorites-title: #242424;
+  --favorites-card-background: #ffffff;
+}
+
+/* Anton test dark mode */
+body.dark_mode {
+  --favorites-background-color: #000000;
+  --favorites-title: #e5e2e2;
+  --favorites-card-background: #cdcdcd;
 }

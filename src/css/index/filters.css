@@ -2,17 +2,6 @@
   margin-bottom: 20px;
 }
 
-.cat-title {
-  color: #242424;
-  font-family: DM Sans;
-  font-size: 44px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 48px; /* 109.091% */
-  letter-spacing: -0.88px;
-  margin-bottom: 40px;
-}
-
 .filter-input-wrapper {
   display: block;
   position: relative;
@@ -33,6 +22,10 @@
   cursor: pointer;
 }
 
+body.dark_mode .filter-icon-search {
+  stroke: var(--darkmode-secondary);
+}
+
 .filter-icon-close {
   position: absolute;
   top: 50%;
@@ -41,6 +34,10 @@
   fill: transparent;
   stroke: var(--color-primary);
   cursor: pointer;
+}
+
+body.dark_mode .filter-icon-close {
+  stroke: var(--darkmode-secondary);
 }
 
 .filter {
@@ -56,9 +53,13 @@
 .filter-btn {
   background: none;
   border: none;
-  color: rgba(36, 36, 36, 0.6);
+  color: var(--color-primary);
   font-size: 16px;
   line-height: 24px;
+}
+
+body.dark_mode .filter-btn {
+  color: var(--darkmode-secondary);
 }
 
 .active::after {
@@ -67,41 +68,52 @@
   display: block;
   height: 4px;
   flex-shrink: 0;
-  background-color: #242424;
+  background-color: var(--color-primary);
   position: static;
-  color: #242424;
+  color: var(--color-primary);
+}
+
+body.dark_mode .active::after {
+  color: var(--darkmode-secondary);
+  background-color: var(--darkmode-secondary);
 }
 
 .cat-title {
-  margin-bottom: 40px;
-  color: #242424;
+  color: var(--color-primary);
   font-family: DM Sans;
-  font-size: 28px;
   font-style: normal;
   font-weight: 400;
+  margin-bottom: 40px;
+  font-size: 28px;
   line-height: 38px;
   letter-spacing: -0.56px;
 }
 
+body.dark_mode .cat-title {
+  color: var(--darkmode-secondary);
+}
+
 .cat-title-span {
-  color: rgba(36, 36, 36, 0.5);
-  font-family: DM Sans;
+  color: var(--color-primary-medium);
   font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.4px;
 }
 
+body.dark_mode .cat-title-span {
+  color: var(--darkmode-secondary-medium);
+}
+
 .cat-title-text {
   margin-bottom: 40px;
-  color: #242424;
-  font-family: DM Sans;
+  color: var(--color-primary);
   font-size: 28px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 38px;
   letter-spacing: -0.56px;
+}
+
+body.dark_mode .cat-title-text {
+  color: var(--darkmode-secondary);
 }
 
 @media screen and (min-width: 768px) {

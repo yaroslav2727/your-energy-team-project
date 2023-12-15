@@ -17,6 +17,11 @@
   outline: var(--color-rating);
 }
 
+.input-filter-exercises:focus + .filter-icon-search,
+.input-filter-exercises:focus ~ .filter-icon-close {
+  stroke: var(--color-rating);
+}
+
 .input-filter-exercises::placeholder {
   color: var(--color-primary);
   font-size: 14px;

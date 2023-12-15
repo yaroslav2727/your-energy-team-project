@@ -1,11 +1,9 @@
-const emailInput = document.querySelector('subscribe-input')
-const submitButton = document.querySelector('submit-btn')
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { createSubscription } from './api';
 
-function validateEmail(email) {
-  const re = /\S+@\S+\.\S+/;
-  return re.test(email);
-}
-
+const emailInput = document.querySelector('.subscribe-input');
+const submitButton = document.querySelector('.submit-btn');
 
 function isEmailUnique(email) {
   const storedEmails = JSON.parse(localStorage.getItem('subscribedEmails')) || [];
@@ -18,20 +16,56 @@ function saveEmailToLocalStorage(email) {
   localStorage.setItem('subscribedEmails', JSON.stringify(storedEmails));
 }
 
-form.addEventListener('submit', function (event) {
+submitButton.addEventListener('click', async function (event) {
   event.preventDefault();
 
-   const email = emailInput.value.trim();
+  const email = emailInput.value.trim();
 
   if (validateEmail(email)) {
     if (isEmailUnique(email)) {
-      saveEmailToLocalStorage(email);
-      alert('Email subscribed successfully!');
-      
+      try {
+        const response = await createSubscription({ email }); 
+
+        if (response) {
+          saveEmailToLocalStorage(email);
+          iziToast.show({
+            title: 'Email subscribed successfully!',
+            color: 'green',
+            position: 'topCenter',
+            message: ``,
+          });
+          emailInput.value = ''; 
+        } else {
+          iziToast.show({
+            title: 'Failed to subscribe!',
+            color: 'red',
+            position: 'topCenter',
+            message: ``,
+          });
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        iziToast.show({
+          title: 'An error occurred!',
+          color: 'red',
+          position: 'topCenter',
+          message: ``,
+        });
+      }
     } else {
-      alert('Email already subscribed!');
+      iziToast.show({
+        title: 'Email already subscribed!',
+        color: 'red',
+        position: 'topCenter',
+        message: ``,
+      });
     }
   } else {
-    alert('Please enter a valid email address!');
+    iziToast.show({
+      title: 'Invalid email format!',
+      color: 'red',
+      position: 'topCenter',
+      message: ``,
+    });
   }
 });

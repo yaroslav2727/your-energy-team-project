@@ -207,10 +207,6 @@ body.dark_mode .header-burger-img {
   }
 
   /*============ Background Theme ================ */
-  .dark_mode {
-    background-color: var(--color-background-darkmode);
-  }
-
   .change_theme--btn {
     margin: 0 10px;
     width: 54px;

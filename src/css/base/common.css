@@ -4,6 +4,11 @@ body {
   color: var(--color-primary);
 }
 
+body.dark_mode {
+  background-color: var(--darkmode-background);
+  color: var(--darkmode-secondary);
+}
+
 .visually-hidden {
   display: none;
   position: absolute;

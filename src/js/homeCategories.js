@@ -100,7 +100,7 @@ function handlerClickExercises(e) {
       const data = response.results;
       getData = data;
       items.innerHTML = markupExercises(data);
-      scrollPage()
+      scrollExercises()
       inputWrapper.classList.remove("isHidden");
     })
     .catch(err => {
@@ -168,12 +168,12 @@ function switchIcons() {
 }
 
 // прокрутка стрінки ----
-function scrollPage() {
-  let limit = window.innerWidth < 768 ? 840 : 930;
-  const heightView = window.pageYOffset - limit;
+function scrollExercises() {
+  let top = window.innerWidth < 768 ? 860 : 930;
+  const heightScroll = window.pageYOffset - top;
 
   window.scrollBy({
-    top: -heightView,
+    top: -heightScroll,
     behavior: 'smooth',
   });
 }

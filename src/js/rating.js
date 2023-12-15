@@ -42,6 +42,15 @@ formReff.addEventListener("submit", evt => {
     });
     return;
   }
+  if (!formItems.email || !formItems.review) {
+    iziToast.show({
+      title: "The email and comment must be selected",
+      color: "red",
+      position: "topCenter",
+      message: ``,
+    });
+    return;
+  }
 
   const response = patchRating(id, formItems);
   if (response) {
@@ -103,6 +112,7 @@ executeRating(ratingStarsReff);
     raiting = 0
     ratingStarsReff.forEach((item) => {
       item.classList.remove('btn_star-active')
+      item.classList.add('btn_star')
     })
     reatingTitleReff.textContent = `0.0`;
     modalReff.classList.add("is-hidden")

@@ -12,12 +12,16 @@ let getData = null;
 
 const items = document.querySelector(".cards");
 const filter = document.querySelector(".filter-list");
+const input = document.querySelector(".input-filter-exercises")
 const inputWrapper = document.querySelector(".filter-input-wrapper");
 const span = document.querySelector(".cat-title-span")
+const iconSearch = document.querySelector(".filter-icon-search")
+const iconClose = document.querySelector(".filter-icon-close")
 
 filter.addEventListener("click", handlerClickCategory);
 items.addEventListener("click", handlerClickExercises);
 inputWrapper.addEventListener("input", debounce(onSearchExercise, 500));
+iconClose.addEventListener('click', onDeleteSearchData)
 
 // початковий список вправ Muscles  ----
 loader.create();
@@ -117,20 +121,52 @@ function handlerClickExercises(e) {
 }
 
 
-// пошук вправи по назві ----
+// пошук вправи по назві ---- 
 
 function onSearchExercise(evt) {
   const searchData = evt.target.value.trim().toLowerCase();
+
   const filteredData = getData.filter((item) => item.name.includes(searchData))
+
+  if (searchData.length !== 0) {
+    switchIcons()
+  }
+
+  if (searchData.length === 0) {
+    switchIcons()
+  }
 
   if (filteredData.length === 0) {
     iziToast.show({
       position: 'topCenter',
       color: 'red',
-      timeout: 3000,
+      timeout: 1500,
       message: 'Oops! We have found nothing. Try again!',
     });
   }
 
+  if (filteredData.length !== 0) {
+    const searchWord = filteredData.length === 1 ? "exercise" : "exercises";
+
+    iziToast.show({
+      position: 'topCenter',
+      color: 'green',
+      timeout: 1500,
+      message: `Hooray! We found ${filteredData.length} ${searchWord}.`,
+    });
+  }
+
   items.innerHTML = markupExercises(filteredData);
+}
+
+function onDeleteSearchData() {
+  input.value = "";
+  items.innerHTML = markupExercises(getData);
+  switchIcons()
+}
+
+function switchIcons() {
+  iconSearch.classList.toggle("isHidden")
+  iconClose.classList.toggle("isHidden")
+
 }

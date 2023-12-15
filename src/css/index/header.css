@@ -1,5 +1,6 @@
 .dark_mode {
   background-color: var(--color-black);
+  transition: background-color 500ms var(--transition-function);
 }
 .mobile_menu {
   display: flex;
@@ -31,6 +32,7 @@ body.dark_mode .mobile_menu--btn {
   background: var(--color-primary);
   top: 2px;
   left: 4px;
+  transition: left var(--transition-time) var(--transition-function);
 }
 
 .mobile_menu--btn.show::before {
@@ -98,7 +100,7 @@ body.dark_mode .header-burger-img {
   width: 210px;
 }
 .menu-closed-btn {
-  stroke: var(--color-secondary);
+  fill: var(--color-secondary);
   background-color: transparent;
   border: none;
 }
@@ -233,6 +235,7 @@ body.dark_mode .header-burger-img {
     background: var(--color-secondary);
     top: 2px;
     left: 4px;
+    transition: left var(--transition-time) var(--transition-function);
   }
   .icon_sun {
     display: block;

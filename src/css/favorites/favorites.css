@@ -3,12 +3,13 @@
   padding-top: 80px;
   padding-bottom: 80px;
 
-  background-color: #f4f4f4;
+  background-color: var(--favorites-background-color);
 }
 
 .favorites__title {
   margin-bottom: 20px;
 
+  color: var(--favorites-title);
   font-family: Neue Montreal, 'sans-serif';
   font-weight: 400;
   font-size: 28px;
@@ -26,7 +27,7 @@
   /* TEMP VALUE */
   height: 500px;
 
-  outline: 1px solid tomato;
+  /* outline: 1px solid tomato; */
 }
 
 .favorites__list-wrapper {
@@ -48,6 +49,19 @@
 }
 
 .favorites__card {
+}
+
+.favorites__no-cards {
+  display: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+  line-height: 1.285;
+  text-align: center;
+}
+
+.favorites__no-cards.is-visible {
+  display: block;
 }
 /* -------------------------------------------------------------------------------------------- */
 /* ------------------------------MEDIA--------------------------------------------------------- */
@@ -91,6 +105,14 @@
     flex-basis: calc((100% - 16px) / 2);
     margin-bottom: 0;
   }
+
+  .favorites__no-cards {
+    font-size: 18px;
+    line-height: 1.333;
+    padding-top: 64px;
+    padding-left: 75px;
+    padding-right: 75px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -118,19 +140,6 @@
     overflow-y: auto;
   }
 
-  /* body::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    outline: 1px solid slategrey;
-  } */
-
   .favorites__list-wrapper::-webkit-scrollbar {
     width: 8px;
     background-color: rgba(36, 36, 36, 0.1);
@@ -148,17 +157,10 @@
 
   .favorites__list {
   }
-}
 
-/* body::-webkit-scrollbar {
-  width: 1em;
+  .favorites__no-cards {
+    padding-top: 112px;
+    padding-left: 148px;
+    padding-right: 148px;
+  }
 }
- 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-} */

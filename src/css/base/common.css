@@ -1,8 +1,12 @@
 body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    transition: background-color 500ms var(--transition-function);
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+body.dark_mode {
+  background-color: var(--darkmode-background);
+  color: var(--darkmode-secondary);
 }
 
 .visually-hidden {
@@ -20,44 +24,44 @@ body {
 }
 
 .container {
-    width: 100%;
-    max-width: 375px;
-    padding: 0 20px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding: 0 32px;
-    }
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
 }
 
 @media (min-width: 1440px) {
-    .container {
-        max-width: 1440px;
-    }
+  .container {
+    max-width: 1440px;
+  }
 }
 
 .container-exercises {
-    width: 100%;
-    max-width: 375px;
-    padding: 0 20px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-    .container-exercises {
-        max-width: 768px;
-        padding: 0 32px;
-    }
+  .container-exercises {
+    max-width: 768px;
+    padding: 0 32px;
+  }
 }
 
 @media (min-width: 1440px) {
-    .container-exercises {
-        width: auto;
-        max-width: none;
-        padding: 0;
-        margin: 0;
-    }
+  .container-exercises {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
 }

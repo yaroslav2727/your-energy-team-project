@@ -53,9 +53,18 @@ body.dark_mode .filter-icon-close {
 .filter-btn {
   background: none;
   border: none;
-  color: var(--color-primary);
+  color: var(--color-primary-heavy);
   font-size: 16px;
   line-height: 24px;
+  transition: color var(--transition-time) var(--transition-function);
+}
+
+.filter-btn.active {
+  color: var(--color-primary);
+}
+
+.filter-btn:hover {
+  color: var(--color-primary);
 }
 
 body.dark_mode .filter-btn {

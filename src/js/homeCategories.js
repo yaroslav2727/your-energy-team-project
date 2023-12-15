@@ -100,6 +100,7 @@ function handlerClickExercises(e) {
       const data = response.results;
       getData = data;
       items.innerHTML = markupExercises(data);
+      scrollPage()
       inputWrapper.classList.remove("isHidden");
     })
     .catch(err => {
@@ -164,4 +165,15 @@ function onDeleteSearchData() {
 function switchIcons() {
   iconSearch.classList.toggle("isHidden");
   iconClose.classList.toggle("isHidden");
+}
+
+// прокрутка стрінки ----
+function scrollPage() {
+  let limit = window.innerWidth < 768 ? 840 : 930;
+  const heightView = window.pageYOffset - limit;
+
+  window.scrollBy({
+    top: -heightView,
+    behavior: 'smooth',
+  });
 }

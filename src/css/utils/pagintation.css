@@ -1,7 +1,7 @@
 .pagination {
-  /* padding-top: 20px;
-  padding-bottom: 60px; */
-  margin-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  /* margin-bottom: 80px; */
   /* background-color: #ffffff; */
 }
 
@@ -117,15 +117,15 @@ body.dark_mode .pag__page--current-number {
 
 @media screen and (min-width: 768px) {
   .pagination {
-    /* padding-top: 32px; */
-    margin-bottom: 64px;
+    padding-top: 32px;
+    /* margin-bottom: 64px; */
   }
 }
 
 @media screen and (min-width: 1440px) {
   .pagination {
     /* display: none; */
-    margin-bottom: 132px;
+    /* margin-bottom: 132px; */
   }
 
   .pagination--desktop-hide {

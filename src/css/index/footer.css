@@ -95,7 +95,7 @@
   border-radius: 30px;
   border: 1px solid var(--color-secondary);
   transition: background-color var(--transition-time) var(--transition-function),
-    color var(--transition-function) var(--transition-time);
+    fill var(--transition-function) var(--transition-time);
 }
 
 .subscribe-input:hover,
@@ -119,6 +119,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
+}
+
+.footer-privacy-policy {
+  transition: fill var(--transition-time) var(--transition-function);
+}
+.footer-privacy-policy:hover,
+.footer-privacy-policy:focus {
+  fill: var(--color-white);
 }
 
 .privacy-policy-list {
@@ -231,5 +239,9 @@
 
   .privacy-policy-container {
     width: 100%;
+  }
+
+  .text-date {
+    padding-right: 308px;
   }
 }

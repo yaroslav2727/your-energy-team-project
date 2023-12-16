@@ -97,14 +97,14 @@ export const getExerciseById = async id => {
 };
 //------------------Raiting-----------------------------------------------------------
 export const patchRating = async (id, data) => {
-  const response = await api.patch(`/exercises/${id}/rating`, data);
-  return response.data;
+  try {
+    const response = await api.patch(`/exercises/${id}/rating`, data);
+    if (response.statusText === 'OK') return response.data;
+  }
+  catch (error) {
+    throw new Error(error.message)
+  }
 };
-//------------------------------------------------------------------------------
-//
-//
-//
-//
 //------------------Subscription-----------------------------------------------------------
 export const createSubscription = async data => {
   const response = await api.post('/subscription', data);

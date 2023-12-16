@@ -27,8 +27,8 @@
 }
 
 .pag__btn .pag-icon {
-  fill: tomato;
-  stroke: tomato;
+  /* fill: tomato; */
+  /* stroke: tomato; */
 }
 
 .pag__btn--prev:hover,
@@ -65,7 +65,7 @@
   /* color: #000000; */
   font-family: 'DM Sans', sans-serif;
   text-decoration: none;
-  color: #d4d4d4;
+  color: var(--pagination-page-color);
 }
 
 .pag__page--current-number {
@@ -75,7 +75,7 @@
   height: 45px;
   /* background-color: tomato; */
 
-  border: 1px solid #242424;
+  border: 1px solid var(--pagination-current-page-color);
   border-radius: 50%;
 }
 
@@ -86,7 +86,7 @@
 
 .pag__page.hovered:hover {
   /* border: 1px solid #ff6b08; */
-  color: #242424;
+  color: var(--pagination-current-page-color);
 }
 
 .pag__icon {

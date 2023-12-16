@@ -260,7 +260,7 @@ function switchIcons() {
 
 // прокрутка категорій ----
 function scrollExercises() {
-  let top = window.innerWidth < 768 ? 860 : 930;
+  let top = window.innerWidth < 768 ? 860 : 920;
   const heightScroll = window.scrollY - top;
 
   window.scrollBy({

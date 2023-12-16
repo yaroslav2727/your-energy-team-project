@@ -6,7 +6,7 @@
 @import url('./utils/modal-exercise.css');
 @import url('./utils/modal-rating.css');
 @import url('./utils/loader.css');
-@import url('./utils/scrollup.css');
+@import url('./utils/button-up.css');
 @import url('./utils/pagintation.css');
 @import url('./index/header.css');
 @import url('./index/hero.css');
@@ -19,4 +19,3 @@
 @import url('./index/search-exercise.css');
 @import url('./favorites/index.css');
 @import url('./favorites/favorites-quote.css');
-@import url('./utils/button-up.css');

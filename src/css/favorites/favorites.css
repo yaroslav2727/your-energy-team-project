@@ -1,5 +1,5 @@
 .favorites {
-  font-family: Neue Montreal, 'sans-serif';
+  /* font-family: Neue Montreal, 'sans-serif'; */
   padding-top: 80px;
   padding-bottom: 80px;
 
@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 
   color: var(--favorites-title);
-  font-family: Neue Montreal, 'sans-serif';
+  /* font-family: Neue Montreal, 'sans-serif'; */
   font-weight: 400;
   font-size: 28px;
   line-height: 1.35;

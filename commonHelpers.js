@@ -1,4 +1,4 @@
-import{F as p,a as u,S as v}from"./assets/quote-fa524c98.js";import"./assets/vendor-46eef696.js";function g({_id:e,burnedCalories:t,time:s,bodyPart:a,target:d,name:l}){return`    <li class="favorites__item">
+import{F as p,a as u,S as v}from"./assets/quote-64815b21.js";import"./assets/vendor-46eef696.js";function g({_id:e,burnedCalories:t,time:s,bodyPart:a,target:d,name:l}){return`    <li class="favorites__item">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">

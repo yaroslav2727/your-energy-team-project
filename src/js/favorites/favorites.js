@@ -10,7 +10,7 @@ const listRef = document.querySelector('.js-favorites-list');
 const listRefDesktop = document.querySelector('.js-favorites-list--desktop');
 const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
 
-const paginationContainer = document.querySelector('.pag');
+const paginationContainer = document.querySelector('.js-pag');
 
 //-------------------------------
 const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);

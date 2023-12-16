@@ -22,7 +22,7 @@ const resetHandler = () => {
   modalContainerReff.classList.remove('is-hidden')
 }
 
-formReff.addEventListener("submit", evt => {
+formReff.addEventListener("submit", async evt => {
   evt.preventDefault();
   const dataIdReff = document.querySelector("[data-id]")
   const id = dataIdReff.dataset.id
@@ -52,8 +52,7 @@ formReff.addEventListener("submit", evt => {
     return;
   }
 
-  const response = patchRating(id, formItems);
-  if (response) {
+  await patchRating(id, formItems).then(() => {
     iziToast.show({
       title: "The rating has been successfully added",
       color: "green",
@@ -61,7 +60,14 @@ formReff.addEventListener("submit", evt => {
       message: ``,
     });
     resetHandler()
-  }
+  }).catch((error) => {
+    iziToast.show({
+      title: `${error.message}`,
+      color: "red",
+      position: "topCenter",
+      message: ``,
+    });
+  })
 });
 
 function executeRating(stars) {
@@ -72,6 +78,7 @@ function executeRating(stars) {
 
   stars.map(star => {
     star.onclick = () => {
+
       i = stars.indexOf(star);
 
       if (star.className === starClassInactive) {

@@ -26,7 +26,7 @@ export function createCardMarkup({
                         
 
                              <svg class="icon" width="16" height="16" >
-                              <use href="./img/icons.svg#icon-trash"></use>
+                              <use href="./icons.svg#icon-trash"></use>
                             </svg>
                         </button>
                       </div>

@@ -4,14 +4,14 @@ export default class Pagination {
   #page;
   #totalItems;
   #perPage;
-  constructor(container, { perPage }) {
+  constructor(container, options) {
     this.refs = {
       container: container,
     };
 
     this.#totalItems = 1;
     // this.#perPage = 20;
-    this.#perPage = perPage || 10;
+    this.#perPage = options?.perPage || 10;
     this.#page = 1;
 
     this.refs.container.addEventListener('click', this.#onPageClick.bind(this));

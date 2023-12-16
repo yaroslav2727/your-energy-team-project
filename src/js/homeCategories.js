@@ -93,8 +93,9 @@ getMusclesList()
   })
   .finally(() => {
     loader.destroy();
-    paginationMainPage.classList.remove("isPaginationHidden")
-    paginationFilterPage.classList.add("isPaginationHidden")
+    paginationMainPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("isPaginationHidden");
+    paginationMainPage.classList.add("pagination-cards");
   });
 
 
@@ -177,8 +178,6 @@ async function updateExercises(exercise, page) {
 
     inputWrapper.classList.remove('isHidden');
 
-    // console.log('exercises', response);
-
     paginatorExercises.updateTotalItems(
       DEFAULT_EXERCISES_LIMIT * response.totalPages
     );
@@ -214,6 +213,7 @@ function onSearchExercise(evt) {
     search: searchData,
   };
   updateExercises(data, exercisesPageState.getPage());
+  console.log(searchState)
   //------Anton--------
 
   const filteredData = getData.filter(item => item.name.includes(searchData));

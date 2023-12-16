@@ -77,7 +77,6 @@ getMusclesList()
     items.innerHTML = markupCategories(data);
     items.addEventListener('click', handlerClickExercises);
 
-    // console.log(response);
     paginatorCat.updateTotalItems(DEFAULT_FILTER_LIMIT * response.totalPages);
     paginatorCat.goToPage(1);
     paginatorCat.render();
@@ -96,12 +95,12 @@ getMusclesList()
 
 // фільтр по категоріям ----
 function handlerClickCategory(e) {
+
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
 
   const categoryName = e.target.dataset.name;
-
   const filterBtn = document.querySelectorAll('.filter-btn');
   filterBtn.forEach(btn => btn.classList.remove('active'));
   e.target.classList.add('active');
@@ -109,39 +108,15 @@ function handlerClickCategory(e) {
   loader.create();
 
   updateList(categoryName, currentPage);
-
-  // getFilteredList(categoryName, currentPage)
-  //   .then(response => {
-  //     const data = response.results;
-  //     const { filter } = data[0];
-  //     category = filter.toLowerCase();
-
-  //     span.innerHTML = '';
-  //     items.innerHTML = markupCategories(data);
-  //     items.addEventListener('click', handlerClickExercises);
-  //     inputWrapper.classList.add('isHidden');
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //     iziToast.show({
-  //       position: 'center',
-  //       color: 'red',
-  //       message: 'Oops! Something wrong!',
-  //     });
-  //   })
-  //   .finally(() => {
-  //     loader.destroy();
-  //   });
 }
 
 async function updateList(categoryName, currentPage) {
-  console.log(categoryName);
+
   try {
     const response = await getFilteredList(categoryName, currentPage);
     const data = response.results;
-    console.log('response', response);
     const { filter } = data[0];
-    // category = filter.toLowerCase();
+
     category = filter;
 
     span.innerHTML = '';
@@ -152,6 +127,7 @@ async function updateList(categoryName, currentPage) {
     paginatorCat.updateTotalItems(DEFAULT_FILTER_LIMIT * response.totalPages);
     paginatorCat.goToPage(currentPage);
     paginatorCat.render();
+
   } catch (err) {
     console.error(err);
     iziToast.show({
@@ -167,59 +143,39 @@ async function updateList(categoryName, currentPage) {
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
   const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
-  span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; // МАЄ ТУТ БУТИ?
+  span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; 
 
   exerciseState = exercise;
 
   const data = {
     [filterVocabulary[category]]: exercise,
-    // search: searchState,
-    // page: 1,
   };
-
-  console.log('data request', data);
 
   loader.create();
 
   updateExercises(data, exercisesPageState.getPage());
-  // getExercises(data)
-  //   .then(response => {
-  //     const data = response.results;
-  //     getData = data;
-  //     items.innerHTML = markupExercises(data);
-  //     scrollExercises();
-  //     inputWrapper.classList.remove('isHidden');
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //     iziToast.show({
-  //       position: 'center',
-  //       color: 'red',
-  //       message: 'Oops! Something wrong!',
-  //     });
-  //   })
-  //   .finally(() => {
-  //     loader.destroy();
-  //     items.removeEventListener('click', handlerClickExercises);
-  //   });
 }
 
 async function updateExercises(exercise, page) {
   try {
-    console.log('exer', exercise);
     const response = await getExercises(exercise, page);
     const data = response.results;
+
     getData = data;
     items.innerHTML = markupExercises(data);
+
     scrollExercises();
+
     inputWrapper.classList.remove('isHidden');
     console.log('exercises', response);
 
     paginatorExercises.updateTotalItems(
       DEFAULT_EXERCISES_LIMIT * response.totalPages
     );
+
     paginatorExercises.goToPage(page);
     paginatorExercises.render();
+
   } catch (err) {
     console.error(err);
     iziToast.show({
@@ -276,7 +232,6 @@ function onSearchExercise(evt) {
       message: `Hooray! We found ${filteredData.length} ${searchWord}.`,
     });
   }
-
   items.innerHTML = markupExercises(filteredData);
 }
 
@@ -291,7 +246,7 @@ function switchIcons() {
   iconClose.classList.toggle('isHidden');
 }
 
-// прокрутка стрінки ----
+// прокрутка категорій ----
 function scrollExercises() {
   let top = window.innerWidth < 768 ? 860 : 930;
   const heightScroll = window.pageYOffset - top;
@@ -303,28 +258,13 @@ function scrollExercises() {
 }
 
 function createPageState(initialPage) {
-  // const storage = new Storage('exercises_page');
 
-  // let page = storage.getFromStorage() || initialPage;
   let page = initialPage;
 
   return {
-    // increase() {
-    //   page++;
-    //   storage.setToStorage(page);
-    //   // handler();
-    // },
-
-    // decrease() {
-    //   page--;
-    //   storage.setToStorage(page);
-    //   // handler();
-    // },
-
     setPage(newPage) {
       page = newPage;
       storage.setToStorage(page);
-      // handler();
     },
 
     getPage() {

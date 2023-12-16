@@ -52,22 +52,26 @@ formReff.addEventListener("submit", async evt => {
     return;
   }
 
-  await patchRating(id, formItems).then(() => {
-    iziToast.show({
-      title: "The rating has been successfully added",
-      color: "green",
-      position: "topCenter",
-      message: ``,
-    });
-    resetHandler()
-  }).catch((error) => {
+  try {
+    const response = await patchRating(id, formItems);
+    if (response) {
+      iziToast.show({
+        title: "The rating has been successfully added",
+        color: "green",
+        position: "topCenter",
+        message: ``,
+      });
+      resetHandler()
+    }
+  }
+  catch (error) {
     iziToast.show({
       title: `${error.message}`,
       color: "red",
       position: "topCenter",
       message: ``,
     });
-  })
+  }
 });
 
 function executeRating(stars) {

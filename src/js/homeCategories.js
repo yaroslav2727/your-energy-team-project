@@ -62,6 +62,8 @@ const inputWrapper = document.querySelector('.filter-input-wrapper');
 const span = document.querySelector('.cat-title-span');
 const iconSearch = document.querySelector('.filter-icon-search');
 const iconClose = document.querySelector('.filter-icon-close');
+const paginationMainPage = document.querySelector('.js-pagination-mainPage');
+const paginationFilterPage = document.querySelector('.js-pagination-filterPage');
 
 filter.addEventListener('click', handlerClickCategory);
 items.addEventListener('click', handlerClickExercises);
@@ -91,7 +93,10 @@ getMusclesList()
   })
   .finally(() => {
     loader.destroy();
+    paginationMainPage.classList.remove("isPaginationHidden")
+    paginationFilterPage.classList.add("isPaginationHidden")
   });
+
 
 // фільтр по категоріям ----
 function handlerClickCategory(e) {
@@ -111,7 +116,6 @@ function handlerClickCategory(e) {
 }
 
 async function updateList(categoryName, currentPage) {
-
   try {
     const response = await getFilteredList(categoryName, currentPage);
     const data = response.results;
@@ -120,6 +124,7 @@ async function updateList(categoryName, currentPage) {
     category = filter;
 
     span.innerHTML = '';
+
     items.innerHTML = markupCategories(data);
     items.addEventListener('click', handlerClickExercises);
     inputWrapper.classList.add('isHidden');
@@ -137,13 +142,15 @@ async function updateList(categoryName, currentPage) {
     });
   } finally {
     loader.destroy();
+    paginationMainPage.classList.remove("isPaginationHidden")
+    paginationFilterPage.classList.add("isPaginationHidden")
   }
 }
 
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
   const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
-  span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`; 
+  span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`;
 
   exerciseState = exercise;
 
@@ -154,6 +161,7 @@ function handlerClickExercises(e) {
   loader.create();
 
   updateExercises(data, exercisesPageState.getPage());
+  input.value = "";
 }
 
 async function updateExercises(exercise, page) {
@@ -167,7 +175,8 @@ async function updateExercises(exercise, page) {
     scrollExercises();
 
     inputWrapper.classList.remove('isHidden');
-    console.log('exercises', response);
+
+    // console.log('exercises', response);
 
     paginatorExercises.updateTotalItems(
       DEFAULT_EXERCISES_LIMIT * response.totalPages
@@ -186,6 +195,9 @@ async function updateExercises(exercise, page) {
   } finally {
     loader.destroy();
     items.removeEventListener('click', handlerClickExercises);
+    paginationMainPage.classList.add("isPaginationHidden")
+    paginationFilterPage.classList.remove("isPaginationHidden")
+
   }
 }
 
@@ -249,7 +261,7 @@ function switchIcons() {
 // прокрутка категорій ----
 function scrollExercises() {
   let top = window.innerWidth < 768 ? 860 : 930;
-  const heightScroll = window.pageYOffset - top;
+  const heightScroll = window.scrollY - top;
 
   window.scrollBy({
     top: -heightScroll,

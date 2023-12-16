@@ -4,6 +4,11 @@
   /* background-color: #ffffff; */
 }
 
+.js-pagination-mainPage.isPaginationHidden,
+.js-pagination-filterPage.isPaginationHidden {
+  display: none;
+}
+
 .pag {
   display: flex;
   justify-content: center;

@@ -1,11 +1,12 @@
-import { cutExerciseName, correctRating, cutDataCardsInfo } from "./cutDataCardsInfo"
+import { cutExerciseName, correctRating, cutBodyPartName, cutBurnedCalories, cutTargetName } from "./cutDataCardsInfo"
 
 
 
 export function markupExercises(data) {
-
+	// console.log(data)
 	return data
 		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
+			// console.log(burnedCalories)
 			return `<li class="exercises-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
@@ -37,16 +38,13 @@ export function markupExercises(data) {
 		<div class="exercises-footer">
 			<ul class="exercises-data-list">
 				<li class="exercises-data-item">
-					<span class="exercises-data-info">Burned calories:</span>
-					${burnedCalories}/...
+					<span class="exercises-data-info">Burned calories:</span> ${cutBurnedCalories(burnedCalories)}
 				</li>
 				<li class="exercises-data-item">
-					<span class="exercises-data-info">Body part:</span>
-					${cutDataCardsInfo(bodyPart)}
+					<span class="exercises-data-info">Body part:</span> ${cutBodyPartName(bodyPart)}
 				</li>
 				<li class="exercises-data-item">
-					<span class="exercises-data-info">Target:</span>
-					${cutDataCardsInfo(target)}
+					<span class="exercises-data-info">Target:</span> ${cutTargetName(target)}
 				</li>
 			</ul>
 		</div>

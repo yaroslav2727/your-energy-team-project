@@ -122,11 +122,11 @@
 }
 
 .footer-privacy-policy {
-  transition: fill var(--transition-time) var(--transition-function);
+  transition: color var(--transition-time) var(--transition-function);
 }
 .footer-privacy-policy:hover,
 .footer-privacy-policy:focus {
-  fill: var(--color-white);
+  color: var(--color-white);
 }
 
 .privacy-policy-list {

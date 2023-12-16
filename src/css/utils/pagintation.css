@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 3px;
+  column-gap: 10px;
 
   font-size: 24px;
   line-height: 1.333;
@@ -71,6 +71,8 @@
 .pag__page--current-number {
   flex-shrink: 0;
   color: #242424;
+  width: 45px;
+  height: 45px;
   /* background-color: tomato; */
 
   border: 1px solid #242424;
@@ -100,6 +102,10 @@
 
 @media screen and (min-width: 1440px) {
   .pagination {
+    /* display: none; */
+  }
+
+  .pagination--desktop-hide {
     display: none;
   }
 }

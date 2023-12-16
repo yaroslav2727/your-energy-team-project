@@ -72,22 +72,6 @@ formReff.addEventListener("submit", async evt => {
       message: ``,
     });
   }
-  // await patchRating(id, formItems).then(() => {
-  //   iziToast.show({
-  //     title: "The rating has been successfully added",
-  //     color: "green",
-  //     position: "topCenter",
-  //     message: ``,
-  //   });
-  //   resetHandler()
-  // }).catch((error) => {
-  //   iziToast.show({
-  //     title: `${error.message}`,
-  //     color: "red",
-  //     position: "topCenter",
-  //     message: ``,
-  //   });
-  // })
 });
 
 function executeRating(stars) {

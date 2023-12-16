@@ -101,14 +101,25 @@
 }
 .btn_star{
   background-color:  #242424;
- 
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn_star:hover{
   cursor: pointer;
 }
 .btn_star:hover .btn_star_svg{
-  /* fill: #EEA10C;
-  stroke: #EEA10C; */
+  fill: #EEA10C;
+  stroke: #EEA10C;
+}
+
+/* .item:hover ~ .item > .btn_star > .btn_star_svg{
+  fill: #EEA10C;
+  stroke: #EEA10C;
+} */
+
+ .item:has(~ .item:hover) > .btn_star > .btn_star_svg{
+  fill: #EEA10C;
+  stroke: #EEA10C;
 }
 
 .btn_star_svg{
@@ -193,7 +204,7 @@
   transition: border 100ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.rating_btn:hover, .rating_btn:focus{
+.rating_btn:hover {
   background-color: #242424;
   color: #F4F4F4;
   border: 1px solid #F4F4F4;

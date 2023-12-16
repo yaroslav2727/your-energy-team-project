@@ -11,7 +11,18 @@ function handleSubmit(event) {
   event.preventDefault();
 
   const email = emailInput.value.trim();
+const emailPattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
+    if (!emailPattern.test(email)) {
+    iziToast.show({
+      position: 'center',
+      color: 'red',
+      message: `Please enter a valid email address.`,
+    });
+      emailInput.value = '';
+    }
+
+  
   const data = {
     email: email,
   };
@@ -35,7 +46,7 @@ function handleSubmit(event) {
           color: 'red',
           message: `this email ${email} is subscribs`,
         });
-         emailInput.value = '';
+    emailInput.value = '';
       }
     })
     .finally(() => {

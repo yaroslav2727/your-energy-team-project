@@ -2,7 +2,7 @@
   <div class="container footer-container">
     <div class="nav-footer-container">
       <div class="nav-footer-wrapper">
-        <a class="footer-logo" href="./index.html">
+        <a class="footer-logo" href="./index.html" aria-label="footer-logo">
           <svg class="footer-logo-img" width="132" height="24">
             <use href="/img/icons.svg#icon-logo"></use>
           </svg>
@@ -15,7 +15,7 @@
               href="https://www.facebook.com/goITclub/"
               aria-label="facebook"
             >
-              <svg class="social-list-icon" width="24" height="24">
+              <svg class="social-list-icon" width="28" height="28">
                 <use href="/img/icons.svg#icon-facebook"></use>
               </svg>
             </a>
@@ -27,7 +27,7 @@
               href="https://www.instagram.com/goitclub/"
               aria-label="instagram"
             >
-              <svg class="social-list-icon" width="24" height="24">
+              <svg class="social-list-icon" width="28" height="28">
                 <use href="/img/icons.svg#icon-instagram"></use>
               </svg>
             </a>
@@ -39,7 +39,7 @@
               href="https://www.youtube.com/c/GoIT"
               aria-label="youtube"
             >
-              <svg class="social-list-icon" width="24" height="24">
+              <svg class="social-list-icon" width="28" height="28">
                 <use href="/img/icons.svg#icon-youtube"></use>
               </svg>
             </a>
@@ -58,11 +58,14 @@
       <form class="subscribe-form">
         <input
           class="subscribe-input"
+          id="subscribtion-input"
           placeholder="Email"
+          aria-label="email-input"
           required
           type="email"
+          pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
         />
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn" aria-label="submit-button">
           <span class="button-text">Send</span>
         </button>
       </form>
@@ -75,8 +78,8 @@
             href="./privacy-policy.html"
             class="footer-privacy-policy link privacy-text"
           >
-            Privacy Policy&nbsp;/&nbsp;Terms of Service</a
-          >
+            Privacy Policy&nbsp;/&nbsp;Terms of Service
+          </a>
         </li>
       </ul>
       <p class="privacy-text text-date">&copy;2023</p>

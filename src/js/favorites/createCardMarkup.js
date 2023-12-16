@@ -1,3 +1,5 @@
+import icons from '../../img/icons.svg';
+
 export function createCardMarkup({
   _id,
   burnedCalories,
@@ -6,7 +8,7 @@ export function createCardMarkup({
   target,
   name,
 }) {
-  return `    <li class="favorites__item">
+  return `    <li class="favorites__item js-common-card-item" data-exercise-id="${_id}">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">
@@ -26,16 +28,16 @@ export function createCardMarkup({
                         
 
                              <svg class="icon" width="16" height="16" >
-                              <use href="./img/icons.svg#icon-trash"></use>
+                              <use href="${icons}#icon-trash"></use>
                             </svg>
                         </button>
                       </div>
   
-                      <button class="button sport-card__start-btn" type="button" data-card-id="${_id}">
+                      <button class="button sport-card__start-btn js-excercise-button" type="button" data-card-id="${_id}">
                         Start
                      
                           <svg class="icon" width="16" height="16" >
-                              <use href="./img/icons.svg#icon-arrow"></use>
+                              <use href="${icons}#icon-arrow"></use>
                             </svg>
                         
                       </button>
@@ -44,7 +46,7 @@ export function createCardMarkup({
                     <div class="sport-card__meta">                     
 
                       <svg class="icon" width="24" height="24">
-                        <use href="./img/icons.svg#icon-runner"></use>
+                        <use href="${icons}#icon-runner"></use>
                       </svg>
   
                       <p class="sport-card__name">${name}</p>

@@ -1,0 +1,119 @@
+.pagination {
+  /* padding-top: 20px;
+  padding-bottom: 60px; */
+  margin-bottom: 80px;
+  /* background-color: #ffffff; */
+}
+
+.js-pagination-mainPage.isPaginationHidden,
+.js-pagination-filterPage.isPaginationHidden {
+  display: none;
+}
+
+.pag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+
+  font-size: 24px;
+  line-height: 1.333;
+
+  /* background-color: #ffffff; */
+}
+
+/* ------------------------------------------------------ */
+.pag__btn {
+  /* background-color: #f7f7f7; */
+  background-position: center;
+  background-repeat: no-repeat;
+  /* transition: background-color 250ms ease-in-out; */
+  /* transition: color 250ms ease-in-out; */
+  /* color: #d4d4d4; */
+}
+
+.pag__btn .pag-icon {
+  fill: tomato;
+  stroke: tomato;
+}
+
+.pag__btn--prev:hover,
+.pag__btn--next:hover {
+  /* background-color: #e4e1e1; */
+  /* color: #242424; */
+}
+
+.pag__btn--dots-prev,
+.pag__btn--dots-next {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pag__btn--prev {
+  background-image: url('../../img/arrow-left.svg');
+}
+
+.pag__btn--next {
+  background-image: url('../../img/arrow-right.svg');
+}
+
+/* ------------------------------------------------------ */
+
+.pag__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+
+  /* color: #000000; */
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  color: #d4d4d4;
+}
+
+.pag__page--current-number {
+  flex-shrink: 0;
+  color: #242424;
+  width: 45px;
+  height: 45px;
+  /* background-color: tomato; */
+
+  border: 1px solid #242424;
+  border-radius: 50%;
+}
+
+.pag__page.hovered {
+  /* transition: border-color 250ms ease-in-out; */
+  transition: color 250ms ease-in-out;
+}
+
+.pag__page.hovered:hover {
+  /* border: 1px solid #ff6b08; */
+  color: #242424;
+}
+
+.pag__icon {
+  fill: none;
+  stroke: #333333;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    /* padding-top: 32px; */
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .pagination {
+    /* display: none; */
+    margin-bottom: 132px;
+  }
+
+  .pagination--desktop-hide {
+    display: none;
+  }
+}

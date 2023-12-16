@@ -37,6 +37,7 @@ const filterVocabulary = {
 let currentPage = 1;
 let category = FILTER.MUSCLES;
 let exerciseState = null;
+let searchState = '';
 let getData = null;
 const exercisesPageState = createPageState(1);
 
@@ -48,6 +49,7 @@ paginatorExercises.on('aftermove', event => {
   updateExercises(
     {
       [filterVocabulary[category]]: exerciseState,
+      search: searchState,
     },
     event.page
   );
@@ -171,6 +173,7 @@ function handlerClickExercises(e) {
 
   const data = {
     [filterVocabulary[category]]: exercise,
+    // search: searchState,
     // page: 1,
   };
 
@@ -235,6 +238,15 @@ async function updateExercises(exercise, page) {
 function onSearchExercise(evt) {
   const searchData = evt.target.value.trim().toLowerCase();
 
+  //------Anton--------
+  searchState = searchData;
+  const data = {
+    [filterVocabulary[category]]: exerciseState,
+    search: searchData,
+  };
+  updateExercises(data, exercisesPageState.getPage());
+  //------Anton--------
+
   const filteredData = getData.filter(item => item.name.includes(searchData));
 
   if (searchData.length !== 0) {
@@ -291,9 +303,10 @@ function scrollExercises() {
 }
 
 function createPageState(initialPage) {
-  const storage = new Storage('exercises_page');
+  // const storage = new Storage('exercises_page');
 
-  let page = storage.getFromStorage() || initialPage;
+  // let page = storage.getFromStorage() || initialPage;
+  let page = initialPage;
 
   return {
     // increase() {

@@ -1,6 +1,7 @@
 .pagination {
-  padding-top: 20px;
-  padding-bottom: 60px;
+  /* padding-top: 20px;
+  padding-bottom: 60px; */
+  margin-bottom: 80px;
   /* background-color: #ffffff; */
 }
 
@@ -101,13 +102,15 @@
 
 @media screen and (min-width: 768px) {
   .pagination {
-    padding-top: 32px;
+    /* padding-top: 32px; */
+    margin-bottom: 64px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .pagination {
     /* display: none; */
+    margin-bottom: 132px;
   }
 
   .pagination--desktop-hide {

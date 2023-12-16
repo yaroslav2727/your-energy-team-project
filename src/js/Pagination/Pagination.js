@@ -156,6 +156,7 @@ export default class Pagination {
 
   goToPage(page) {
     if (!Number.isInteger(Number(page))) {
+      console.log(page);
       throw new Error('Page must be integer!');
     }
 

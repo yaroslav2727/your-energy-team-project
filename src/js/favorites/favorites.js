@@ -7,7 +7,9 @@ import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from './favoritesConfig';
 import Pagination from '../Pagination/Pagination';
 
 const listRef = document.querySelector('.js-favorites-list');
+const listRefDesktop = document.querySelector('.js-favorites-list--desktop');
 const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
+
 const paginationContainer = document.querySelector('.pag');
 
 //-------------------------------
@@ -50,18 +52,48 @@ mockFavoritesData.forEach(card => {
 // tempPageDecrease.addEventListener('click', pageState.decrease);
 //TEMP----------------------
 
-listRef.addEventListener('click', e => {
+// listRef.addEventListener('click', e => {
+//   const delBtn = e.target.closest('.js-favorites-remove');
+//   if (!delBtn) return;
+
+//   const cardId = delBtn.dataset.cardId;
+//   favoritesStorage.removeCard(cardId);
+//   updateData();
+//   updateDesktopData();
+// });
+
+// listRefDesktop.addEventListener('click', e => {
+//   const delBtn = e.target.closest('.js-favorites-remove');
+//   if (!delBtn) return;
+
+//   const cardId = delBtn.dataset.cardId;
+//   favoritesStorage.removeCard(cardId);
+//   updateDesktopData();
+//   updateData();
+// });
+
+listRef.addEventListener('click', removeCardHandler);
+listRefDesktop.addEventListener('click', removeCardHandler);
+
+updateData();
+updateDesktopData();
+
+///////////////////////////////////////////////////////////////////////////
+
+function removeCardHandler(e) {
   const delBtn = e.target.closest('.js-favorites-remove');
   if (!delBtn) return;
 
   const cardId = delBtn.dataset.cardId;
   favoritesStorage.removeCard(cardId);
   updateData();
-});
+  updateDesktopData();
+}
 
-updateData();
-
-///////////////////////////////////////////////////////////////////////////
+function updateDesktopData() {
+  const data = favoritesStorage.getAllCards();
+  render(data, listRefDesktop);
+}
 
 function updateData() {
   const response = favoritesStorage.getCards(
@@ -69,24 +101,32 @@ function updateData() {
     FAVORITES_PER_PAGE
   );
   console.log(response);
-  render(response.data);
+
+  const { data, page, totalCount } = response;
+
+  render(data, listRef);
+
+  if ((data.length === 0) & (totalCount !== 0)) {
+    pageState.setPage(page - 1);
+    return;
+  }
 
   pagination.updateTotalItems(response.totalCount);
-  pagination.goToPage(response.page);
+  pagination.goToPage(page);
   pagination.render();
 }
 
-function render(list) {
+function render(list, containerRef) {
   if (list.length === 0) {
     noCardsMessageRef.classList.add('is-visible');
-    listRef.innerHTML = '';
+    containerRef.innerHTML = '';
     return;
   } else {
     noCardsMessageRef.classList.remove('is-visible');
   }
 
   const markup = list.map(createCardMarkup).join('');
-  listRef.innerHTML = markup;
+  containerRef.innerHTML = markup;
 }
 
 function createPageState(initialPage, handler) {
@@ -118,3 +158,8 @@ function createPageState(initialPage, handler) {
     },
   };
 }
+
+window.matchMedia('(min-width: 1440px)').addEventListener('change', e => {
+  if (!e.matches) return;
+  pageState.setPage(1);
+});

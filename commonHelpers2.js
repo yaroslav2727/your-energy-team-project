@@ -1,4 +1,4 @@
-import{l as c,g as b,c as y,d as E,e as S}from"./assets/quote-17ae1c69.js";import{l as L,i}from"./assets/vendor-c2f48a40.js";const $="/your-energy-team-project/assets/no-image-3f568e29.jpg";function h(s){return s.map(({imgURL:e,filter:r,name:t})=>`<li class="card-exercises" data-body-exercise='${t}'>
+import{l as c,g as b,c as y,d as E,e as S}from"./assets/quote-343ebdf3.js";import{l as L,i}from"./assets/vendor-c2f48a40.js";const $="/your-energy-team-project/assets/no-image-3f568e29.jpg";function h(s){return s.map(({imgURL:e,filter:r,name:t})=>`<li class="card-exercises" data-body-exercise='${t}'>
                <button type="button" class="card-exercises-img"
                  style=" background: linear-gradient(0deg, rgba(17, 17, 17, 0.50) 0%, rgba(17, 17, 17, 0.50) 100%),
                  url('${k(e)}');

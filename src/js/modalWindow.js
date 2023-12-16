@@ -13,12 +13,21 @@ const modalExcercise = document.querySelector('.modal_window_container');
 const closeModalButton = document.querySelector('.close_modal_button');
 const giveRatingButton = document.querySelector('.rate_button');
 const overflow = document.body;
-// const addFavoriteBtn = document.querySelector(".add_favorite_button");
 const addFavoriteBtn = document.querySelector('.js-add-favorite-btn');
 const excerciseName = document.querySelector('.modal_title');
 const excerciseRating = document.querySelector('.excercise_rating');
-const star = document.querySelectorAll('.star_item');
 const image = document.querySelector('.modal_image');
+const firstStar = document.querySelector('.first_star');
+const secondStar = document.querySelector('.second_star');
+const thirdStar = document.querySelector('.third_star');
+const fourthStar = document.querySelector('.fourth_star');
+const fifthStar = document.querySelector('.fifth_star');
+// const modalTarget = document.querySelector('.js-target');
+// const modalBodyPart = document.querySelector('.js-body-part')
+// const modalEquipment = document.querySelector('.js-equipment');
+// const modalPopularity = document.querySelector('.js-popularity');
+// const modalCalories = document.querySelector('.js-burned-calories');
+// const modalText = document.querySelector('.js-modal-text');
 let cardState = null;
 const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
@@ -48,24 +57,11 @@ function addFavoriteAction() {
   if (storage.isCardExisted(cardState._id)) {
     storage.removeCard(cardState._id);
     buttonView(cardState._id);
-    // addFavoriteBtn.classList.add('is-card-existed');
   } else {
     storage.addCard(cardState);
     buttonView(cardState._id);
-    // addFavoriteBtn.classList.remove('is-card-existed');
   }
 }
-
-// function showIcon() {
-//         let trashIcon = document.querySelector(".trash")
-// let heartIcon = document.querySelector(".heart")
-// trashIcon.classList.toggle("hidden-icon")
-// heartIcon.classList.toggle("hidden-icon")
-// addFavoriteBtn.classList.toggle("button-text")
-// if (addFavoriteBtn.classList.contains("button-text"))
-// {
-//             } else {addFavoriteBtn.textContent = `Remove from Favorite `}
-// }
 
 function editName(elem) {
   if (elem === null || undefined) {
@@ -84,12 +80,16 @@ function editRating(rating) {
   }
 }
 
+function clearStars() {
+  firstStar.classList.remove('rating_star_filled');
+  secondStar.classList.remove('rating_star_filled');
+  thirdStar.classList.remove('rating_star_filled');
+  fourthStar.classList.remove('rating_star_filled');
+  fifthStar.classList.remove('rating_star_filled');
+}
+  
 function colorizeStars(rating) {
-  let firstStar = document.querySelector('.first_star');
-  let secondStar = document.querySelector('.second_star');
-  let thirdStar = document.querySelector('.third_star');
-  let fourthStar = document.querySelector('.fourth_star');
-  let fifthStar = document.querySelector('.fifth_star');
+
   if (rating === 5) {
     firstStar.classList.add('rating_star_filled');
     secondStar.classList.add('rating_star_filled');
@@ -133,6 +133,8 @@ function markupModal({
   burnedCalories,
   popularity,
 }) {
+  // if (!target) return
+  // else return modalTarget.innerHTML = target
   return `<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
         <p class="excercise_text">${bodyPart}</p></li>
@@ -154,10 +156,12 @@ function openRateModal() {
 }
 
 function openModal(e) {
+
   const btn = e.target.closest('.js-excercise-button');
   if (!btn) return;
 
   // const card = btn.closest('.exercises-item');
+
 
   const card = btn.closest('.js-common-card-item');
 
@@ -201,15 +205,19 @@ function closeModal(event) {
   if (event.key === 'Escape') {
     modalExcercise.classList.add('is-hidden');
     overflow.style.overflow = 'visible';
+    clearStars()
   } else if (
     !event.target.closest('.modal_window_default_content,.js-excercise-button')
   ) {
     modalExcercise.classList.add('is-hidden');
     overflow.style.overflow = 'visible';
+    clearStars()
   }
+  
 }
 
 function clickToClose() {
   modalExcercise.classList.add('is-hidden');
   overflow.style.overflow = 'visible';
+  clearStars()
 }

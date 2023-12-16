@@ -4,7 +4,10 @@ import { loader } from './utils/loader';
 import { FavoritesStorage } from './favorites/FavoritesStorage';
 import { FAVORITES_STORAGE_KEY } from './favorites/favoritesConfig';
 
-const cardsList = document.querySelector('.cards');
+// const cardsList = document.querySelector('.cards');
+const cardsList = document.querySelector('.js-common-card-list');
+const cardFavoritesWrapper = document.querySelector('.js-faovorites-wrapper');
+
 const contentUpdate = document.querySelector('.excercise_units');
 const modalExcercise = document.querySelector('.modal_window_container');
 const closeModalButton = document.querySelector('.close_modal_button');
@@ -19,7 +22,14 @@ const image = document.querySelector('.modal_image');
 let cardState = null;
 const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
-cardsList.addEventListener('click', openModal);
+if (cardsList) {
+  cardsList.addEventListener('click', openModal);
+}
+
+if (cardFavoritesWrapper) {
+  cardFavoritesWrapper.addEventListener('click', openModal);
+}
+
 closeModalButton.addEventListener('click', clickToClose);
 giveRatingButton.addEventListener('click', openRateModal);
 addFavoriteBtn.addEventListener('click', addFavoriteAction);
@@ -147,7 +157,8 @@ function openModal(e) {
   const btn = e.target;
   if (!btn.classList.contains('js-excercise-button')) return;
 
-  const card = btn.closest('.exercises-item');
+  // const card = btn.closest('.exercises-item');
+  const card = btn.closest('.js-common-card-item');
 
   const cardId = card.dataset.exerciseId;
 

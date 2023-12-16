@@ -6,7 +6,7 @@ export function createCardMarkup({
   target,
   name,
 }) {
-  return `    <li class="favorites__item">
+  return `    <li class="favorites__item js-common-card-item" data-exercise-id="${_id}">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">
@@ -31,7 +31,7 @@ export function createCardMarkup({
                         </button>
                       </div>
   
-                      <button class="button sport-card__start-btn" type="button" data-card-id="${_id}">
+                      <button class="button sport-card__start-btn js-excercise-button" type="button" data-card-id="${_id}">
                         Start
                      
                           <svg class="icon" width="16" height="16" >

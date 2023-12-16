@@ -1,12 +1,13 @@
-import { cutExerciseName, correctRating, cutDataCardsInfo } from "./cutDataCardsInfo"
-
-
+import {
+  cutExerciseName,
+  correctRating,
+  cutDataCardsInfo,
+} from './cutDataCardsInfo';
 
 export function markupExercises(data) {
-
-	return data
-		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
-			return `<li class="exercises-item" data-exercise-id="${_id}">
+  return data
+    .map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
+      return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
@@ -18,7 +19,7 @@ export function markupExercises(data) {
 				</span>
 			</div>
 			
-			<button type="button" class="exercises-btn js-excercise-button">Start					
+			<button type="button" class="exercises-btn js-excercise-button" >Start					
 				<svg class="exercises-icon-arrow" width="16" height="16">
 					<use href="././img/icons.svg#icon-arrow"></use>
 				</svg>
@@ -51,9 +52,13 @@ export function markupExercises(data) {
 			</ul>
 		</div>
 	</li>`;
-		})
-		.join('');
+    })
+    .join('');
 }
 
-{/* <div class="exercises-btn-wrapper"></div> */ }
-{/* <span class="exercises-name-span"></span> */ }
+{
+  /* <div class="exercises-btn-wrapper"></div> */
+}
+{
+  /* <span class="exercises-name-span"></span> */
+}

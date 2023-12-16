@@ -154,10 +154,11 @@ function openRateModal() {
 }
 
 function openModal(e) {
-  const btn = e.target;
-  if (!btn.classList.contains('js-excercise-button')) return;
+  const btn = e.target.closest('.js-excercise-button');
+  if (!btn) return;
 
   // const card = btn.closest('.exercises-item');
+
   const card = btn.closest('.js-common-card-item');
 
   const cardId = card.dataset.exerciseId;

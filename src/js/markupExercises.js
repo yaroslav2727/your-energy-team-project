@@ -1,13 +1,9 @@
 import { cutExerciseName, correctRating, cutBodyPartName, cutBurnedCalories, cutTargetName } from "./cutDataCardsInfo"
 
-
 export function markupExercises(data) {
-	// console.log(data)
 	return data
 		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
-			// console.log(burnedCalories)
-			return `<li class="exercises-item" data-exercise-id="${_id}">
-
+			return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>
@@ -49,13 +45,7 @@ export function markupExercises(data) {
 			</ul>
 		</div>
 	</li>`;
-    })
-    .join('');
+		})
+		.join('');
 }
 
-{
-  /* <div class="exercises-btn-wrapper"></div> */
-}
-{
-  /* <span class="exercises-name-span"></span> */
-}

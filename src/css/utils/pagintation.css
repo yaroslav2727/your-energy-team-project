@@ -63,7 +63,7 @@
   border-radius: 5px;
 
   /* color: #000000; */
-  font-family: 'DM Sans', sans-serif;
+  /* font-family: 'DM Sans', sans-serif; */
   text-decoration: none;
   color: var(--pagination-page-color);
 }

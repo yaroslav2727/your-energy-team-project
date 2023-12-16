@@ -12,6 +12,16 @@
   border-color: var(--color-primary);
 }
 
+.input-filter-exercises:focus {
+  border-color: var(--color-rating);
+  outline: var(--color-rating);
+}
+
+.input-filter-exercises:focus + .filter-icon-search,
+.input-filter-exercises:focus ~ .filter-icon-close {
+  stroke: var(--color-rating);
+}
+
 .input-filter-exercises::placeholder {
   color: var(--color-primary);
   font-size: 14px;
@@ -67,7 +77,11 @@ body.dark_mode .input-filter-exercises {
 }
 body.dark_mode .input-filter-exercises:focus {
   border-color: var(--color-rating);
-  /* background-color: var(--darkmode-secondary-light); */
+}
+
+body.dark_mode .input-filter-exercises:focus + .filter-icon-search,
+body.dark_mode .input-filter-exercises:focus ~ .filter-icon-close {
+  stroke: var(--color-rating);
 }
 
 body.dark_mode .input-filter-exercises::placeholder {

@@ -23,6 +23,7 @@
     'image'
     'hashtag';
 }
+
 @media (min-width: 1440px) {
   .hero-content-wrap {
     grid-template-areas:
@@ -33,6 +34,7 @@
 
 .hero-hashtag {
   grid-area: hashtag;
+
   justify-self: center;
   margin-top: 20px;
 }
@@ -56,9 +58,10 @@
 }
 
 .hero-hashtag-list {
-  position: inline-block;
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  justify-content: flex-start;
   align-content: flex-start;
   gap: 8px;
 }
@@ -72,7 +75,7 @@
 .hero-hashtag-item {
   font-size: 14px;
   display: flex;
-  padding: 4px 12px;
+  padding: 4px 11px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -100,7 +103,7 @@ body.dark_mode .hero-hashtag-item {
   border-radius: 20px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1439px) {
   .hero-hashtag-img {
     display: none;
   }
@@ -109,10 +112,6 @@ body.dark_mode .hero-hashtag-item {
 .hero-container {
   padding-top: 64px;
   position: relative;
-}
-
-.hero-img-wrap {
-  grid-area: image;
 }
 
 .hero-header {
@@ -189,4 +188,66 @@ body.dark_mode .hero-icon {
   min-width: 100%;
   object-fit: cover;
   object-position: 30% 30%;
+}
+
+/*----------------------------------------------------------------- */
+/*----------------------------------------------------------------- */
+/*----------------------------------------------------------------- */
+
+.hero-img-wrap {
+  grid-area: image;
+
+  height: 460px;
+
+  background-color: var(--darkmode-secondary);
+  background-image: url('../../img/hero/hero-mob-1x.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-radius: 30px;
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero-img-wrap {
+    background-image: url('../../img/hero/hero-mob-2x.jpg');
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-img-wrap {
+    grid-area: image;
+    height: 550px;
+
+    background-image: url('../../img/hero/hero-tab-1x.jpg');
+
+    border-radius: 60px;
+  }
+}
+
+@media (min-width: 768px) and (min-device-pixel-ratio: 2),
+  (min-width: 768px) and (min-resolution: 192dpi),
+  (min-width: 768px) and (min-resolution: 2dppx) {
+  .hero-img-wrap {
+    background-image: url('../../img/hero/hero-tab-2x.jpg');
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-img-wrap {
+    grid-area: image;
+    height: 350px;
+
+    background-image: url('../../img/hero/hero-desk-1x.jpg');
+  }
+}
+
+@media (min-width: 1440px) and (min-device-pixel-ratio: 2),
+  (min-width: 1440px) and (min-resolution: 192dpi),
+  (min-width: 1440px) and (min-resolution: 2dppx) {
+  .hero-img-wrap {
+    background-image: url('../../img/hero/hero-desk-2x.jpg');
+  }
 }

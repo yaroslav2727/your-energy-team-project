@@ -144,6 +144,7 @@ async function updateList(categoryName, currentPage) {
     loader.destroy();
     paginationMainPage.classList.remove("isPaginationHidden")
     paginationFilterPage.classList.add("isPaginationHidden")
+    paginationFilterPage.classList.remove("pagination-cards")
   }
 }
 
@@ -195,9 +196,9 @@ async function updateExercises(exercise, page) {
   } finally {
     loader.destroy();
     items.removeEventListener('click', handlerClickExercises);
-    paginationMainPage.classList.add("isPaginationHidden")
-    paginationFilterPage.classList.remove("isPaginationHidden")
-
+    paginationMainPage.classList.add("isPaginationHidden");
+    paginationFilterPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("pagination-cards");
   }
 }
 

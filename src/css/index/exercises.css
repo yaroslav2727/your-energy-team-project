@@ -2,7 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-content: flex-start;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .card-exercises {
@@ -44,6 +46,7 @@
   .cards {
     column-gap: 15px;
     row-gap: 32px;
+    margin-bottom: 32px;
   }
 
   .card-exercises {

@@ -1,3 +1,5 @@
+import icons from '../../img/icons.svg';
+
 export function createCardMarkup({
   _id,
   burnedCalories,
@@ -26,7 +28,7 @@ export function createCardMarkup({
                         
 
                              <svg class="icon" width="16" height="16" >
-                              <use href="./icons.svg#icon-trash"></use>
+                              <use href="${icons}#icon-trash"></use>
                             </svg>
                         </button>
                       </div>
@@ -35,7 +37,7 @@ export function createCardMarkup({
                         Start
                      
                           <svg class="icon" width="16" height="16" >
-                              <use href="./img/icons.svg#icon-arrow"></use>
+                              <use href="${icons}#icon-arrow"></use>
                             </svg>
                         
                       </button>
@@ -44,7 +46,7 @@ export function createCardMarkup({
                     <div class="sport-card__meta">                     
 
                       <svg class="icon" width="24" height="24">
-                        <use href="./img/icons.svg#icon-runner"></use>
+                        <use href="${icons}#icon-runner"></use>
                       </svg>
   
                       <p class="sport-card__name">${name}</p>

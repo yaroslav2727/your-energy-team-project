@@ -1,3 +1,7 @@
+.exercise-cards {
+  min-height: 833px;
+}
+
 .exercises-item {
   width: 100%;
   justify-content: center;

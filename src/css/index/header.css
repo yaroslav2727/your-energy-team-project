@@ -234,7 +234,7 @@ body.dark_mode .header-burger-img {
 
   /*============ Background Theme ================ */
   .change_theme--btn {
-    margin: 0 10px;
+    margin-right: 8px;
     width: 54px;
     border: 1px solid var(--color-primary);
     border-radius: 35px;

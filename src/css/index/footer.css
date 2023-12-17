@@ -89,12 +89,12 @@
   background-color: var(--color-primary);
   width: 100%;
   padding: 12px 14px;
+  border-bottom: unset;
   border-radius: 30px;
-  border: 1px solid var(--color-secondary);
+  border: 1px solid var(--color-secondary-shade);
   transition: background-color var(--transition-time) var(--transition-function);
 }
 
-.subscribe-input:hover,
 .subscribe-input:focus {
   background-color: var(--color-secondary);
 }

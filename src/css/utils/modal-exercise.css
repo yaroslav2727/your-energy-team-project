@@ -109,7 +109,6 @@
   align-content: flex-start;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
   margin-top: 0;
 }
 
@@ -171,8 +170,61 @@
 
 .modal_window_default_content {
   display: flex;
-  /* flex-direction: column; */
 }
+
+ .buttons_modal{
+  margin-top: 40px
+ }
+
+ .add-fav-btn {
+   background-color: transparent;
+   display: inline-flex;
+   padding: 12px 19px;
+   justify-content: center;
+   align-items: center;
+   gap: 8px;
+   border-radius: var(--radius-medium);
+   color: var(--color-primary);
+   background-color: var(--color-secondary);
+   transition: background-color var(--transition-time) var(--transition-function),
+     color var(--transition-time) var(--transition-function),
+     border var(--transition-time) var(--transition-function);
+   font-size: 14px;
+   line-height: 18px;
+   border: 1px solid var(--color-secondary);
+ }
+
+ .fav-icon {
+   fill: none;
+   stroke: currentColor;
+ }
+
+ .add-fav-btn>.fav-text--remove,
+ .add-fav-btn>.fav-icon--trash {
+   display: none;
+ }
+
+ .add-fav-btn>.fav-text--add,
+ .add-fav-btn>.fav-icon--heart {
+   display: inline-block;
+ }
+
+ .add-fav-btn.is-card-existed>.fav-text--remove,
+ .add-fav-btn.is-card-existed>.fav-icon--trash {
+   display: inline-block;
+ }
+
+ .add-fav-btn.is-card-existed>.fav-text--add,
+ .add-fav-btn.is-card-existed>.fav-icon--heart {
+   display: none;
+ }
+
+ .add-fav-btn:hover {
+   color: var(--color-secondary);
+   background-color: var(--color-primary);
+ }
+
+/* DESKTOP and TABLET */
 
 @media screen and (min-width: 768px) {
   .modal_window_default_content {
@@ -187,7 +239,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding-left: 32px;
   }
 
   .modal_title {
@@ -198,8 +249,8 @@
     display: flex;
     flex-direction: row ;
     justify-content: flex-end;
-    gap: 48px;
-    padding-top: 64px;
+    gap: 7px;
+    margin-top: 64px;
   }
 
   .modal_image_container {
@@ -210,57 +261,7 @@
   .modal_window_update {
     display: flex;
     flex-direction: row;
+    gap: 32px;
   }
-
-
 }
 
-.add-fav-btn {
-  background-color: transparent;
-  display: inline-flex;
-  padding: 12px 19px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: var(--radius-medium);
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-  transition: background-color var(--transition-time) var(--transition-function),
-    color var(--transition-time) var(--transition-function),
-    border var(--transition-time) var(--transition-function);
-  font-size: 14px;
-  line-height: 18px;
-  border: 1px solid var(--color-secondary);
-}
-
-.fav-icon {
-  /* fill: currentColor; */
-  fill: none;
-  stroke: currentColor;
-}
-
-.add-fav-btn > .fav-text--remove,
-.add-fav-btn > .fav-icon--trash {
-  display: none;
-}
-
-.add-fav-btn > .fav-text--add,
-.add-fav-btn > .fav-icon--heart {
-  display: inline-block;
-}
-
-.add-fav-btn.is-card-existed > .fav-text--remove,
-.add-fav-btn.is-card-existed > .fav-icon--trash {
-  display: inline-block;
-}
-
-.add-fav-btn.is-card-existed > .fav-text--add,
-.add-fav-btn.is-card-existed > .fav-icon--heart {
-  display: none;
-}
-
-.add-fav-btn:hover
- {
-  color: var(--color-secondary);
-  background-color: var(--color-primary);
-}

@@ -194,6 +194,7 @@ body.dark_mode .hero-icon {
 /*----------------------------------------------------------------- */
 /*----------------------------------------------------------------- */
 
+/* 
 .hero-img-wrap {
   grid-area: image;
 
@@ -250,4 +251,5 @@ body.dark_mode .hero-icon {
   .hero-img-wrap {
     background-image: url('../../img/hero/hero-desk-2x.jpg');
   }
-}
+} 
+*/

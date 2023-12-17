@@ -2,15 +2,18 @@ import axios from 'axios';
 import {
   BASE_URL,
   DEFAULT_EXERCISES_LIMIT,
+  DEFAULT_EXERCISES_LIMIT_MOB,
   DEFAULT_FILTER_LIMIT,
+  DEFAULT_FILTER_LIMIT_MOB,
 } from './config';
+
+let limit = window.innerWidth < 375 ? DEFAULT_FILTER_LIMIT_MOB : DEFAULT_FILTER_LIMIT;
+let limitExe = window.innerWidth < 375 ? DEFAULT_EXERCISES_LIMIT_MOB : DEFAULT_EXERCISES_LIMIT;
 
 const api = axios.create({
   baseURL: BASE_URL,
   params: {},
 });
-
-let limit = window.innerWidth < 375 ? 9 : 12;
 
 //---------------Filters---------------------------------------------------------------
 export const getFilteredList = async (filter, page = 1) => {
@@ -87,7 +90,7 @@ export const getExercises = async (
       equipment: equipment || '',
       keyword: checkedSearch || '',
       page,
-      limit: limit,
+      limit: limitExe,
     },
   });
   return response.data;

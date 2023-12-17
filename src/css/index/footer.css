@@ -84,32 +84,24 @@
 }
 
 .subscribe-input {
-  fill: var(--color-secondar-heavy);
   font-size: 16px;
   line-height: 1.5rem;
   background-color: var(--color-primary);
   width: 100%;
   padding: 12px 14px;
-  align-items: center;
-  gap: 10px;
   border-radius: 30px;
   border: 1px solid var(--color-secondary);
-  transition: background-color var(--transition-time) var(--transition-function),
-    fill var(--transition-function) var(--transition-time);
+  transition: background-color var(--transition-time) var(--transition-function);
 }
 
 .subscribe-input:hover,
 .subscribe-input:focus {
   background-color: var(--color-secondary);
-  fill: var(--color-primary-heavy);
 }
 
 .submit-btn {
   width: 100%;
   padding: 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
   border-radius: 30px;
   border-color: transparent;
   background-color: var(--color-secondary);
@@ -221,7 +213,6 @@
 @media screen and (min-width: 1440px) {
   .footer-container {
     display: flex;
-    align-content: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 70px;
@@ -232,14 +223,11 @@
   }
 
   .footer-headline {
+    margin-bottom: unset;
     width: 595px;
   }
 
   .form-wrapper {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
     margin: unset;
   }
 

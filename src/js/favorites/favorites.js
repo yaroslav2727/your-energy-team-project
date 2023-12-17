@@ -23,6 +23,19 @@ pagination.on('aftermove', event => {
   pageState.setPage(event.page);
 });
 
+// const myWorker = new Worker('./js/worker.js');
+
+// myWorker.postMessage('fav');
+
+// myWorker.onmessage = function (event) {
+//   console.log(event.data);
+//   if (event.data === 'update-favorites') {
+//     console.log('EXCELLENT!!');
+//   }
+// };
+
+// myWorker.postMessage("TEST FAV")
+
 //TEMP----------------------
 // mockFavoritesData.forEach(card => {
 //   favoritesStorage.addCard(card);
@@ -75,10 +88,41 @@ pagination.on('aftermove', event => {
 listRef.addEventListener('click', removeCardHandler);
 listRefDesktop.addEventListener('click', removeCardHandler);
 
+window.addEventListener('message', e => {
+  // console.log(e.data);
+  // if (e.origin !== '*') return;
+
+  // console.log(e.data);
+  // if (e.data === 'add' || e.data === 'remove') {
+  //   console.log(e.data);
+  //   messageHandler(e.data);
+  // }
+
+  if (e.data === 'update-favorites') {
+    console.log(e.data);
+
+    updateData();
+    updateDesktopData();
+  }
+});
+
 updateData();
 updateDesktopData();
-
 ///////////////////////////////////////////////////////////////////////////
+
+// function messageHandler({ method, payload }) {
+//   if (method === 'add') {
+//     favoritesStorage.addCard(payload);
+//     updateData();
+//     updateDesktopData();
+//   }
+
+//   if (method === 'remove') {
+//     favoritesStorage.removeCard(payload.id);
+//     updateData();
+//     updateDesktopData();
+//   }
+// }
 
 function removeCardHandler(e) {
   const delBtn = e.target.closest('.js-favorites-remove');
@@ -100,6 +144,7 @@ function updateData() {
     pageState.getPage(),
     FAVORITES_PER_PAGE
   );
+  // console.log('test func');
   console.log(response);
 
   const { data, page, totalCount } = response;

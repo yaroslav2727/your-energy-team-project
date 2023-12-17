@@ -1,10 +1,7 @@
 import { cutExerciseName, correctRating, cutBodyPartName, cutBurnedCalories, cutTargetName } from "./cutDataCardsInfo"
 import icons from "../img/icons.svg"
 
-
 export function markupExercises(data) {
-
-	console.log("markupExercises DATA >>>", data)
 	return data
 		.map(({ rating, name, burnedCalories, bodyPart, target, _id, time }) => {
 			return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">

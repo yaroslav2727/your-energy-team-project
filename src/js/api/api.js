@@ -10,13 +10,15 @@ const api = axios.create({
   params: {},
 });
 
+let limit = window.innerWidth < 375 ? 9 : 12;
+
 //---------------Filters---------------------------------------------------------------
 export const getFilteredList = async (filter, page = 1) => {
   const response = await api.get('/filters', {
     params: {
       filter,
       page,
-      limit: DEFAULT_FILTER_LIMIT,
+      limit: limit,
     },
   });
   return response.data;
@@ -27,7 +29,7 @@ export const getMusclesList = async (page = 1) => {
     params: {
       filter: 'Muscles',
       page,
-      limit: DEFAULT_FILTER_LIMIT,
+      limit: limit,
     },
   });
   return response.data;
@@ -38,7 +40,7 @@ export const getBodyPartsList = async (page = 1) => {
     params: {
       filter: 'Body parts',
       page,
-      limit: DEFAULT_FILTER_LIMIT,
+      limit: limit,
     },
   });
   return response.data;
@@ -49,7 +51,7 @@ export const getEquipmentList = async (page = 1) => {
     params: {
       filter: 'Equipment',
       page,
-      limit: DEFAULT_FILTER_LIMIT,
+      limit: limit,
     },
   });
   return response.data;
@@ -85,7 +87,7 @@ export const getExercises = async (
       equipment: equipment || '',
       keyword: checkedSearch || '',
       page,
-      limit: DEFAULT_EXERCISES_LIMIT,
+      limit: limit,
     },
   });
   return response.data;

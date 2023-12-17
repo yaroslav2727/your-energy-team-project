@@ -1,5 +1,11 @@
 import icons from '../../img/icons.svg';
 
+const trimText = (str, length) => {
+  if (length <= 3) throw new Error('Trim length must not be less than 4');
+  if (str.length <= length - 3) return str;
+  return str.slice(0, length - 3) + '...';
+};
+
 export function createCardMarkup({
   _id,
   burnedCalories,
@@ -49,23 +55,29 @@ export function createCardMarkup({
                         <use href="${icons}#icon-runner"></use>
                       </svg>
   
-                      <p class="sport-card__name">${name}</p>
+                      <p class="sport-card__name">${trimText(name, 20)}</p>
                     </div>
   
                     <div class="sport-card__footer">
                       <ul class="sport-card__param-list">
                         <li class="sport-card__param-item">
                           Burned calories:<span class="sport-card__param__value"
-                            >${burnedCalories} / ${time} min</span
+                            >${burnedCalories} / ${trimText(
+    time.toString() + ' min',
+    4
+  )}</span
                           >
                         </li>
                         <li class="sport-card__param-item">
                           Body part:<span class="sport-card__param__value"
-                            >${bodyPart}</span
+                            >${trimText(bodyPart, 8)}</span
                           >
                         </li>
                         <li class="sport-card__param-item">
-                          Target:<span class="sport-card__param__value">${target}</span>
+                          Target:<span class="sport-card__param__value">${trimText(
+                            target,
+                            5
+                          )}</span>
                         </li>
                       </ul>
                     </div>

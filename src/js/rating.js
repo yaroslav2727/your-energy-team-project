@@ -17,7 +17,9 @@ const resetHandler = () => {
   reatingTitleReff.textContent = `0.0`;
   ratingStarsReff.forEach((item) => {
     item.classList.remove('btn_star-active')
+    item.classList.add('btn_star')
   })
+
   modalReff.classList.add("is-hidden");
   modalContainerReff.classList.remove('is-hidden')
 }
@@ -138,7 +140,7 @@ executeRating(ratingStarsReff);
   }
 
   function onEscapeKeyPress(evt) {
-    if (evt.key === "Escape") {
+    if (evt.code === "Escape") {
       closeModal()
     }
   }

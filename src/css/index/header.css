@@ -162,6 +162,32 @@ body.dark_mode .header-burger-img {
     color: var(--color-secondary);
   }
 
+  .header-underscore {
+    position: relative;
+  }
+
+  .header-underscore::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    opacity: 0;
+    background-color: var(--color-secondary);
+    transition: 
+      opacity 500ms var(--transition-function),
+      left 500ms var(--transition-function),
+      width 500ms var(--transition-function);
+  }
+
+  .header-underscore:hover::before {
+    opacity: 1;
+    width: 100%;
+    left: 0;
+  }
+
   .header-pages-active {
     background-color: var(--color-secondary);
     color: var(--color-primary);

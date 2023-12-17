@@ -5,10 +5,12 @@ export class FavoritesStorage extends Storage {
 
   constructor(key) {
     super(key);
-    this.#list = this.getFromStorage() || [];
+    // this.#list = this.getFromStorage() || [];
+    this.#update();
   }
 
   addCard(card) {
+    // console.log(card);
     if (this.isCardExisted(card._id)) return;
 
     this.#list.push(card);
@@ -16,6 +18,7 @@ export class FavoritesStorage extends Storage {
   }
 
   removeCard(id) {
+    this.#update();
     const updatedList = this.#list.filter(
       ({ _id }) => _id.toString() !== id.toString()
     );
@@ -25,8 +28,9 @@ export class FavoritesStorage extends Storage {
   }
 
   getCards(page, limit) {
+    this.#update();
     if (page * limit - limit > this.#list.length) {
-      console.log(page);
+      // console.log(page);
       throw new Error('Out of list');
     }
 
@@ -39,16 +43,23 @@ export class FavoritesStorage extends Storage {
   }
 
   getAllCards() {
+    this.#update();
     if (this.#list.length === 0) return [];
     return this.#list;
   }
 
   isCardExisted(id) {
+    this.#update();
     return this.#list.some(({ _id }) => _id === id);
   }
 
   get list() {
+    this.#update();
     return this.#list;
+  }
+
+  #update() {
+    this.#list = this.getFromStorage() || [];
   }
 }
 

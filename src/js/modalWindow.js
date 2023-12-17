@@ -1,53 +1,46 @@
-import iziToast from 'izitoast';
-import { getExerciseById } from './api/api';
-import { loader } from './utils/loader';
-import { FavoritesStorage } from './favorites/FavoritesStorage';
-import { FAVORITES_STORAGE_KEY } from './favorites/favoritesConfig';
+import iziToast from "izitoast";
+import { getExerciseById } from "./api/api";
+import { loader } from "./utils/loader";
+import { buttonup } from "./button-up";
+import { FavoritesStorage } from "./favorites/FavoritesStorage";
+import { FAVORITES_STORAGE_KEY } from "./favorites/favoritesConfig";
 
-// const cardsList = document.querySelector('.cards');
-const cardsList = document.querySelector('.js-common-card-list');
-const cardFavoritesWrapper = document.querySelector('.js-faovorites-wrapper');
-
-const contentUpdate = document.querySelector('.excercise_units');
-const modalExcercise = document.querySelector('.modal_window_container');
-const closeModalButton = document.querySelector('.close_modal_button');
-const giveRatingButton = document.querySelector('.rate_button');
+const cardsList = document.querySelector(".js-common-card-list");
+const cardFavoritesWrapper = document.querySelector(".js-faovorites-wrapper");
+const contentUpdate = document.querySelector(".excercise_units");
+const modalExcercise = document.querySelector(".modal_window_container");
+const closeModalButton = document.querySelector(".close_modal_button");
+const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
-const addFavoriteBtn = document.querySelector('.js-add-favorite-btn');
-const excerciseName = document.querySelector('.modal_title');
-const excerciseRating = document.querySelector('.excercise_rating');
-const image = document.querySelector('.modal_image');
-const firstStar = document.querySelector('.first_star');
-const secondStar = document.querySelector('.second_star');
-const thirdStar = document.querySelector('.third_star');
-const fourthStar = document.querySelector('.fourth_star');
-const fifthStar = document.querySelector('.fifth_star');
-// const modalTarget = document.querySelector('.js-target');
-// const modalBodyPart = document.querySelector('.js-body-part')
-// const modalEquipment = document.querySelector('.js-equipment');
-// const modalPopularity = document.querySelector('.js-popularity');
-// const modalCalories = document.querySelector('.js-burned-calories');
-// const modalText = document.querySelector('.js-modal-text');
+const addFavoriteBtn = document.querySelector(".js-add-favorite-btn");
+const excerciseName = document.querySelector(".modal_title");
+const excerciseRating = document.querySelector(".excercise_rating");
+const image = document.querySelector(".modal_image");
+const firstStar = document.querySelector(".first_star");
+const secondStar = document.querySelector(".second_star");
+const thirdStar = document.querySelector(".third_star");
+const fourthStar = document.querySelector(".fourth_star");
+const fifthStar = document.querySelector(".fifth_star");
 let cardState = null;
 const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
 if (cardsList) {
-  cardsList.addEventListener('click', openModal);
+  cardsList.addEventListener("click", openModal);
 }
 
 if (cardFavoritesWrapper) {
-  cardFavoritesWrapper.addEventListener('click', openModal);
+  cardFavoritesWrapper.addEventListener("click", openModal);
 }
 
-closeModalButton.addEventListener('click', clickToClose);
-giveRatingButton.addEventListener('click', openRateModal);
-addFavoriteBtn.addEventListener('click', addFavoriteAction);
+closeModalButton.addEventListener("click", clickToClose);
+giveRatingButton.addEventListener("click", openRateModal);
+addFavoriteBtn.addEventListener("click", addFavoriteAction);
 
 function buttonView(cardId) {
   if (storage.isCardExisted(cardId)) {
-    addFavoriteBtn.classList.add('is-card-existed');
+    addFavoriteBtn.classList.add("is-card-existed");
   } else {
-    addFavoriteBtn.classList.remove('is-card-existed');
+    addFavoriteBtn.classList.remove("is-card-existed");
   }
 }
 
@@ -64,7 +57,7 @@ function addFavoriteAction() {
 }
 
 function editName(elem) {
-  if (elem === null || undefined) {
+  if (!elem) {
     return;
   } else {
     excerciseName.textContent = elem;
@@ -72,7 +65,7 @@ function editName(elem) {
 }
 
 function editRating(rating) {
-  if (rating === null || undefined) {
+  if (!rating) {
     return;
   } else {
     let newRating = rating.toFixed(1);
@@ -81,42 +74,39 @@ function editRating(rating) {
 }
 
 function clearStars() {
-  firstStar.classList.remove('rating_star_filled');
-  secondStar.classList.remove('rating_star_filled');
-  thirdStar.classList.remove('rating_star_filled');
-  fourthStar.classList.remove('rating_star_filled');
-  fifthStar.classList.remove('rating_star_filled');
+  firstStar.classList.remove("rating_star_filled");
+  secondStar.classList.remove("rating_star_filled");
+  thirdStar.classList.remove("rating_star_filled");
+  fourthStar.classList.remove("rating_star_filled");
+  fifthStar.classList.remove("rating_star_filled");
 }
-  
-function colorizeStars(rating) {
 
+function colorizeStars(rating) {
   if (rating === 5) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
-    fourthStar.classList.add('rating_star_filled');
-    fifthStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
+    fourthStar.classList.add("rating_star_filled");
+    fifthStar.classList.add("rating_star_filled");
   } else if (rating >= 4) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
-    fourthStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
+    fourthStar.classList.add("rating_star_filled");
   } else if (rating >= 3) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
   } else if (rating >= 2) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
   } else if (rating >= 1) {
-    firstStar.classList.add('rating_star_filled');
-  } else {
-    return;
-  }
+    firstStar.classList.add("rating_star_filled");
+  } else return;
 }
 
 function updateImage(imgUrl, alt) {
-  if (imgUrl === null || undefined) {
+  if (!imgUrl) {
     return;
   } else {
     image.src = imgUrl;
@@ -133,8 +123,22 @@ function markupModal({
   burnedCalories,
   popularity,
 }) {
-  // if (!target) return
-  // else return modalTarget.innerHTML = target
+  if (!target) {
+    target = "Not Defined";
+  }
+  if (!equipment) {
+    equipment = "Not Defined";
+  }
+  if (!popularity) {
+    popularity = "Not defined";
+  }
+  if (!burnedCalories || !time) {
+    burnedCalories = "N";
+    time = "A";
+  }
+  if (!description) {
+    description = "No description yet.";
+  }
   return `<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
         <p class="excercise_text">${bodyPart}</p></li>
@@ -149,25 +153,22 @@ function markupModal({
 }
 
 function openRateModal() {
-  giveRatingButton.classList.remove('is-hidden');
-  modalExcercise.classList.add('is-hidden');
-  window.removeEventListener('keydown', closeModal);
-  window.removeEventListener('click', closeModal);
+  giveRatingButton.classList.remove("is-hidden");
+  modalExcercise.classList.add("is-hidden");
+  window.removeEventListener("keydown", closeModal);
+  window.removeEventListener("click", closeModal);
 }
 
 function openModal(e) {
-
-  const btn = e.target.closest('.js-excercise-button');
+  const btn = e.target.closest(".js-excercise-button");
   if (!btn) return;
 
-  // const card = btn.closest('.exercises-item');
-
-
-  const card = btn.closest('.js-common-card-item');
+  const card = btn.closest(".js-common-card-item");
 
   const cardId = card.dataset.exerciseId;
 
   loader.create();
+  buttonup.hide();
 
   getExerciseById(cardId)
     .then(resp => {
@@ -178,46 +179,44 @@ function openModal(e) {
       colorizeStars(resp.rating);
       updateImage(resp.gifUrl, resp.name);
       cardState = resp;
-      console.log(resp);
-
       buttonView(resp._id);
     })
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'center',
-        color: 'red',
-        message: 'An error has ocurred. Please try again later',
+        position: "center",
+        color: "red",
+        message: "An error has ocurred. Please try again later",
       });
     })
     .finally(() => {
       loader.destroy();
     });
-  giveRatingButton.setAttribute('data-Id', cardId);
+  giveRatingButton.setAttribute("data-Id", cardId);
 
-  modalExcercise.classList.remove('is-hidden');
-  overflow.style.overflow = 'hidden';
-  window.addEventListener('keydown', closeModal);
-  window.addEventListener('click', closeModal);
+  modalExcercise.classList.remove("is-hidden");
+  overflow.style.overflow = "hidden";
+  window.addEventListener("keydown", closeModal);
+  window.addEventListener("click", closeModal);
 }
 
 function closeModal(event) {
-  if (event.key === 'Escape') {
-    modalExcercise.classList.add('is-hidden');
-    overflow.style.overflow = 'visible';
-    clearStars()
-  } else if (
-    !event.target.closest('.modal_window_default_content,.js-excercise-button')
-  ) {
-    modalExcercise.classList.add('is-hidden');
-    overflow.style.overflow = 'visible';
-    clearStars()
+  if (event.key === "Escape") {
+    modalExcercise.classList.add("is-hidden");
+    overflow.style.overflow = "visible";
+    clearStars();
+    buttonup.show();
+  } else if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
+    modalExcercise.classList.add("is-hidden");
+    overflow.style.overflow = "visible";
+    clearStars();
+    buttonup.show();
   }
-  
 }
 
 function clickToClose() {
-  modalExcercise.classList.add('is-hidden');
-  overflow.style.overflow = 'visible';
-  clearStars()
+  modalExcercise.classList.add("is-hidden");
+  overflow.style.overflow = "visible";
+  clearStars();
+  buttonup.show();
 }

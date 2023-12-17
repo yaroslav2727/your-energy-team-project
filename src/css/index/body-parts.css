@@ -51,10 +51,7 @@
   color: var(--color-primary);
 
   font-feature-settings: 'clig' off, 'liga' off;
-  /* font-family: DM Sans; */
   font-size: 12px;
-  /* font-style: normal; */
-  /* font-weight: 400; */
   line-height: 1.5; /* 150% */
 }
 
@@ -77,9 +74,7 @@
   color: var(--color-primary);
 
   font-feature-settings: 'clig' off, 'liga' off;
-  /* font-family: DM Sans; */
   font-size: 20px;
-  /* font-style: normal; */
   font-weight: 400;
   line-height: 1; /* 100% */
 }
@@ -87,7 +82,6 @@
 .exercises-data-list {
   display: flex;
   gap: 8px;
-  /* width: calc((100% - 10px) / 3); */
 }
 
 .exercises-data-item {
@@ -95,10 +89,7 @@
 
   font-feature-settings: 'clig' off, 'liga' off;
   text-overflow: ellipsis;
-  /* font-family: DM Sans; */
   font-size: 12px;
-  /* font-style: normal; */
-  /* font-weight: 400; */
   line-height: 1.5; /* 150% */
 }
 
@@ -145,8 +136,6 @@
 
 @media screen and (min-width: 768px) {
   .exercises-item {
-    /* padding: 16px; */
-    /* width: 344px; */
     width: calc((100% - 16px) / 2);
   }
 
@@ -221,4 +210,21 @@ body.dark_mode .exercises-btn:hover {
 
 body.dark_mode .exercises-btn:hover ~ .exercises-icon-arrow {
   stroke: var(--color-rating);
+}
+
+.pagination.pagination-cards {
+  padding: 0;
+  margin-bottom: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination.pagination-cards {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .pagination.pagination-cards {
+    margin-bottom: 132px;
+  }
 }

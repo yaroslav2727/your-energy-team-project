@@ -1,4 +1,4 @@
-.favorites-news {
+favorites-quote.css .favorites-news {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,8 +37,7 @@
 
 .favorites-news-container--sport {
   padding: 20px;
-  /* background-color: var(--color-white); */
-  background-color: var(--favorites-card-background);
+  background-color: var(--quote-background);
 }
 
 .favorites-news-container--sport,
@@ -57,7 +56,7 @@
 
 .favorites-news-title {
   margin-top: 15px;
-  color: var(--color-black);
+  color: var(--quote-text);
 }
 
 .favorites-quote-title,
@@ -67,11 +66,11 @@
 }
 
 .favorites-quote-text {
-  color:  var(--color-secondary-heavy);
+  color: var(--color-secondary-heavy);
 }
 
 .favorites-news-subtitle {
-  color: var(--color-primary-heavy);
+  color: var(--quote-sub-title);
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -102,6 +101,7 @@
 .favorites-news-icon {
   width: 20px;
   height: 20px;
+  fill: var(--news-favor-icon);
 }
 
 .favorites-quote-marks-icon {
@@ -118,7 +118,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
   .favorites-news-container,
   .favorites-quote-container {
     width: 100%;

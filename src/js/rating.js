@@ -17,7 +17,9 @@ const resetHandler = () => {
   reatingTitleReff.textContent = `0.0`;
   ratingStarsReff.forEach((item) => {
     item.classList.remove('btn_star-active')
+    item.classList.add('btn_star')
   })
+
   modalReff.classList.add("is-hidden");
   modalContainerReff.classList.remove('is-hidden')
 }
@@ -52,22 +54,26 @@ formReff.addEventListener("submit", async evt => {
     return;
   }
 
-  await patchRating(id, formItems).then(() => {
-    iziToast.show({
-      title: "The rating has been successfully added",
-      color: "green",
-      position: "topCenter",
-      message: ``,
-    });
-    resetHandler()
-  }).catch((error) => {
+  try {
+    const response = await patchRating(id, formItems);
+    if (response) {
+      iziToast.show({
+        title: "The rating has been successfully added",
+        color: "green",
+        position: "topCenter",
+        message: ``,
+      });
+      resetHandler()
+    }
+  }
+  catch (error) {
     iziToast.show({
       title: `${error.message}`,
       color: "red",
       position: "topCenter",
       message: ``,
     });
-  })
+  }
 });
 
 function executeRating(stars) {
@@ -134,7 +140,7 @@ executeRating(ratingStarsReff);
   }
 
   function onEscapeKeyPress(evt) {
-    if (evt.key === "Escape") {
+    if (evt.code === "Escape") {
       closeModal()
     }
   }

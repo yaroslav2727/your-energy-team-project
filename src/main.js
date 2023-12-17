@@ -6,4 +6,3 @@ import "./js/modalWindow";
 import "./js/quote";
 import "./js/subscribeFormFooter";
 import "./js/button-up";
-// import "./js/privacy-policy";

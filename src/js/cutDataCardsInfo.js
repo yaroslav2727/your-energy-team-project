@@ -41,20 +41,38 @@ function cutBurnedCalories(calorie) {
 function cutBodyPartName(data) {
     const dataUpperCase = data[0].toUpperCase() + data.slice(1)
 
-    if (dataUpperCase.length > 5) {
-        return `${dataUpperCase.slice(0, 5)}...`
+    if (window.innerWidth >= 1440) {
+        if (dataUpperCase.length > 10) {
+            return `${dataUpperCase.slice(0, 10)}...`
+        }
+        return dataUpperCase;
     }
-    return dataUpperCase;
+
+    if (window.innerWidth < 1440) {
+        if (dataUpperCase.length > 5) {
+            return `${dataUpperCase.slice(0, 5)}...`
+        }
+        return dataUpperCase;
+    }
 }
 
 
 function cutTargetName(data) {
     const dataUpperCase = data[0].toUpperCase() + data.slice(1)
 
-    if (dataUpperCase.length > 2) {
-        return `${dataUpperCase.slice(0, 2)}...`
+    if (window.innerWidth >= 1440) {
+        if (dataUpperCase.length > 10) {
+            return `${dataUpperCase.slice(0, 10)}...`
+        }
+        return dataUpperCase;
     }
-    return dataUpperCase;
+
+    if (window.innerWidth < 1440) {
+        if (dataUpperCase.length > 2) {
+            return `${dataUpperCase.slice(0, 2)}...`
+        }
+        return dataUpperCase;
+    }
 }
 
 

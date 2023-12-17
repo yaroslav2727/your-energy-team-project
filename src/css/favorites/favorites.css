@@ -1,23 +1,26 @@
 .favorites {
-  font-family: Neue Montreal, 'sans-serif';
   padding-top: 80px;
   padding-bottom: 80px;
 
-  background-color: var(--favorites-background-color);
+  background-color: var(--color-secondary);
+}
+
+body.dark_mode .favorites {
+  background-color: var(--darkmode-background);
 }
 
 .favorites__title {
   margin-bottom: 20px;
 
-  color: var(--favorites-title);
-  font-family: Neue Montreal, 'sans-serif';
+  color: var(--color-primary);
   font-weight: 400;
   font-size: 28px;
   line-height: 1.35;
   letter-spacing: -0.02em;
 }
 
-.favorites__wrapper {
+body.dark_mode .favorites__title {
+  color: var(--darkmode-secondary);
 }
 
 .favorites__sidebar {
@@ -173,13 +176,21 @@
     border-radius: 8px;
   }
 
+  body.dark_mode .favorites__list-wrapper::-webkit-scrollbar {
+    background-color: rgba(155, 153, 153, 0.1);
+  }
+
   /*.favorites__list-wrapper::-webkit-scrollbar-track {
     background: #f1f1f1;
   } */
 
   .favorites__list-wrapper::-webkit-scrollbar-thumb {
-    background-color: #242424;
+    background-color: var(--color-primary);
     border-radius: 8px;
+  }
+
+  body.dark_mode .favorites__list-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--darkmode-secondary-heavy);
   }
 
   .favorites__list {

@@ -7,7 +7,6 @@ import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
 import Pagination from './pagination/pagination';
 import { DEFAULT_EXERCISES_LIMIT, DEFAULT_FILTER_LIMIT } from './api/config';
-// import { Storage } from './favorites/Storage';
 
 const items = document.querySelector('.cards');
 const filter = document.querySelector('.filter-list');
@@ -152,6 +151,11 @@ async function updateList(categoryName, currentPage) {
 
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
+
+  if (e.target.nodeName !== 'BUTTON') {
+    return
+  };
+
   const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
   span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`;
 
@@ -239,24 +243,11 @@ function onDeleteSearchData() {
   iconClose.classList.add('isHidden');
 }
 
-// function switchIcons() {
-//   iconSearch.classList.toggle('isHidden');
-//   iconClose.classList.toggle('isHidden');
-// }
+
 
 // прокрутка категорій ----
 function scrollExercises() {
   let top = null;
-
-  // switch (window.innerWidth) {
-  //   case window.innerWidth >= 375: top = 850;
-  //     break;
-  //   case window.innerWidth > 768 && window.innerWidth < 1440: top = 1020;
-  //     break;
-  //   case window.innerWidth >= 1440: top = 770;
-  //     break;
-  //   default:
-  // }
 
   if (window.innerWidth >= 375) {
     top = 850;

@@ -1,16 +1,10 @@
-import {
-  cutExerciseName,
-  correctRating,
-  cutBodyPartName,
-  cutBurnedCalories,
-  cutTargetName,
-} from "./cutDataCardsInfo";
-import icons from "../img/icons.svg";
+import { cutExerciseName, correctRating, cutBodyPartName, cutBurnedCalories, cutTargetName } from "./cutDataCardsInfo"
+import icons from "../img/icons.svg"
 
 export function markupExercises(data) {
-  return data
-    .map(({ rating, name, burnedCalories, bodyPart, target, _id, time }) => {
-      return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">
+	return data
+		.map(({ rating, name, burnedCalories, bodyPart, target, _id, time }) => {
+			return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
 				<p class="exercises-text">WORKOUT</p>

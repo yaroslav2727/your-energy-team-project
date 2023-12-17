@@ -1,4 +1,4 @@
-import"./assets/mobileModal-7aba5bf7.js";import{i as d,F as S,a as b,P as w,b as g,S as T}from"./assets/quote-3dd9f5ad.js";import"./assets/vendor-c2f48a40.js";const r=(t,e)=>{if(e<=3)throw new Error("Trim length must not be less than 4");return t.length<=e-3?t:t.slice(0,e-3)+"..."};function P({_id:t,burnedCalories:e,time:a,bodyPart:s,target:c,name:h}){return`    <li class="favorites__item js-common-card-item" data-exercise-id="${t}">
+import"./assets/mobileModal-e4992640.js";import{i as d,F as S,a as b,P as w,b as g,S as T}from"./assets/quote-71e9c5f6.js";import"./assets/vendor-c2f48a40.js";const r=(t,e)=>{if(e<=3)throw new Error("Trim length must not be less than 4");return t.length<=e-3?t:t.slice(0,e-3)+"..."};function P({_id:t,burnedCalories:e,time:a,bodyPart:s,target:c,name:h}){return`    <li class="favorites__item js-common-card-item" data-exercise-id="${t}">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">

@@ -256,8 +256,13 @@ body.dark_mode .header-burger-img {
     background: var(--color-secondary);
     top: 2px;
     left: 4px;
-    transition: left var(--transition-time) var(--transition-function);
+    transition: all var(--transition-time) var(--transition-function);
   }
+
+  .change_theme--btn:hover::before{
+    background-color: var(--color-rating);
+  }
+
   .icon_sun {
     display: block;
     stroke: var(--color-secondary);

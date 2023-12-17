@@ -3,8 +3,10 @@ import icons from "../img/icons.svg"
 
 
 export function markupExercises(data) {
+
+	console.log("markupExercises DATA >>>", data)
 	return data
-		.map(({ rating, name, burnedCalories, bodyPart, target, _id }) => {
+		.map(({ rating, name, burnedCalories, bodyPart, target, _id, time }) => {
 			return `<li class="exercises-item js-common-card-item" data-exercise-id="${_id}">
 		<div class="exercises-item-header">
 			<div class="exercises-rating-wrapper">
@@ -36,7 +38,7 @@ export function markupExercises(data) {
 		<div class="exercises-footer">
 			<ul class="exercises-data-list">
 				<li class="exercises-data-item">
-					<span class="exercises-data-info">Burned calories:</span> ${cutBurnedCalories(burnedCalories)}
+					<span class="exercises-data-info">Burned calories:</span> ${cutBurnedCalories(burnedCalories, time)}
 				</li>
 				<li class="exercises-data-item">
 					<span class="exercises-data-info">Body part:</span> ${cutBodyPartName(bodyPart)}

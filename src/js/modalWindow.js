@@ -4,10 +4,8 @@ import { loader } from './utils/loader';
 import { FavoritesStorage } from './favorites/FavoritesStorage';
 import { FAVORITES_STORAGE_KEY } from './favorites/favoritesConfig';
 
-// const cardsList = document.querySelector('.cards');
 const cardsList = document.querySelector('.js-common-card-list');
 const cardFavoritesWrapper = document.querySelector('.js-faovorites-wrapper');
-
 const contentUpdate = document.querySelector('.excercise_units');
 const modalExcercise = document.querySelector('.modal_window_container');
 const closeModalButton = document.querySelector('.close_modal_button');
@@ -22,22 +20,16 @@ const secondStar = document.querySelector('.second_star');
 const thirdStar = document.querySelector('.third_star');
 const fourthStar = document.querySelector('.fourth_star');
 const fifthStar = document.querySelector('.fifth_star');
-// const modalTarget = document.querySelector('.js-target');
-// const modalBodyPart = document.querySelector('.js-body-part')
-// const modalEquipment = document.querySelector('.js-equipment');
-// const modalPopularity = document.querySelector('.js-popularity');
-// const modalCalories = document.querySelector('.js-burned-calories');
-// const modalText = document.querySelector('.js-modal-text');
 let cardState = null;
 const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
 if (cardsList) {
   cardsList.addEventListener('click', openModal);
-}
+};
 
 if (cardFavoritesWrapper) {
   cardFavoritesWrapper.addEventListener('click', openModal);
-}
+};
 
 closeModalButton.addEventListener('click', clickToClose);
 giveRatingButton.addEventListener('click', openRateModal);
@@ -49,7 +41,7 @@ function buttonView(cardId) {
   } else {
     addFavoriteBtn.classList.remove('is-card-existed');
   }
-}
+};
 
 function addFavoriteAction() {
   if (!cardState) return;
@@ -61,24 +53,24 @@ function addFavoriteAction() {
     storage.addCard(cardState);
     buttonView(cardState._id);
   }
-}
+};
 
 function editName(elem) {
-  if (elem === null || undefined) {
+  if (!elem) {
     return;
   } else {
     excerciseName.textContent = elem;
   }
-}
+};
 
 function editRating(rating) {
-  if (rating === null || undefined) {
+  if (!rating) {
     return;
   } else {
     let newRating = rating.toFixed(1);
     excerciseRating.textContent = newRating;
   }
-}
+};
 
 function clearStars() {
   firstStar.classList.remove('rating_star_filled');
@@ -110,13 +102,11 @@ function colorizeStars(rating) {
     secondStar.classList.add('rating_star_filled');
   } else if (rating >= 1) {
     firstStar.classList.add('rating_star_filled');
-  } else {
-    return;
-  }
+  } else return;
 }
 
 function updateImage(imgUrl, alt) {
-  if (imgUrl === null || undefined) {
+  if (!imgUrl) {
     return;
   } else {
     image.src = imgUrl;
@@ -133,8 +123,22 @@ function markupModal({
   burnedCalories,
   popularity,
 }) {
-  // if (!target) return
-  // else return modalTarget.innerHTML = target
+  if (!target) {
+    target = 'Not Defined'
+  };
+  if (!equipment) {
+    equipment = "Not Defined"
+  };
+  if (!popularity ) {;
+    popularity = 'Not defined'
+  };
+  if (!burnedCalories || !time) {
+    burnedCalories = 'N';
+    time = 'A'
+  };
+  if (!description) {
+    description = 'No description yet.'
+  }
   return `<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
         <p class="excercise_text">${bodyPart}</p></li>
@@ -160,9 +164,6 @@ function openModal(e) {
   const btn = e.target.closest('.js-excercise-button');
   if (!btn) return;
 
-  // const card = btn.closest('.exercises-item');
-
-
   const card = btn.closest('.js-common-card-item');
 
   const cardId = card.dataset.exerciseId;
@@ -178,8 +179,6 @@ function openModal(e) {
       colorizeStars(resp.rating);
       updateImage(resp.gifUrl, resp.name);
       cardState = resp;
-      console.log(resp);
-
       buttonView(resp._id);
     })
     .catch(err => {
@@ -202,13 +201,12 @@ function openModal(e) {
 }
 
 function closeModal(event) {
-  if (event.key === 'Escape') {
+  if (event.key === "Escape") {
     modalExcercise.classList.add('is-hidden');
     overflow.style.overflow = 'visible';
     clearStars()
-  } else if (
-    !event.target.closest('.modal_window_default_content,.js-excercise-button')
-  ) {
+  }
+  else if (!event.target.closest('.modal_window_default_content,.js-excercise-button')){
     modalExcercise.classList.add('is-hidden');
     overflow.style.overflow = 'visible';
     clearStars()

@@ -107,7 +107,11 @@ body.dark_mode .pag__page--current-number {
 
 .pag__page.hovered:hover {
   /* border: 1px solid #ff6b08; */
-  color: var(--pagination-current-page-color);
+  color: var(--color-primary);
+}
+
+body.dark_mode .pag__page.hovered:hover {
+  color: var(--darkmode-secondary);
 }
 
 .pag__icon {

@@ -9,7 +9,7 @@
 .favorites__title {
   margin-bottom: 20px;
 
-  color: var(--favorites-title);
+  color: var(--darkmode-secondary);
   /* font-family: Neue Montreal, 'sans-serif'; */
   font-weight: 400;
   font-size: 28px;

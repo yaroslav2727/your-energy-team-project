@@ -5,7 +5,7 @@ import { getMusclesList, getFilteredList, getExercises } from './api/api';
 import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
-import Pagination from './Pagination/Pagination';
+import Pagination from './pagination/pagination';
 import { DEFAULT_EXERCISES_LIMIT, DEFAULT_FILTER_LIMIT } from './api/config';
 // import { Storage } from './favorites/Storage';
 
@@ -17,17 +17,27 @@ const span = document.querySelector('.cat-title-span');
 const iconSearch = document.querySelector('.filter-icon-search');
 const iconClose = document.querySelector('.filter-icon-close');
 const paginationMainPage = document.querySelector('.js-pagination-mainPage');
-const paginationFilterPage = document.querySelector('.js-pagination-filterPage');
-const paginatorContainerCategories = document.querySelector('.js-paginator-categories');
-const paginatorContainerExercises = document.querySelector('.js-paginator-exercises');
+const paginationFilterPage = document.querySelector(
+  '.js-pagination-filterPage'
+);
+const paginatorContainerCategories = document.querySelector(
+  '.js-paginator-categories'
+);
+const paginatorContainerExercises = document.querySelector(
+  '.js-paginator-exercises'
+);
 
 filter.addEventListener('click', handlerClickCategory);
 items.addEventListener('click', handlerClickExercises);
 inputWrapper.addEventListener('input', debounce(onSearchExercise, 500));
 iconClose.addEventListener('click', onDeleteSearchData);
 
-const paginatorCat = new Pagination(paginatorContainerCategories, { perPage: 12 });
-const paginatorExercises = new Pagination(paginatorContainerExercises, { perPage: 10 });
+const paginatorCat = new Pagination(paginatorContainerCategories, {
+  perPage: 12,
+});
+const paginatorExercises = new Pagination(paginatorContainerExercises, {
+  perPage: 10,
+});
 
 const FILTER = {
   MUSCLES: 'Muscles',
@@ -85,15 +95,13 @@ getMusclesList()
   })
   .finally(() => {
     loader.destroy();
-    paginationMainPage.classList.remove("isPaginationHidden");
-    paginationFilterPage.classList.add("isPaginationHidden");
-    paginationMainPage.classList.add("pagination-cards");
+    paginationMainPage.classList.remove('isPaginationHidden');
+    paginationFilterPage.classList.add('isPaginationHidden');
+    paginationMainPage.classList.add('pagination-cards');
   });
-
 
 // фільтр по категоріям ----
 function handlerClickCategory(e) {
-
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
@@ -125,7 +133,6 @@ async function updateList(categoryName, currentPage) {
     paginatorCat.updateTotalItems(DEFAULT_FILTER_LIMIT * response.totalPages);
     paginatorCat.goToPage(currentPage);
     paginatorCat.render();
-
   } catch (err) {
     console.error(err);
     iziToast.show({
@@ -137,9 +144,9 @@ async function updateList(categoryName, currentPage) {
     loader.destroy();
     iconSearch.classList.remove('isHidden');
     iconClose.classList.add('isHidden');
-    paginationMainPage.classList.remove("isPaginationHidden")
-    paginationFilterPage.classList.add("isPaginationHidden")
-    paginationFilterPage.classList.remove("pagination-cards")
+    paginationMainPage.classList.remove('isPaginationHidden');
+    paginationFilterPage.classList.add('isPaginationHidden');
+    paginationFilterPage.classList.remove('pagination-cards');
   }
 }
 
@@ -157,7 +164,7 @@ function handlerClickExercises(e) {
   loader.create();
 
   updateExercises(data, exercisesPageState.getPage());
-  input.value = "";
+  input.value = '';
 }
 
 async function updateExercises(exercise, page) {
@@ -187,7 +194,6 @@ async function updateExercises(exercise, page) {
 
     paginatorExercises.goToPage(page);
     paginatorExercises.render();
-
   } catch (err) {
     console.error(err);
     iziToast.show({
@@ -198,9 +204,9 @@ async function updateExercises(exercise, page) {
   } finally {
     loader.destroy();
     items.removeEventListener('click', handlerClickExercises);
-    paginationMainPage.classList.add("isPaginationHidden");
-    paginationFilterPage.classList.remove("isPaginationHidden");
-    paginationFilterPage.classList.add("pagination-cards");
+    paginationMainPage.classList.add('isPaginationHidden');
+    paginationFilterPage.classList.remove('isPaginationHidden');
+    paginationFilterPage.classList.add('pagination-cards');
   }
 }
 
@@ -228,7 +234,7 @@ function onSearchExercise(evt) {
 
 function onDeleteSearchData() {
   input.value = '';
-  updateExercises(getData, exercisesPageState.getPage())
+  updateExercises(getData, exercisesPageState.getPage());
   iconSearch.classList.remove('isHidden');
   iconClose.classList.add('isHidden');
 }

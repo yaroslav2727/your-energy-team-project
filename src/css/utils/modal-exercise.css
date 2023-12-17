@@ -67,13 +67,8 @@
   gap: 32px;
   flex-shrink: 0;
   border-radius: 12px;
-  background: linear-gradient(
-      0deg,
-      rgba(4, 4, 4, 0.2) 0%,
-      rgba(4, 4, 4, 0.2) 100%
-    ),
-    url(<path-to-image>), lightgray -2px -6.558px / 105.185% 109.653% no-repeat;
 }
+
 .buttons_modal {
   display: flex;
   justify-content: space-between;

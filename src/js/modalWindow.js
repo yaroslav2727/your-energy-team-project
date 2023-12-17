@@ -148,7 +148,7 @@ function markupModal({
         <p class="excercise_text">${popularity}</p></li>
         <li class="excercise_item"><h4 class="excercise_title">Burned calories</h4>
         <p class="excercise_text">${burnedCalories}/${time} min</p></li>
-        <p class="modal_text">${description}</p>
+        <li><p class="modal_text">${description}</p></li>
 `;
 }
 

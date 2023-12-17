@@ -8,6 +8,12 @@
   height: 32px;
 }
 
+.mob-wrap-item-active {
+  padding: 6px 8px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-secondary);
+}
+
 .mobile_menu--btn {
   height: 24px;
   width: 48px;

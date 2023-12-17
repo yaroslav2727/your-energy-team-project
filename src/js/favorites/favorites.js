@@ -141,7 +141,7 @@ function updateDesktopData() {
 
 function updateData() {
   const response = favoritesStorage.getCards(pageState.getPage(), FAVORITES_PER_PAGE);
-  // console.log('test func');
+
   // console.log(response);
 
   const { data, page, totalCount } = response;

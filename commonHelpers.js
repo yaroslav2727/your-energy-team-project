@@ -1,4 +1,4 @@
-import"./assets/mobileModal-fe9b6ad9.js";import{i,F as h,a as S,P as b,b as p,S as P}from"./assets/quote-f2d14cec.js";import"./assets/vendor-c2f48a40.js";function T({_id:t,burnedCalories:e,time:a,bodyPart:s,target:n,name:f}){return`    <li class="favorites__item js-common-card-item" data-exercise-id="${t}">
+import"./assets/mobileModal-4a510d91.js";import{i,F as h,a as S,P as b,b as p,S as P}from"./assets/quote-af0627cd.js";import"./assets/vendor-c2f48a40.js";function T({_id:t,burnedCalories:e,time:a,bodyPart:s,target:n,name:f}){return`    <li class="favorites__item js-common-card-item" data-exercise-id="${t}">
                 <div class="favorites__card" href="">
                   <div class="sport-card">
                     <div class="sport-card__header">

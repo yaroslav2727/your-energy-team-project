@@ -46,24 +46,4 @@
   /* TRANSITION */
   --transition-time: 250ms;
   --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Favorites dark mode */
-  /* --favorites-background-color: #f4f4f4;
-  --favorites-title: #242424;
-  --favorites-card-background: #ffffff; */
-
-  /* Pagination colors */
-  /* --pagination-page-color: #d4d4d4;
-  --pagination-current-page-color: #242424; */
-}
-
-body.dark_mode {
-  /* Favorites dark mode */
-  /* --favorites-background-color: #000000;
-  --favorites-title: #e5e2e2;
-  --favorites-card-background: #cdcdcd; */
-
-  /* Pagination colors */
-  /* --pagination-page-color: #d4d4d4;
-  --pagination-current-page-color: #242424; */
 }

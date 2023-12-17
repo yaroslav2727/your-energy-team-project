@@ -1,10 +1,10 @@
 import { createStorage } from '../storageApi';
 import { createCardMarkup } from './createCardMarkup';
-import { FavoritesStorage } from './FavoritesStorage';
+import { FavoritesStorage } from './favoritesStorage';
 import { mockFavoritesData } from './mockData';
-import { Storage } from './Storage';
+import { Storage } from './storage';
 import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from './favoritesConfig';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../pagination/pagination';
 
 const listRef = document.querySelector('.js-favorites-list');
 const listRefDesktop = document.querySelector('.js-favorites-list--desktop');

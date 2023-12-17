@@ -1,4 +1,6 @@
 import { cutExerciseName, correctRating, cutBodyPartName, cutBurnedCalories, cutTargetName } from "./cutDataCardsInfo"
+import icons from "../img/icons.svg"
+
 
 export function markupExercises(data) {
 	return data
@@ -10,14 +12,14 @@ export function markupExercises(data) {
 				<p class="exercises-rating">${correctRating(rating)}</p>
 				<span class="exercises-name-span">
 					<svg class="exercises-icon-star-rating" width="16" height="16">
-					<use href="././img/icons.svg#icon-star-rating"></use>
+					<use href="${icons}#icon-star-rating"></use>
 					</svg>
 				</span>
 			</div>
 			
 			<button type="button" class="exercises-btn js-excercise-button" >Start					
 				<svg class="exercises-icon-arrow" width="16" height="16">
-					<use href="././img/icons.svg#icon-arrow"></use>
+					<use href="${icons}#icon-arrow"></use>
 				</svg>
 			</button>
 		</div>
@@ -25,7 +27,7 @@ export function markupExercises(data) {
 		<div class="exercises-title">
 			<span class="exercises-name-span">
 				<svg class="exercises-icon-runner" width="24" height="24">
-                  <use href="././img/icons.svg#icon-runner"></use>
+                  <use href="${icons}#icon-runner"></use>
                 </svg>
 			</span>
 			<h3 class="exercises-name">${cutExerciseName(name)}</h3>

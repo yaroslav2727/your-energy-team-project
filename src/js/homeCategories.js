@@ -1,26 +1,33 @@
+import 'izitoast/dist/css/iziToast.min.css';
 import debounce from 'lodash.debounce';
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import { getMusclesList, getFilteredList, getExercises } from './api/api';
 import { markupCategories } from './markupCategories';
 import { markupExercises } from './markupExercises';
 import { loader } from './utils/loader';
 import Pagination from './Pagination/Pagination';
 import { DEFAULT_EXERCISES_LIMIT, DEFAULT_FILTER_LIMIT } from './api/config';
-import { Storage } from './favorites/Storage';
+// import { Storage } from './favorites/Storage';
 
-const paginatorContainerCategories = document.querySelector(
-  '.js-paginator-categories'
-);
-const paginatorContainerExercises = document.querySelector(
-  '.js-paginator-exercises'
-);
-const paginatorCat = new Pagination(paginatorContainerCategories, {
-  perPage: 12,
-});
-const paginatorExercises = new Pagination(paginatorContainerExercises, {
-  perPage: 10,
-});
+const items = document.querySelector('.cards');
+const filter = document.querySelector('.filter-list');
+const input = document.querySelector('.input-filter-exercises');
+const inputWrapper = document.querySelector('.filter-input-wrapper');
+const span = document.querySelector('.cat-title-span');
+const iconSearch = document.querySelector('.filter-icon-search');
+const iconClose = document.querySelector('.filter-icon-close');
+const paginationMainPage = document.querySelector('.js-pagination-mainPage');
+const paginationFilterPage = document.querySelector('.js-pagination-filterPage');
+const paginatorContainerCategories = document.querySelector('.js-paginator-categories');
+const paginatorContainerExercises = document.querySelector('.js-paginator-exercises');
+
+filter.addEventListener('click', handlerClickCategory);
+items.addEventListener('click', handlerClickExercises);
+inputWrapper.addEventListener('input', debounce(onSearchExercise, 500));
+iconClose.addEventListener('click', onDeleteSearchData);
+
+const paginatorCat = new Pagination(paginatorContainerCategories, { perPage: 12 });
+const paginatorExercises = new Pagination(paginatorContainerExercises, { perPage: 10 });
 
 const FILTER = {
   MUSCLES: 'Muscles',
@@ -55,21 +62,6 @@ paginatorExercises.on('aftermove', event => {
   );
 });
 
-const items = document.querySelector('.cards');
-const filter = document.querySelector('.filter-list');
-const input = document.querySelector('.input-filter-exercises');
-const inputWrapper = document.querySelector('.filter-input-wrapper');
-const span = document.querySelector('.cat-title-span');
-const iconSearch = document.querySelector('.filter-icon-search');
-const iconClose = document.querySelector('.filter-icon-close');
-const paginationMainPage = document.querySelector('.js-pagination-mainPage');
-const paginationFilterPage = document.querySelector('.js-pagination-filterPage');
-
-filter.addEventListener('click', handlerClickCategory);
-items.addEventListener('click', handlerClickExercises);
-inputWrapper.addEventListener('input', debounce(onSearchExercise, 500));
-iconClose.addEventListener('click', onDeleteSearchData);
-
 // початковий список вправ Muscles  ----
 loader.create();
 
@@ -93,8 +85,9 @@ getMusclesList()
   })
   .finally(() => {
     loader.destroy();
-    paginationMainPage.classList.remove("isPaginationHidden")
-    paginationFilterPage.classList.add("isPaginationHidden")
+    paginationMainPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("isPaginationHidden");
+    paginationMainPage.classList.add("pagination-cards");
   });
 
 
@@ -144,6 +137,7 @@ async function updateList(categoryName, currentPage) {
     loader.destroy();
     paginationMainPage.classList.remove("isPaginationHidden")
     paginationFilterPage.classList.add("isPaginationHidden")
+    paginationFilterPage.classList.remove("pagination-cards")
   }
 }
 
@@ -169,14 +163,23 @@ async function updateExercises(exercise, page) {
     const response = await getExercises(exercise, page);
     const data = response.results;
 
+    console.log("getExercises >>>", data)
+
+    if (data.length === 0) {
+      iziToast.show({
+        position: 'topCenter',
+        color: 'red',
+        timeout: 1500,
+        message: 'Oops! We have found nothing. Try again!',
+      });
+    }
+
     getData = data;
     items.innerHTML = markupExercises(data);
 
     scrollExercises();
 
     inputWrapper.classList.remove('isHidden');
-
-    // console.log('exercises', response);
 
     paginatorExercises.updateTotalItems(
       DEFAULT_EXERCISES_LIMIT * response.totalPages
@@ -195,9 +198,9 @@ async function updateExercises(exercise, page) {
   } finally {
     loader.destroy();
     items.removeEventListener('click', handlerClickExercises);
-    paginationMainPage.classList.add("isPaginationHidden")
-    paginationFilterPage.classList.remove("isPaginationHidden")
-
+    paginationMainPage.classList.add("isPaginationHidden");
+    paginationFilterPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("pagination-cards");
   }
 }
 
@@ -206,44 +209,20 @@ async function updateExercises(exercise, page) {
 function onSearchExercise(evt) {
   const searchData = evt.target.value.trim().toLowerCase();
 
-  //------Anton--------
   searchState = searchData;
   const data = {
     [filterVocabulary[category]]: exerciseState,
     search: searchData,
   };
   updateExercises(data, exercisesPageState.getPage());
-  //------Anton--------
-
-  const filteredData = getData.filter(item => item.name.includes(searchData));
 
   if (searchData.length !== 0) {
     switchIcons();
   }
-
   if (searchData.length === 0) {
     switchIcons();
   }
 
-  if (filteredData.length === 0) {
-    iziToast.show({
-      position: 'topCenter',
-      color: 'red',
-      timeout: 1500,
-      message: 'Oops! We have found nothing. Try again!',
-    });
-  }
-
-  if (filteredData.length !== 0) {
-    const searchWord = filteredData.length === 1 ? 'exercise' : 'exercises';
-
-    iziToast.show({
-      position: 'topCenter',
-      color: 'green',
-      timeout: 1500,
-      message: `Hooray! We found ${filteredData.length} ${searchWord}.`,
-    });
-  }
   items.innerHTML = markupExercises(filteredData);
 }
 
@@ -260,9 +239,29 @@ function switchIcons() {
 
 // прокрутка категорій ----
 function scrollExercises() {
-  let top = window.innerWidth < 768 ? 860 : 920;
-  const heightScroll = window.scrollY - top;
+  let top = null;
 
+  // switch (window.innerWidth) {
+  //   case window.innerWidth >= 375: top = 850;
+  //     break;
+  //   case window.innerWidth > 768 && window.innerWidth < 1440: top = 1020;
+  //     break;
+  //   case window.innerWidth >= 1440: top = 770;
+  //     break;
+  //   default:
+  // }
+
+  if (window.innerWidth >= 375) {
+    top = 850;
+  }
+  if (window.innerWidth > 768 && window.innerWidth < 1440) {
+    top = 1020;
+  }
+  if (window.innerWidth >= 1440) {
+    top = 770;
+  }
+
+  const heightScroll = window.scrollY - top;
   window.scrollBy({
     top: -heightScroll,
     behavior: 'smooth',
@@ -270,7 +269,6 @@ function scrollExercises() {
 }
 
 function createPageState(initialPage) {
-
   let page = initialPage;
 
   return {

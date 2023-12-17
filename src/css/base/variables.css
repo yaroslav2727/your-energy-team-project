@@ -55,6 +55,15 @@
   /* Pagination colors */
   --pagination-page-color: #d4d4d4;
   --pagination-current-page-color: #242424;
+
+  /* QUOTE DARK MODE */
+
+  --quote-background: #ffffff;
+  --quote-text: #000000;
+  --quote-sub-title: #24242499;
+  --news-favor-icon: #242424;
+  --news-icon: #f4f4f4;
+  --news-background-icon: #242424;
 }
 
 body.dark_mode {
@@ -66,4 +75,11 @@ body.dark_mode {
   /* Pagination colors */
   --pagination-page-color: #d4d4d4;
   --pagination-current-page-color: #242424;
+
+  --quote-background: #242424;
+  --quote-text: #ffffff;
+  --quote-sub-title: #f4f4f499;
+  --news-favor-icon: #f4f4f4;
+  --news-icon: #f4f4f4;
+  --news-background-icon: #f4f4f433;
 }

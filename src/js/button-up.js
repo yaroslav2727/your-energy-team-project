@@ -1,11 +1,20 @@
-import debounce from 'lodash.debounce';
-const button = document.querySelector('.js-button-up');
-window.addEventListener('scroll', debounce(onWindowScroll, 500));
+import debounce from "lodash.debounce";
+window.addEventListener("scroll", debounce(onWindowScroll, 100));
+
+export const buttonup = {
+  element: document.querySelector(".js-button-up"),
+  show() {
+    if (window.pageYOffset >= 800) {
+      this.element.classList.toggle("hidden", false);
+    } else {
+      this.element.classList.toggle("hidden", true);
+    }
+  },
+  hide() {
+    this.element.classList.toggle("hidden", true);
+  },
+};
 
 function onWindowScroll() {
-  if (window.pageYOffset >= 1000) {
-    button.classList.toggle('hidden', false);
-  } else {
-    button.classList.toggle('hidden', true);
-  }
+  buttonup.show();
 }

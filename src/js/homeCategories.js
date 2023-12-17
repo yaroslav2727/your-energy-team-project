@@ -165,8 +165,6 @@ async function updateExercises(exercise, page) {
     const response = await getExercises(exercise, page);
     const data = response.results;
 
-    console.log("getExercises >>>", data)
-
     if (data.length === 0) {
       iziToast.show({
         position: 'topCenter',

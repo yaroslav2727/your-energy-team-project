@@ -1,16 +1,16 @@
-import { createStorage } from '../storageApi';
-import { createCardMarkup } from './createCardMarkup';
-import { FavoritesStorage } from './favoritesStorage';
-import { mockFavoritesData } from './mockData';
-import { Storage } from './storage';
-import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from './favoritesConfig';
-import Pagination from '../pagination/pagination';
+import { createStorage } from "../storageApi";
+import { createCardMarkup } from "./createCardMarkup";
+import { FavoritesStorage } from "./favoritesStorage";
+import { mockFavoritesData } from "./mockData";
+import { Storage } from "./storage";
+import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from "./favoritesConfig";
+import Pagination from "../pagination/pagination";
 
-const listRef = document.querySelector('.js-favorites-list');
-const listRefDesktop = document.querySelector('.js-favorites-list--desktop');
-const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
+const listRef = document.querySelector(".js-favorites-list");
+const listRefDesktop = document.querySelector(".js-favorites-list--desktop");
+const noCardsMessageRef = document.querySelector(".js-favorites-no-cards");
 
-const paginationContainer = document.querySelector('.js-pag');
+const paginationContainer = document.querySelector(".js-pag");
 
 //-------------------------------
 const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
@@ -19,7 +19,7 @@ const pagination = new Pagination(paginationContainer, {
 });
 const pageState = createPageState(1, updateData);
 
-pagination.on('aftermove', event => {
+pagination.on("aftermove", event => {
   pageState.setPage(event.page);
 });
 
@@ -85,10 +85,10 @@ pagination.on('aftermove', event => {
 //   updateData();
 // });
 
-listRef.addEventListener('click', removeCardHandler);
-listRefDesktop.addEventListener('click', removeCardHandler);
+listRef.addEventListener("click", removeCardHandler);
+listRefDesktop.addEventListener("click", removeCardHandler);
 
-window.addEventListener('message', e => {
+window.addEventListener("message", e => {
   // console.log(e.data);
   // if (e.origin !== '*') return;
 
@@ -98,8 +98,8 @@ window.addEventListener('message', e => {
   //   messageHandler(e.data);
   // }
 
-  if (e.data === 'update-favorites') {
-    console.log(e.data);
+  if (e.data === "update-favorites") {
+    // console.log(e.data);
 
     updateData();
     updateDesktopData();
@@ -125,7 +125,7 @@ updateDesktopData();
 // }
 
 function removeCardHandler(e) {
-  const delBtn = e.target.closest('.js-favorites-remove');
+  const delBtn = e.target.closest(".js-favorites-remove");
   if (!delBtn) return;
 
   const cardId = delBtn.dataset.cardId;
@@ -140,12 +140,9 @@ function updateDesktopData() {
 }
 
 function updateData() {
-  const response = favoritesStorage.getCards(
-    pageState.getPage(),
-    FAVORITES_PER_PAGE
-  );
+  const response = favoritesStorage.getCards(pageState.getPage(), FAVORITES_PER_PAGE);
   // console.log('test func');
-  console.log(response);
+  // console.log(response);
 
   const { data, page, totalCount } = response;
 
@@ -163,19 +160,19 @@ function updateData() {
 
 function render(list, containerRef) {
   if (list.length === 0) {
-    noCardsMessageRef.classList.add('is-visible');
-    containerRef.innerHTML = '';
+    noCardsMessageRef.classList.add("is-visible");
+    containerRef.innerHTML = "";
     return;
   } else {
-    noCardsMessageRef.classList.remove('is-visible');
+    noCardsMessageRef.classList.remove("is-visible");
   }
 
-  const markup = list.map(createCardMarkup).join('');
+  const markup = list.map(createCardMarkup).join("");
   containerRef.innerHTML = markup;
 }
 
 function createPageState(initialPage, handler) {
-  const storage = new Storage('favorites_page');
+  const storage = new Storage("favorites_page");
 
   let page = storage.getFromStorage() || initialPage;
 
@@ -204,7 +201,7 @@ function createPageState(initialPage, handler) {
   };
 }
 
-window.matchMedia('(min-width: 1440px)').addEventListener('change', e => {
+window.matchMedia("(min-width: 1440px)").addEventListener("change", e => {
   if (!e.matches) return;
   pageState.setPage(1);
 });

@@ -135,6 +135,8 @@ async function updateList(categoryName, currentPage) {
     });
   } finally {
     loader.destroy();
+    iconSearch.classList.remove('isHidden');
+    iconClose.classList.add('isHidden');
     paginationMainPage.classList.remove("isPaginationHidden")
     paginationFilterPage.classList.add("isPaginationHidden")
     paginationFilterPage.classList.remove("pagination-cards")
@@ -217,25 +219,26 @@ function onSearchExercise(evt) {
   updateExercises(data, exercisesPageState.getPage());
 
   if (searchData.length !== 0) {
-    switchIcons();
+    iconSearch.classList.add('isHidden');
+    iconClose.classList.remove('isHidden');
   }
   if (searchData.length === 0) {
-    switchIcons();
+    iconSearch.classList.remove('isHidden');
+    iconClose.classList.add('isHidden');
   }
-
-  items.innerHTML = markupExercises(filteredData);
 }
 
 function onDeleteSearchData() {
   input.value = '';
-  items.innerHTML = markupExercises(getData);
-  switchIcons();
+  updateExercises(getData, exercisesPageState.getPage())
+  iconSearch.classList.remove('isHidden');
+  iconClose.classList.add('isHidden');
 }
 
-function switchIcons() {
-  iconSearch.classList.toggle('isHidden');
-  iconClose.classList.toggle('isHidden');
-}
+// function switchIcons() {
+//   iconSearch.classList.toggle('isHidden');
+//   iconClose.classList.toggle('isHidden');
+// }
 
 // прокрутка категорій ----
 function scrollExercises() {
@@ -262,6 +265,7 @@ function scrollExercises() {
   }
 
   const heightScroll = window.scrollY - top;
+
   window.scrollBy({
     top: -heightScroll,
     behavior: 'smooth',

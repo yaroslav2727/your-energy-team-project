@@ -28,16 +28,6 @@ function sendMessage(message) {
   window.postMessage(message, '*');
 }
 
-// function isCardExisted(storageKey, cardId) {
-//   const res = localStorage.getItem(storageKey);
-//   if (!res) return false;
-
-//   const list = JSON.parse(res);
-//   if (!Array.isArray(list)) return;
-
-//   return list.some(({ _id }) => _id === cardId);
-// }
-
 if (cardsList) {
   cardsList.addEventListener('click', openModal);
 }
@@ -60,8 +50,6 @@ function buttonView(cardId) {
 
 function addFavoriteAction() {
   if (!cardState) return;
-
-  // console.log(isCardExisted(cardState._id));
   if (storage.isCardExisted(cardState._id)) {
     storage.removeCard(cardState._id);
     buttonView(cardState._id);

@@ -1,35 +1,29 @@
-import 'izitoast/dist/css/iziToast.min.css';
-import debounce from 'lodash.debounce';
-import iziToast from 'izitoast';
-import { getMusclesList, getFilteredList, getExercises } from './api/api';
-import { markupCategories } from './markupCategories';
-import { markupExercises } from './markupExercises';
-import { loader } from './utils/loader';
-import Pagination from './pagination/pagination';
-import { DEFAULT_EXERCISES_LIMIT, DEFAULT_FILTER_LIMIT } from './api/config';
+import "izitoast/dist/css/iziToast.min.css";
+import debounce from "lodash.debounce";
+import iziToast from "izitoast";
+import { getMusclesList, getFilteredList, getExercises } from "./api/api";
+import { markupCategories } from "./markupCategories";
+import { markupExercises } from "./markupExercises";
+import { loader } from "./utils/loader";
+import Pagination from "./pagination/pagination";
+import { DEFAULT_EXERCISES_LIMIT, DEFAULT_FILTER_LIMIT } from "./api/config";
 
-const items = document.querySelector('.cards');
-const filter = document.querySelector('.filter-list');
-const input = document.querySelector('.input-filter-exercises');
-const inputWrapper = document.querySelector('.filter-input-wrapper');
-const span = document.querySelector('.cat-title-span');
-const iconSearch = document.querySelector('.filter-icon-search');
-const iconClose = document.querySelector('.filter-icon-close');
-const paginationMainPage = document.querySelector('.js-pagination-mainPage');
-const paginationFilterPage = document.querySelector(
-  '.js-pagination-filterPage'
-);
-const paginatorContainerCategories = document.querySelector(
-  '.js-paginator-categories'
-);
-const paginatorContainerExercises = document.querySelector(
-  '.js-paginator-exercises'
-);
+const items = document.querySelector(".cards");
+const filter = document.querySelector(".filter-list");
+const input = document.querySelector(".input-filter-exercises");
+const inputWrapper = document.querySelector(".filter-input-wrapper");
+const span = document.querySelector(".cat-title-span");
+const iconSearch = document.querySelector(".filter-icon-search");
+const iconClose = document.querySelector(".filter-icon-close");
+const paginationMainPage = document.querySelector(".js-pagination-mainPage");
+const paginationFilterPage = document.querySelector(".js-pagination-filterPage");
+const paginatorContainerCategories = document.querySelector(".js-paginator-categories");
+const paginatorContainerExercises = document.querySelector(".js-paginator-exercises");
 
-filter.addEventListener('click', handlerClickCategory);
-items.addEventListener('click', handlerClickExercises);
-inputWrapper.addEventListener('input', debounce(onSearchExercise, 500));
-iconClose.addEventListener('click', onDeleteSearchData);
+filter.addEventListener("click", handlerClickCategory);
+items.addEventListener("click", handlerClickExercises);
+inputWrapper.addEventListener("input", debounce(onSearchExercise, 500));
+iconClose.addEventListener("click", onDeleteSearchData);
 
 const paginatorCat = new Pagination(paginatorContainerCategories, {
   perPage: 12,
@@ -39,29 +33,29 @@ const paginatorExercises = new Pagination(paginatorContainerExercises, {
 });
 
 const FILTER = {
-  MUSCLES: 'Muscles',
-  BODY_PARTS: 'Body parts',
-  EQUIPMENT: 'Equipment',
+  MUSCLES: "Muscles",
+  BODY_PARTS: "Body parts",
+  EQUIPMENT: "Equipment",
 };
 
 const filterVocabulary = {
-  [FILTER.MUSCLES]: 'muscles',
-  [FILTER.BODY_PARTS]: 'bodypart',
-  [FILTER.EQUIPMENT]: 'equipment',
+  [FILTER.MUSCLES]: "muscles",
+  [FILTER.BODY_PARTS]: "bodypart",
+  [FILTER.EQUIPMENT]: "equipment",
 };
 
 let currentPage = 1;
 let category = FILTER.MUSCLES;
 let exerciseState = null;
-let searchState = '';
+let searchState = "";
 let getData = null;
 const exercisesPageState = createPageState(1);
 
-paginatorCat.on('aftermove', event => {
+paginatorCat.on("aftermove", event => {
   updateList(category, event.page);
 });
 
-paginatorExercises.on('aftermove', event => {
+paginatorExercises.on("aftermove", event => {
   updateExercises(
     {
       [filterVocabulary[category]]: exerciseState,
@@ -78,7 +72,7 @@ getMusclesList()
   .then(response => {
     const data = response.results;
     items.innerHTML = markupCategories(data);
-    items.addEventListener('click', handlerClickExercises);
+    items.addEventListener("click", handlerClickExercises);
 
     paginatorCat.updateTotalItems(DEFAULT_FILTER_LIMIT * response.totalPages);
     paginatorCat.goToPage(1);
@@ -87,28 +81,28 @@ getMusclesList()
   .catch(err => {
     console.error(err);
     iziToast.show({
-      position: 'center',
-      color: 'red',
-      message: 'Oops! Something wrong!',
+      position: "center",
+      color: "red",
+      message: "Oops! Something wrong!",
     });
   })
   .finally(() => {
     loader.destroy();
-    paginationMainPage.classList.remove('isPaginationHidden');
-    paginationFilterPage.classList.add('isPaginationHidden');
-    paginationMainPage.classList.add('pagination-cards');
+    paginationMainPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("isPaginationHidden");
+    paginationMainPage.classList.add("pagination-cards");
   });
 
 // фільтр по категоріям ----
 function handlerClickCategory(e) {
-  if (e.target.nodeName !== 'BUTTON') {
+  if (e.target.nodeName !== "BUTTON") {
     return;
   }
 
   const categoryName = e.target.dataset.name;
-  const filterBtn = document.querySelectorAll('.filter-btn');
-  filterBtn.forEach(btn => btn.classList.remove('active'));
-  e.target.classList.add('active');
+  const filterBtn = document.querySelectorAll(".filter-btn");
+  filterBtn.forEach(btn => btn.classList.remove("active"));
+  e.target.classList.add("active");
 
   loader.create();
 
@@ -123,11 +117,11 @@ async function updateList(categoryName, currentPage) {
 
     category = filter;
 
-    span.innerHTML = '';
+    span.innerHTML = "";
 
     items.innerHTML = markupCategories(data);
-    items.addEventListener('click', handlerClickExercises);
-    inputWrapper.classList.add('isHidden');
+    items.addEventListener("click", handlerClickExercises);
+    inputWrapper.classList.add("isHidden");
 
     paginatorCat.updateTotalItems(DEFAULT_FILTER_LIMIT * response.totalPages);
     paginatorCat.goToPage(currentPage);
@@ -135,28 +129,27 @@ async function updateList(categoryName, currentPage) {
   } catch (err) {
     console.error(err);
     iziToast.show({
-      position: 'center',
-      color: 'red',
-      message: 'Oops! Something wrong!',
+      position: "center",
+      color: "red",
+      message: "Oops! Something wrong!",
     });
   } finally {
     loader.destroy();
-    iconSearch.classList.remove('isHidden');
-    iconClose.classList.add('isHidden');
-    paginationMainPage.classList.remove('isPaginationHidden');
-    paginationFilterPage.classList.add('isPaginationHidden');
-    paginationFilterPage.classList.remove('pagination-cards');
+    iconSearch.classList.remove("isHidden");
+    iconClose.classList.add("isHidden");
+    paginationMainPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("isPaginationHidden");
+    paginationFilterPage.classList.remove("pagination-cards");
   }
 }
 
 // вивід списка обраної категорії вправ ----
 function handlerClickExercises(e) {
+  if (!e.target.closest(".card-exercises-img")) {
+    return;
+  }
 
-  if (e.target.nodeName !== 'BUTTON') {
-    return
-  };
-
-  const exercise = e.target.closest('.card-exercises').dataset.bodyExercise;
+  const exercise = e.target.closest(".card-exercises").dataset.bodyExercise;
   span.innerHTML = `<span class="cat-title-text">/</span> ${exercise}`;
 
   exerciseState = exercise;
@@ -168,7 +161,7 @@ function handlerClickExercises(e) {
   loader.create();
 
   updateExercises(data, exercisesPageState.getPage());
-  input.value = '';
+  input.value = "";
 }
 
 async function updateExercises(exercise, page) {
@@ -178,10 +171,10 @@ async function updateExercises(exercise, page) {
 
     if (data.length === 0) {
       iziToast.show({
-        position: 'topCenter',
-        color: 'red',
+        position: "topCenter",
+        color: "red",
         timeout: 1500,
-        message: 'Oops! We have found nothing. Try again!',
+        message: "Oops! We have found nothing. Try again!",
       });
     }
 
@@ -190,27 +183,25 @@ async function updateExercises(exercise, page) {
 
     scrollExercises();
 
-    inputWrapper.classList.remove('isHidden');
+    inputWrapper.classList.remove("isHidden");
 
-    paginatorExercises.updateTotalItems(
-      DEFAULT_EXERCISES_LIMIT * response.totalPages
-    );
+    paginatorExercises.updateTotalItems(DEFAULT_EXERCISES_LIMIT * response.totalPages);
 
     paginatorExercises.goToPage(page);
     paginatorExercises.render();
   } catch (err) {
     console.error(err);
     iziToast.show({
-      position: 'center',
-      color: 'red',
-      message: 'Oops! Something wrong!',
+      position: "center",
+      color: "red",
+      message: "Oops! Something wrong!",
     });
   } finally {
     loader.destroy();
-    items.removeEventListener('click', handlerClickExercises);
-    paginationMainPage.classList.add('isPaginationHidden');
-    paginationFilterPage.classList.remove('isPaginationHidden');
-    paginationFilterPage.classList.add('pagination-cards');
+    items.removeEventListener("click", handlerClickExercises);
+    paginationMainPage.classList.add("isPaginationHidden");
+    paginationFilterPage.classList.remove("isPaginationHidden");
+    paginationFilterPage.classList.add("pagination-cards");
   }
 }
 
@@ -227,23 +218,21 @@ function onSearchExercise(evt) {
   updateExercises(data, exercisesPageState.getPage());
 
   if (searchData.length !== 0) {
-    iconSearch.classList.add('isHidden');
-    iconClose.classList.remove('isHidden');
+    iconSearch.classList.add("isHidden");
+    iconClose.classList.remove("isHidden");
   }
   if (searchData.length === 0) {
-    iconSearch.classList.remove('isHidden');
-    iconClose.classList.add('isHidden');
+    iconSearch.classList.remove("isHidden");
+    iconClose.classList.add("isHidden");
   }
 }
 
 function onDeleteSearchData() {
-  input.value = '';
+  input.value = "";
   updateExercises(getData, exercisesPageState.getPage());
-  iconSearch.classList.remove('isHidden');
-  iconClose.classList.add('isHidden');
+  iconSearch.classList.remove("isHidden");
+  iconClose.classList.add("isHidden");
 }
-
-
 
 // прокрутка категорій ----
 function scrollExercises() {
@@ -263,7 +252,7 @@ function scrollExercises() {
 
   window.scrollBy({
     top: -heightScroll,
-    behavior: 'smooth',
+    behavior: "smooth",
   });
 }
 

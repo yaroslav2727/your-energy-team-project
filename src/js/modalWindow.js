@@ -1,50 +1,50 @@
-import iziToast from 'izitoast';
-import { getExerciseById } from './api/api';
-import { loader } from './utils/loader';
-import { buttonup } from './button-up';
-import { FavoritesStorage } from './favorites/FavoritesStorage';
-import { FAVORITES_STORAGE_KEY } from './favorites/favoritesConfig';
+import iziToast from "izitoast";
+import { getExerciseById } from "./api/api";
+import { loader } from "./utils/loader";
+import { buttonup } from "./button-up";
+import { FavoritesStorage } from "./favorites/favoritesStorage";
+import { FAVORITES_STORAGE_KEY } from "./favorites/favoritesConfig";
 
-const cardsList = document.querySelector('.js-common-card-list');
-const cardFavoritesWrapper = document.querySelector('.js-faovorites-wrapper');
-const contentUpdate = document.querySelector('.excercise_units');
-const modalExcercise = document.querySelector('.modal_window_container');
-const closeModalButton = document.querySelector('.close_modal_button');
-const giveRatingButton = document.querySelector('.rate_button');
+const cardsList = document.querySelector(".js-common-card-list");
+const cardFavoritesWrapper = document.querySelector(".js-faovorites-wrapper");
+const contentUpdate = document.querySelector(".excercise_units");
+const modalExcercise = document.querySelector(".modal_window_container");
+const closeModalButton = document.querySelector(".close_modal_button");
+const giveRatingButton = document.querySelector(".rate_button");
 const overflow = document.body;
-const addFavoriteBtn = document.querySelector('.js-add-favorite-btn');
-const excerciseName = document.querySelector('.modal_title');
-const excerciseRating = document.querySelector('.excercise_rating');
-const image = document.querySelector('.modal_image');
-const firstStar = document.querySelector('.first_star');
-const secondStar = document.querySelector('.second_star');
-const thirdStar = document.querySelector('.third_star');
-const fourthStar = document.querySelector('.fourth_star');
-const fifthStar = document.querySelector('.fifth_star');
+const addFavoriteBtn = document.querySelector(".js-add-favorite-btn");
+const excerciseName = document.querySelector(".modal_title");
+const excerciseRating = document.querySelector(".excercise_rating");
+const image = document.querySelector(".modal_image");
+const firstStar = document.querySelector(".first_star");
+const secondStar = document.querySelector(".second_star");
+const thirdStar = document.querySelector(".third_star");
+const fourthStar = document.querySelector(".fourth_star");
+const fifthStar = document.querySelector(".fifth_star");
 let cardState = null;
 const storage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
 
 function sendMessage(message) {
-  window.postMessage(message, '*');
+  window.postMessage(message, "*");
 }
 
 if (cardsList) {
-  cardsList.addEventListener('click', openModal);
+  cardsList.addEventListener("click", openModal);
 }
 
 if (cardFavoritesWrapper) {
-  cardFavoritesWrapper.addEventListener('click', openModal);
+  cardFavoritesWrapper.addEventListener("click", openModal);
 }
 
-closeModalButton.addEventListener('click', clickToClose);
-giveRatingButton.addEventListener('click', openRateModal);
-addFavoriteBtn.addEventListener('click', addFavoriteAction);
+closeModalButton.addEventListener("click", clickToClose);
+giveRatingButton.addEventListener("click", openRateModal);
+addFavoriteBtn.addEventListener("click", addFavoriteAction);
 
 function buttonView(cardId) {
   if (storage.isCardExisted(cardId)) {
-    addFavoriteBtn.classList.add('is-card-existed');
+    addFavoriteBtn.classList.add("is-card-existed");
   } else {
-    addFavoriteBtn.classList.remove('is-card-existed');
+    addFavoriteBtn.classList.remove("is-card-existed");
   }
 }
 
@@ -57,7 +57,7 @@ function addFavoriteAction() {
     storage.addCard(cardState);
     buttonView(cardState._id);
   }
-  sendMessage('update-favorites');
+  sendMessage("update-favorites");
 }
 
 function editName(elem) {
@@ -78,34 +78,34 @@ function editRating(rating) {
 }
 
 function clearStars() {
-  firstStar.classList.remove('rating_star_filled');
-  secondStar.classList.remove('rating_star_filled');
-  thirdStar.classList.remove('rating_star_filled');
-  fourthStar.classList.remove('rating_star_filled');
-  fifthStar.classList.remove('rating_star_filled');
+  firstStar.classList.remove("rating_star_filled");
+  secondStar.classList.remove("rating_star_filled");
+  thirdStar.classList.remove("rating_star_filled");
+  fourthStar.classList.remove("rating_star_filled");
+  fifthStar.classList.remove("rating_star_filled");
 }
 
 function colorizeStars(rating) {
   if (rating === 5) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
-    fourthStar.classList.add('rating_star_filled');
-    fifthStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
+    fourthStar.classList.add("rating_star_filled");
+    fifthStar.classList.add("rating_star_filled");
   } else if (rating >= 4) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
-    fourthStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
+    fourthStar.classList.add("rating_star_filled");
   } else if (rating >= 3) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
-    thirdStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
+    thirdStar.classList.add("rating_star_filled");
   } else if (rating >= 2) {
-    firstStar.classList.add('rating_star_filled');
-    secondStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
+    secondStar.classList.add("rating_star_filled");
   } else if (rating >= 1) {
-    firstStar.classList.add('rating_star_filled');
+    firstStar.classList.add("rating_star_filled");
   } else return;
 }
 
@@ -128,20 +128,20 @@ function markupModal({
   popularity,
 }) {
   if (!target) {
-    target = 'Not Defined';
+    target = "Not Defined";
   }
   if (!equipment) {
-    equipment = 'Not Defined';
+    equipment = "Not Defined";
   }
   if (!popularity) {
-    popularity = 'Not defined';
+    popularity = "Not defined";
   }
   if (!burnedCalories || !time) {
-    burnedCalories = 'N';
-    time = 'A';
+    burnedCalories = "N";
+    time = "A";
   }
   if (!description) {
-    description = 'No description yet.';
+    description = "No description yet.";
   }
   return `<li class="excercise_item"><h4 class="excercise_title">Taget</h4><p class="excercise_text">${target}</p></li>
 <li class="excercise_item"><h4 class="excercise_title">Body Part</h4>
@@ -157,17 +157,17 @@ function markupModal({
 }
 
 function openRateModal() {
-  giveRatingButton.classList.remove('is-hidden');
-  modalExcercise.classList.add('is-hidden');
-  window.removeEventListener('keydown', closeModal);
-  window.removeEventListener('click', closeModal);
+  giveRatingButton.classList.remove("is-hidden");
+  modalExcercise.classList.add("is-hidden");
+  window.removeEventListener("keydown", closeModal);
+  window.removeEventListener("click", closeModal);
 }
 
 function openModal(e) {
-  const btn = e.target.closest('.js-excercise-button');
+  const btn = e.target.closest(".js-excercise-button");
   if (!btn) return;
 
-  const card = btn.closest('.js-common-card-item');
+  const card = btn.closest(".js-common-card-item");
 
   const cardId = card.dataset.exerciseId;
 
@@ -188,41 +188,39 @@ function openModal(e) {
     .catch(err => {
       console.error(err);
       iziToast.show({
-        position: 'center',
-        color: 'red',
-        message: 'An error has ocurred. Please try again later',
+        position: "center",
+        color: "red",
+        message: "An error has ocurred. Please try again later",
       });
     })
     .finally(() => {
       loader.destroy();
     });
-  giveRatingButton.setAttribute('data-Id', cardId);
+  giveRatingButton.setAttribute("data-Id", cardId);
 
-  modalExcercise.classList.remove('is-hidden');
-  overflow.style.overflow = 'hidden';
-  window.addEventListener('keydown', closeModal);
-  window.addEventListener('click', closeModal);
+  modalExcercise.classList.remove("is-hidden");
+  overflow.style.overflow = "hidden";
+  window.addEventListener("keydown", closeModal);
+  window.addEventListener("click", closeModal);
 }
 
 function closeModal(event) {
-  if (event.key === 'Escape') {
-    modalExcercise.classList.add('is-hidden');
-    overflow.style.overflow = 'visible';
+  if (event.key === "Escape") {
+    modalExcercise.classList.add("is-hidden");
+    overflow.style.overflow = "visible";
     clearStars();
     buttonup.show();
-  } else if (
-    !event.target.closest('.modal_window_default_content,.js-excercise-button')
-  ) {
-    modalExcercise.classList.add('is-hidden');
-    overflow.style.overflow = 'visible';
+  } else if (!event.target.closest(".modal_window_default_content,.js-excercise-button")) {
+    modalExcercise.classList.add("is-hidden");
+    overflow.style.overflow = "visible";
     clearStars();
     buttonup.show();
   }
 }
 
 function clickToClose() {
-  modalExcercise.classList.add('is-hidden');
-  overflow.style.overflow = 'visible';
+  modalExcercise.classList.add("is-hidden");
+  overflow.style.overflow = "visible";
   clearStars();
   buttonup.show();
 }

@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 128px; */
+  margin-top: 128px;
+  margin-bottom: 80px;
 }
 
 .quote-container {
@@ -31,7 +32,8 @@
 
 .quote-container--news {
   height: initial;
-  background-color: var(--favorites-card-background);
+  background-color: var(--quote-background);
+  margin-bottom: 0;
 }
 
 .quote-title,
@@ -42,7 +44,7 @@
 
 .news-title,
 .news-text {
-  color: var(--color-black);
+  color: var(--quote-text);
 }
 
 .quote-author {
@@ -60,7 +62,7 @@
 }
 
 .news-subtitle {
-  color: var(--color-primary-heavy);
+  color: var(--quote-sub-title);
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -78,10 +80,25 @@
 }
 
 .quote-icon,
-.news-icon,
 .quote-marks-icon {
   width: 34px;
   height: 32px;
+}
+
+.news-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--news-icon);
+}
+
+.news-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--news-background-icon);
+  width: 34px;
+  height: 32px;
+  border-radius: 50px;
 }
 
 .quote-marks-icon {
@@ -123,6 +140,7 @@
     flex-wrap: wrap;
     flex-direction: initial;
     justify-content: space-between;
+    margin-bottom: 100px;
   }
 }
 

@@ -12,7 +12,8 @@ favorites-quote.css .favorites-news {
 .favorites-quote-container,
 .favorites-news-container {
   border-radius: 20px;
-  margin-bottom: 12px;
+  /*margin-bottom: 12px;*/
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -44,7 +45,7 @@ favorites-quote.css .favorites-news {
 .favorites-news-container--image {
   width: 100%;
   height: 119px;
-  margin: 10px 0;
+  /*margin: 10px 0;*/
   border-radius: 20px;
 }
 

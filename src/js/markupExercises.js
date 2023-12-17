@@ -46,7 +46,6 @@ export function markupExercises(data) {
 			</ul>
 		</div>
 	</li>`;
-		})
-		.join('');
+    })
+    .join("");
 }
-

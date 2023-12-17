@@ -265,8 +265,10 @@ body.dark_mode .header-burger-img {
     transition: all var(--transition-time) var(--transition-function);
   }
 
-  .change_theme--btn:hover::before{
-    background-color: var(--color-rating);
+  @media (min-width: 1440px) {
+      .change_theme--btn:hover::before{
+      background-color: var(--color-rating);
+    }
   }
 
   .icon_sun {

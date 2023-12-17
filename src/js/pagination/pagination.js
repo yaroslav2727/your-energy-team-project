@@ -14,11 +14,11 @@ export default class Pagination {
     this.#perPage = options?.perPage || 10;
     this.#page = 1;
 
-    this.refs.container.addEventListener('click', this.#onPageClick.bind(this));
+    this.refs.container.addEventListener("click", this.#onPageClick.bind(this));
 
     window
-      .matchMedia('(min-width: 480px)')
-      .addEventListener('change', this.#onViewportChange.bind(this));
+      .matchMedia("(min-width: 480px)")
+      .addEventListener("change", this.#onViewportChange.bind(this));
   }
 
   reset() {
@@ -33,7 +33,7 @@ export default class Pagination {
   #onPageClick(e) {
     e.preventDefault();
 
-    if (!e.target.classList.contains('pag__page')) {
+    if (!e.target.classList.contains("pag__page")) {
       return;
     }
 
@@ -56,31 +56,29 @@ export default class Pagination {
   }
 
   on(type, handler) {
-    if (type === 'beforemove') {
+    if (type === "beforemove") {
       this.#handlerBeforeMove = handler;
       return;
     }
 
-    if (type === 'aftermove') {
+    if (type === "aftermove") {
       this.#handlerAfterMove = handler;
       return;
     }
 
-    throw new Error(
-      'Event type is not correct (must be "beforemove" of "aftermove")'
-    );
+    throw new Error('Event type is not correct (must be "beforemove" of "aftermove")');
   }
 
   render() {
     if (this.#totalItems <= this.#perPage) {
-      this.refs.container.innerHTML = '';
+      this.refs.container.innerHTML = "";
       return;
     }
     // console.log(paginationTemplate());
     const currentPage = Number(this.#page);
     const lastPageNumber = this.getLastPageNumber();
 
-    let string = '';
+    let string = "";
     const end = lastPageNumber;
 
     const windowInnerWidth = window.innerWidth;
@@ -156,8 +154,7 @@ export default class Pagination {
 
   goToPage(page) {
     if (!Number.isInteger(Number(page))) {
-      console.log(page);
-      throw new Error('Page must be integer!');
+      throw new Error("Page must be integer!");
     }
 
     if (page < 1 || page > this.getLastPageNumber()) {

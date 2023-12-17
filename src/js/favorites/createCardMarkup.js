@@ -1,6 +1,6 @@
 import icons from '../../img/icons.svg';
 
-export const trimText = (str, length) => {
+const trimText = (str, length) => {
   if (length <= 3) throw new Error('Trim length must not be less than 4');
   if (str.length <= length - 3) return str;
   return str.slice(0, length - 3) + '...';
@@ -63,8 +63,8 @@ export function createCardMarkup({
                         <li class="sport-card__param-item">
                           Burned calories:<span class="sport-card__param__value"
                             >${burnedCalories} / ${trimText(
-    time.toString() + 'min',
-    7
+    time.toString() + ' min',
+    4
   )}</span
                           >
                         </li>

@@ -1,0 +1,58 @@
+.button-up {
+  opacity: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  z-index: 999;
+  background-color: var(--darkmode-secondary);
+  border: 3px solid var(--darkmode-primary);
+  border-radius: 50%;
+
+  color: var(--darkmode-primary);
+  transition: all var(--transition-time) var(--transition-function);
+}
+
+body.dark_mode .button-up {
+  color: var(--darkmode-secondary);
+  background-color: var(--darkmode-primary);
+  border: 3px solid var(--darkmode-secondary);
+}
+
+.button-up.hidden {
+  opacity: 0;
+  right: -50px;
+}
+
+.button-up__icon {
+  fill: currentColor;
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: 1440px) {
+  .button-up:hover > .button-up__icon {
+  animation-name: button-up-animation;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+}
+  .button-up:hover,
+  .button-up:active {
+    color: var(--darkmode-primary);
+    border-color: var(--darkmode-secondary);
+  }
+}
+
+@keyframes button-up-animation {
+  0% {
+    transform: translateY(-3px) rotate(180deg);
+  }
+
+  100% {
+    transform: translateY(3px) rotate(180deg);
+  }
+}

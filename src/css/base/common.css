@@ -1,3 +1,7 @@
+:root {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: var(--color-secondary);
@@ -24,7 +28,6 @@ body.dark_mode {
 }
 
 .container {
-  width: 100%;
   max-width: 375px;
   padding: 0 20px;
   margin: 0 auto;

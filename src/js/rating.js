@@ -17,12 +17,14 @@ const resetHandler = () => {
   reatingTitleReff.textContent = `0.0`;
   ratingStarsReff.forEach((item) => {
     item.classList.remove('btn_star-active')
+    item.classList.add('btn_star')
   })
+
   modalReff.classList.add("is-hidden");
   modalContainerReff.classList.remove('is-hidden')
 }
 
-formReff.addEventListener("submit", evt => {
+formReff.addEventListener("submit", async evt => {
   evt.preventDefault();
   const dataIdReff = document.querySelector("[data-id]")
   const id = dataIdReff.dataset.id
@@ -52,15 +54,25 @@ formReff.addEventListener("submit", evt => {
     return;
   }
 
-  const response = patchRating(id, formItems);
-  if (response) {
+  try {
+    const response = await patchRating(id, formItems);
+    if (response) {
+      iziToast.show({
+        title: "The rating has been successfully added",
+        color: "green",
+        position: "topCenter",
+        message: ``,
+      });
+      resetHandler()
+    }
+  }
+  catch (error) {
     iziToast.show({
-      title: "The rating has been successfully added",
-      color: "green",
+      title: `${error.message}`,
+      color: "red",
       position: "topCenter",
       message: ``,
     });
-    resetHandler()
   }
 });
 
@@ -72,6 +84,7 @@ function executeRating(stars) {
 
   stars.map(star => {
     star.onclick = () => {
+
       i = stars.indexOf(star);
 
       if (star.className === starClassInactive) {
@@ -127,7 +140,7 @@ executeRating(ratingStarsReff);
   }
 
   function onEscapeKeyPress(evt) {
-    if (evt.key === "Escape") {
+    if (evt.code === "Escape") {
       closeModal()
     }
   }

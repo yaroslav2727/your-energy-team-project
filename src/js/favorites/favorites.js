@@ -1,16 +1,16 @@
 import { createStorage } from '../storageApi';
 import { createCardMarkup } from './createCardMarkup';
-import { FavoritesStorage } from './FavoritesStorage';
+import { FavoritesStorage } from './favoritesStorage';
 import { mockFavoritesData } from './mockData';
-import { Storage } from './Storage';
+import { Storage } from './storage';
 import { FAVORITES_PER_PAGE, FAVORITES_STORAGE_KEY } from './favoritesConfig';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../pagination/pagination';
 
 const listRef = document.querySelector('.js-favorites-list');
 const listRefDesktop = document.querySelector('.js-favorites-list--desktop');
 const noCardsMessageRef = document.querySelector('.js-favorites-no-cards');
 
-const paginationContainer = document.querySelector('.pag');
+const paginationContainer = document.querySelector('.js-pag');
 
 //-------------------------------
 const favoritesStorage = new FavoritesStorage(FAVORITES_STORAGE_KEY);
@@ -23,10 +23,23 @@ pagination.on('aftermove', event => {
   pageState.setPage(event.page);
 });
 
+// const myWorker = new Worker('./js/worker.js');
+
+// myWorker.postMessage('fav');
+
+// myWorker.onmessage = function (event) {
+//   console.log(event.data);
+//   if (event.data === 'update-favorites') {
+//     console.log('EXCELLENT!!');
+//   }
+// };
+
+// myWorker.postMessage("TEST FAV")
+
 //TEMP----------------------
-mockFavoritesData.forEach(card => {
-  favoritesStorage.addCard(card);
-});
+// mockFavoritesData.forEach(card => {
+//   favoritesStorage.addCard(card);
+// });
 
 // const tempAddBtnRef = document.querySelector('.js-temp-add-to-favorites');
 // const tempPageIncrease = document.querySelector('.js-temp-page-up');
@@ -75,10 +88,41 @@ mockFavoritesData.forEach(card => {
 listRef.addEventListener('click', removeCardHandler);
 listRefDesktop.addEventListener('click', removeCardHandler);
 
+window.addEventListener('message', e => {
+  // console.log(e.data);
+  // if (e.origin !== '*') return;
+
+  // console.log(e.data);
+  // if (e.data === 'add' || e.data === 'remove') {
+  //   console.log(e.data);
+  //   messageHandler(e.data);
+  // }
+
+  if (e.data === 'update-favorites') {
+    console.log(e.data);
+
+    updateData();
+    updateDesktopData();
+  }
+});
+
 updateData();
 updateDesktopData();
-
 ///////////////////////////////////////////////////////////////////////////
+
+// function messageHandler({ method, payload }) {
+//   if (method === 'add') {
+//     favoritesStorage.addCard(payload);
+//     updateData();
+//     updateDesktopData();
+//   }
+
+//   if (method === 'remove') {
+//     favoritesStorage.removeCard(payload.id);
+//     updateData();
+//     updateDesktopData();
+//   }
+// }
 
 function removeCardHandler(e) {
   const delBtn = e.target.closest('.js-favorites-remove');
@@ -100,6 +144,7 @@ function updateData() {
     pageState.getPage(),
     FAVORITES_PER_PAGE
   );
+  // console.log('test func');
   console.log(response);
 
   const { data, page, totalCount } = response;

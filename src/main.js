@@ -5,4 +5,4 @@ import "./js/rating";
 import "./js/modalWindow";
 import "./js/quote";
 import "./js/subscribeFormFooter";
-import "./js/privacy-policy";
+import "./js/button-up";

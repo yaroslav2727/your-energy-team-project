@@ -47,15 +47,23 @@
   --transition-time: 250ms;
   --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Favorites dark mode */
-  --favorites-background-color: #f4f4f4;
-  --favorites-title: #242424;
-  --favorites-card-background: #ffffff;
+  /* QUOTE DARK MODE */
+
+  --quote-background: #ffffff;
+  --quote-text: #000000;
+  --quote-sub-title: #24242499;
+  --news-favor-icon: #242424;
+  --news-icon: #f4f4f4;
+  --news-background-icon: #242424;
 }
 
-/* Anton test dark mode */
 body.dark_mode {
-  --favorites-background-color: #000000;
-  --favorites-title: #e5e2e2;
-  --favorites-card-background: #cdcdcd;
+  /* Pagination colors */
+
+  --quote-background: #242424;
+  --quote-text: #ffffff;
+  --quote-sub-title: #f4f4f499;
+  --news-favor-icon: #f4f4f4;
+  --news-icon: #f4f4f4;
+  --news-background-icon: #f4f4f433;
 }

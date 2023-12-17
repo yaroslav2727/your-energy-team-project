@@ -7,7 +7,6 @@
 
 @media (min-width: 1440px) {
     .primary-content-container {
-        width: 100%;
         padding: 0 32px;
         margin: 0 auto;
         max-width: 1440px;

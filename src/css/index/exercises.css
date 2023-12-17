@@ -1,8 +1,26 @@
+.exercises {
+  margin-bottom: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  .exercises {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .exercises {
+    margin-bottom: 132px;
+  }
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-content: flex-start;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .card-exercises {
@@ -15,7 +33,6 @@
 
 .card-exercises {
   width: 100%;
-  height: 225px;
   border-radius: 12px;
   border: none;
 }
@@ -44,6 +61,7 @@
   .cards {
     column-gap: 15px;
     row-gap: 32px;
+    margin-bottom: 32px;
   }
 
   .card-exercises {
@@ -64,7 +82,7 @@
 
   .card-exercises-img {
     width: 290px;
-    height: 242px;
+    height: 100%;
   }
 
   .name-category {

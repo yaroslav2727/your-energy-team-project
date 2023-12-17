@@ -103,6 +103,8 @@
   width: 100%;
   padding: 12px;
   border-radius: 30px;
+  border-color: transparent;
+  background-color: var(--color-secondary);
   transition: 250ms ease-in-out;
 }
 .submit-btn:hover,

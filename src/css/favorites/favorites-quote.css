@@ -6,14 +6,21 @@ favorites-quote.css .favorites-news {
 
 .favorites-quote-container {
   min-height: 206px;
-  margin-bottom: 10px;
+
+  /* Anton 18-12-2023 */
+  /* margin-bottom: 10px; */
+  /* Anton 18-12-2023 */
 }
 
 .favorites-quote-container,
 .favorites-news-container {
   border-radius: 20px;
   /*margin-bottom: 12px;*/
-  margin-bottom: 16px;
+
+  /* Anton 18-12-2023 */
+  /* margin-bottom: 16px; */
+  /* Anton 18-12-2023 */
+
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -34,11 +41,19 @@ favorites-quote.css .favorites-news {
   flex-direction: row;
   padding: 20px;
   background-color: var(--color-primary);
+
+  /* Anton 18-12-2023 */
+  margin-bottom: 20px;
+  /* Anton 18-12-2023 */
 }
 
 .favorites-news-container--sport {
   padding: 20px;
   background-color: var(--quote-background);
+
+  /* Anton 18-12-2023 */
+  margin-bottom: 20px;
+  /* Anton 18-12-2023 */
 }
 
 .favorites-news-container--sport,
@@ -126,7 +141,9 @@ favorites-quote.css .favorites-news {
   }
 
   .favorites-news-container {
-    min-height: 220px;
+    /* Anton 18-12-2023 */
+    /* min-height: 220px; */
+    /* Anton 18-12-2023 */
   }
 
   .favorites-quote-content {
@@ -142,10 +159,18 @@ favorites-quote.css .favorites-news {
 
   .favorites-quote-container--day {
     padding: 40px;
+
+    /* Anton 18-12-2023 */
+    margin-bottom: 16px;
+    /* Anton 18-12-2023 */
   }
 
   .favorites-news-container--sport {
     padding: 25px;
+
+    /* Anton 18-12-2023 */
+    margin-bottom: 0;
+    /* Anton 18-12-2023 */
   }
 }
 

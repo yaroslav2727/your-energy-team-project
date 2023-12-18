@@ -37,7 +37,7 @@
   border-radius: 20px;
   background-color: #242424;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 100dvh;
 }
 .btn_close {

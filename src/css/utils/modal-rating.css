@@ -32,11 +32,13 @@
 .raiting {
   position: relative;
   width: 335px;
-  height: 100%;
   padding: 40px 20px;
 
   border-radius: 20px;
   background-color: #242424;
+
+  overflow-y: scroll;
+  max-height: 100dvh;
 }
 .btn_close {
   position: absolute;

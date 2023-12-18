@@ -5,12 +5,10 @@ export class FavoritesStorage extends Storage {
 
   constructor(key) {
     super(key);
-    // this.#list = this.getFromStorage() || [];
     this.#update();
   }
 
   addCard(card) {
-    // console.log(card);
     if (this.isCardExisted(card._id)) return;
 
     this.#list.push(card);
@@ -30,7 +28,6 @@ export class FavoritesStorage extends Storage {
   getCards(page, limit) {
     this.#update();
     if (page * limit - limit > this.#list.length) {
-      // console.log(page);
       throw new Error('Out of list');
     }
 
@@ -62,13 +59,3 @@ export class FavoritesStorage extends Storage {
     this.#list = this.getFromStorage() || [];
   }
 }
-
-/*
-page 2 , limit 5
-
-page 1 ->  0 1 2 3 4
-page 2 ->  5 6 7 8 9
-page 3 -> 10 11 12 13 14  
-
-
-*/

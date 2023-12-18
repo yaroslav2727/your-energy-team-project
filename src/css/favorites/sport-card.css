@@ -1,5 +1,4 @@
 .sport-card {
-  /* font-family: Neue Montreal, 'sans-serif'; */
   padding: 16px;
 
   background-color: var(--color-white);
@@ -139,9 +138,6 @@ body.dark_mode .sport-card__meta > .icon {
   text-transform: uppercase;
 }
 
-.sport-card__footer {
-}
-
 .sport-card__param-list {
   display: flex;
   align-items: center;
@@ -171,13 +167,8 @@ body.dark_mode .sport-card__param__value {
 /* -------------------------------------------------------------------------------------------- */
 /* ------------------------------MEDIA--------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------------- */
-@media screen and (min-width: 375px) {
-  /*  */
-}
 
 @media screen and (min-width: 768px) {
-  /*  */
-
   .sport-card__start-btn {
     display: flex;
     align-items: center;
@@ -203,8 +194,4 @@ body.dark_mode .sport-card__param__value {
   .sport-card__param__value {
     margin-left: 4px;
   }
-}
-
-@media screen and (min-width: 1440px) {
-  /*  */
 }
